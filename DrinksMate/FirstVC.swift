@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class FirstVC: UIViewController {
 
@@ -18,6 +19,19 @@ class FirstVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let url = URL(string: AppUtil.serverURL + "features/6")
+        
+        // Config api
+        Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
+                    
+            guard response.result.isSuccess else {
+                return
+            }
+
+            let value = response.result.value as! [String: Any]
+            //let status = value["status"] as! Bool
+            AppUtil.config = value
+        }
     }
     
     @IBAction func yesAction(_ sender: Any) {

@@ -13,4 +13,6 @@ class AppUtil: NSObject {
     public static let serverURL = "http://107.150.52.222:8088/"
     public static var user : DrinkUser!
     public static var otp : String!
+    
+    public static var config : [String : Any]!
 }
