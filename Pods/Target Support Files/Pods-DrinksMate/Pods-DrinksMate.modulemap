@@ -1,0 +1,6 @@
+framework module Pods_DrinksMate {
+  umbrella header "Pods-DrinksMate-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,695 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2BC2DC5B5F0EBB59E55DB433 /* Pods_DrinksMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90668F7AB62403E17E15DF0C /* Pods_DrinksMate.framework */; };
+		670A0E8023687E090000EE68 /* PolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670A0E7F23687E090000EE68 /* PolicyVC.swift */; };
+		670A0E83236881A10000EE68 /* privacy_policy.htm in Resources */ = {isa = PBXBuildFile; fileRef = 670A0E81236881A00000EE68 /* privacy_policy.htm */; };
+		670A0E84236881A10000EE68 /* terms_conditions.htm in Resources */ = {isa = PBXBuildFile; fileRef = 670A0E82236881A00000EE68 /* terms_conditions.htm */; };
+		67739D792367034300B43C34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739D782367034300B43C34 /* AppDelegate.swift */; };
+		67739D7B2367034300B43C34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739D7A2367034300B43C34 /* SceneDelegate.swift */; };
+		67739D7D2367034300B43C34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739D7C2367034300B43C34 /* ViewController.swift */; };
+		67739D802367034300B43C34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67739D7E2367034300B43C34 /* Main.storyboard */; };
+		67739D822367034A00B43C34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67739D812367034A00B43C34 /* Assets.xcassets */; };
+		67739D852367034A00B43C34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67739D832367034A00B43C34 /* LaunchScreen.storyboard */; };
+		67739D902367034A00B43C34 /* DrinksMateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739D8F2367034A00B43C34 /* DrinksMateTests.swift */; };
+		67739D9B2367034A00B43C34 /* DrinksMateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739D9A2367034A00B43C34 /* DrinksMateUITests.swift */; };
+		67739DA92367810B00B43C34 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739DA82367810B00B43C34 /* FirstVC.swift */; };
+		67739DAB236782CF00B43C34 /* SigninVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739DAA236782CF00B43C34 /* SigninVC.swift */; };
+		67739DAD236782E100B43C34 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739DAC236782E100B43C34 /* RegisterVC.swift */; };
+		67739DAF2367833600B43C34 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739DAE2367833600B43C34 /* ForgotPasswordVC.swift */; };
+		67F3BFEA2368AD8F0075B0B2 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F3BFE92368AD8F0075B0B2 /* AppUtil.swift */; };
+		67F8F0252369C51D00CB667C /* DrinkUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8F0242369C51D00CB667C /* DrinkUser.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		67739D8C2367034A00B43C34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67739D6D2367034300B43C34 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67739D742367034300B43C34;
+			remoteInfo = DrinksMate;
+		};
+		67739D972367034A00B43C34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67739D6D2367034300B43C34 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67739D742367034300B43C34;
+			remoteInfo = DrinksMate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		670A0E7F23687E090000EE68 /* PolicyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyVC.swift; sourceTree = "<group>"; };
+		670A0E81236881A00000EE68 /* privacy_policy.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy_policy.htm; sourceTree = "<group>"; };
+		670A0E82236881A00000EE68 /* terms_conditions.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms_conditions.htm; sourceTree = "<group>"; };
+		67739D752367034300B43C34 /* DrinksMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinksMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		67739D782367034300B43C34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		67739D7A2367034300B43C34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		67739D7C2367034300B43C34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		67739D7F2367034300B43C34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		67739D812367034A00B43C34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		67739D842367034A00B43C34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		67739D862367034A00B43C34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67739D8B2367034A00B43C34 /* DrinksMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinksMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		67739D8F2367034A00B43C34 /* DrinksMateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksMateTests.swift; sourceTree = "<group>"; };
+		67739D912367034A00B43C34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67739D962367034A00B43C34 /* DrinksMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinksMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		67739D9A2367034A00B43C34 /* DrinksMateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksMateUITests.swift; sourceTree = "<group>"; };
+		67739D9C2367034A00B43C34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67739DA82367810B00B43C34 /* FirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
+		67739DAA236782CF00B43C34 /* SigninVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninVC.swift; sourceTree = "<group>"; };
+		67739DAC236782E100B43C34 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		67739DAE2367833600B43C34 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		67F3BFE92368AD8F0075B0B2 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
+		67F8F0242369C51D00CB667C /* DrinkUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkUser.swift; sourceTree = "<group>"; };
+		6B06B0480E5E917450A934E4 /* Pods-DrinksMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrinksMate.release.xcconfig"; path = "Target Support Files/Pods-DrinksMate/Pods-DrinksMate.release.xcconfig"; sourceTree = "<group>"; };
+		90668F7AB62403E17E15DF0C /* Pods_DrinksMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrinksMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1610FD7EDD897ACB2766FD3 /* Pods-DrinksMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrinksMate.debug.xcconfig"; path = "Target Support Files/Pods-DrinksMate/Pods-DrinksMate.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67739D722367034300B43C34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BC2DC5B5F0EBB59E55DB433 /* Pods_DrinksMate.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67739D882367034A00B43C34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67739D932367034A00B43C34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		67739D6C2367034300B43C34 = {
+			isa = PBXGroup;
+			children = (
+				67739D772367034300B43C34 /* DrinksMate */,
+				67739D8E2367034A00B43C34 /* DrinksMateTests */,
+				67739D992367034A00B43C34 /* DrinksMateUITests */,
+				67739D762367034300B43C34 /* Products */,
+				D0D40A8822573FE2D37BE480 /* Pods */,
+				AF807D5F17D19BE56E2F5A11 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		67739D762367034300B43C34 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67739D752367034300B43C34 /* DrinksMate.app */,
+				67739D8B2367034A00B43C34 /* DrinksMateTests.xctest */,
+				67739D962367034A00B43C34 /* DrinksMateUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67739D772367034300B43C34 /* DrinksMate */ = {
+			isa = PBXGroup;
+			children = (
+				670A0E81236881A00000EE68 /* privacy_policy.htm */,
+				670A0E82236881A00000EE68 /* terms_conditions.htm */,
+				67739D782367034300B43C34 /* AppDelegate.swift */,
+				67739D7A2367034300B43C34 /* SceneDelegate.swift */,
+				67739D7C2367034300B43C34 /* ViewController.swift */,
+				67739D7E2367034300B43C34 /* Main.storyboard */,
+				67739D812367034A00B43C34 /* Assets.xcassets */,
+				67739D832367034A00B43C34 /* LaunchScreen.storyboard */,
+				67739D862367034A00B43C34 /* Info.plist */,
+				67739DA82367810B00B43C34 /* FirstVC.swift */,
+				67739DAA236782CF00B43C34 /* SigninVC.swift */,
+				67739DAC236782E100B43C34 /* RegisterVC.swift */,
+				67739DAE2367833600B43C34 /* ForgotPasswordVC.swift */,
+				670A0E7F23687E090000EE68 /* PolicyVC.swift */,
+				67F3BFE92368AD8F0075B0B2 /* AppUtil.swift */,
+				67F8F0242369C51D00CB667C /* DrinkUser.swift */,
+			);
+			path = DrinksMate;
+			sourceTree = "<group>";
+		};
+		67739D8E2367034A00B43C34 /* DrinksMateTests */ = {
+			isa = PBXGroup;
+			children = (
+				67739D8F2367034A00B43C34 /* DrinksMateTests.swift */,
+				67739D912367034A00B43C34 /* Info.plist */,
+			);
+			path = DrinksMateTests;
+			sourceTree = "<group>";
+		};
+		67739D992367034A00B43C34 /* DrinksMateUITests */ = {
+			isa = PBXGroup;
+			children = (
+				67739D9A2367034A00B43C34 /* DrinksMateUITests.swift */,
+				67739D9C2367034A00B43C34 /* Info.plist */,
+			);
+			path = DrinksMateUITests;
+			sourceTree = "<group>";
+		};
+		AF807D5F17D19BE56E2F5A11 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				90668F7AB62403E17E15DF0C /* Pods_DrinksMate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0D40A8822573FE2D37BE480 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F1610FD7EDD897ACB2766FD3 /* Pods-DrinksMate.debug.xcconfig */,
+				6B06B0480E5E917450A934E4 /* Pods-DrinksMate.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		67739D742367034300B43C34 /* DrinksMate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67739D9F2367034A00B43C34 /* Build configuration list for PBXNativeTarget "DrinksMate" */;
+			buildPhases = (
+				18D7A94003015929CE6629E8 /* [CP] Check Pods Manifest.lock */,
+				67739D712367034300B43C34 /* Sources */,
+				67739D722367034300B43C34 /* Frameworks */,
+				67739D732367034300B43C34 /* Resources */,
+				93E21D20A22FDB50719979DC /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DrinksMate;
+			productName = DrinksMate;
+			productReference = 67739D752367034300B43C34 /* DrinksMate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		67739D8A2367034A00B43C34 /* DrinksMateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67739DA22367034A00B43C34 /* Build configuration list for PBXNativeTarget "DrinksMateTests" */;
+			buildPhases = (
+				67739D872367034A00B43C34 /* Sources */,
+				67739D882367034A00B43C34 /* Frameworks */,
+				67739D892367034A00B43C34 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67739D8D2367034A00B43C34 /* PBXTargetDependency */,
+			);
+			name = DrinksMateTests;
+			productName = DrinksMateTests;
+			productReference = 67739D8B2367034A00B43C34 /* DrinksMateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		67739D952367034A00B43C34 /* DrinksMateUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67739DA52367034A00B43C34 /* Build configuration list for PBXNativeTarget "DrinksMateUITests" */;
+			buildPhases = (
+				67739D922367034A00B43C34 /* Sources */,
+				67739D932367034A00B43C34 /* Frameworks */,
+				67739D942367034A00B43C34 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67739D982367034A00B43C34 /* PBXTargetDependency */,
+			);
+			name = DrinksMateUITests;
+			productName = DrinksMateUITests;
+			productReference = 67739D962367034A00B43C34 /* DrinksMateUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67739D6D2367034300B43C34 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1110;
+				LastUpgradeCheck = 1110;
+				ORGANIZATIONNAME = LeemingJin;
+				TargetAttributes = {
+					67739D742367034300B43C34 = {
+						CreatedOnToolsVersion = 11.1;
+					};
+					67739D8A2367034A00B43C34 = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = 67739D742367034300B43C34;
+					};
+					67739D952367034A00B43C34 = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = 67739D742367034300B43C34;
+					};
+				};
+			};
+			buildConfigurationList = 67739D702367034300B43C34 /* Build configuration list for PBXProject "DrinksMate" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 67739D6C2367034300B43C34;
+			productRefGroup = 67739D762367034300B43C34 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67739D742367034300B43C34 /* DrinksMate */,
+				67739D8A2367034A00B43C34 /* DrinksMateTests */,
+				67739D952367034A00B43C34 /* DrinksMateUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		67739D732367034300B43C34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67739D852367034A00B43C34 /* LaunchScreen.storyboard in Resources */,
+				67739D822367034A00B43C34 /* Assets.xcassets in Resources */,
+				670A0E83236881A10000EE68 /* privacy_policy.htm in Resources */,
+				670A0E84236881A10000EE68 /* terms_conditions.htm in Resources */,
+				67739D802367034300B43C34 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67739D892367034A00B43C34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67739D942367034A00B43C34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18D7A94003015929CE6629E8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DrinksMate-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93E21D20A22FDB50719979DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DrinksMate/Pods-DrinksMate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DrinksMate/Pods-DrinksMate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DrinksMate/Pods-DrinksMate-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67739D712367034300B43C34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67739D7D2367034300B43C34 /* ViewController.swift in Sources */,
+				67F8F0252369C51D00CB667C /* DrinkUser.swift in Sources */,
+				67739DAF2367833600B43C34 /* ForgotPasswordVC.swift in Sources */,
+				670A0E8023687E090000EE68 /* PolicyVC.swift in Sources */,
+				67739DA92367810B00B43C34 /* FirstVC.swift in Sources */,
+				67739DAB236782CF00B43C34 /* SigninVC.swift in Sources */,
+				67739DAD236782E100B43C34 /* RegisterVC.swift in Sources */,
+				67F3BFEA2368AD8F0075B0B2 /* AppUtil.swift in Sources */,
+				67739D792367034300B43C34 /* AppDelegate.swift in Sources */,
+				67739D7B2367034300B43C34 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67739D872367034A00B43C34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67739D902367034A00B43C34 /* DrinksMateTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67739D922367034A00B43C34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67739D9B2367034A00B43C34 /* DrinksMateUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		67739D8D2367034A00B43C34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67739D742367034300B43C34 /* DrinksMate */;
+			targetProxy = 67739D8C2367034A00B43C34 /* PBXContainerItemProxy */;
+		};
+		67739D982367034A00B43C34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67739D742367034300B43C34 /* DrinksMate */;
+			targetProxy = 67739D972367034A00B43C34 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		67739D7E2367034300B43C34 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67739D7F2367034300B43C34 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		67739D832367034A00B43C34 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67739D842367034A00B43C34 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		67739D9D2367034A00B43C34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		67739D9E2367034A00B43C34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		67739DA02367034A00B43C34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1610FD7EDD897ACB2766FD3 /* Pods-DrinksMate.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DrinksMate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devlee.DrinksMate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		67739DA12367034A00B43C34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B06B0480E5E917450A934E4 /* Pods-DrinksMate.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DrinksMate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devlee.DrinksMate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		67739DA32367034A00B43C34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DrinksMateTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devlee.DrinksMateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrinksMate.app/DrinksMate";
+			};
+			name = Debug;
+		};
+		67739DA42367034A00B43C34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DrinksMateTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devlee.DrinksMateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrinksMate.app/DrinksMate";
+			};
+			name = Release;
+		};
+		67739DA62367034A00B43C34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DrinksMateUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devlee.DrinksMateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DrinksMate;
+			};
+			name = Debug;
+		};
+		67739DA72367034A00B43C34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DrinksMateUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devlee.DrinksMateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DrinksMate;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67739D702367034300B43C34 /* Build configuration list for PBXProject "DrinksMate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67739D9D2367034A00B43C34 /* Debug */,
+				67739D9E2367034A00B43C34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67739D9F2367034A00B43C34 /* Build configuration list for PBXNativeTarget "DrinksMate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67739DA02367034A00B43C34 /* Debug */,
+				67739DA12367034A00B43C34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67739DA22367034A00B43C34 /* Build configuration list for PBXNativeTarget "DrinksMateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67739DA32367034A00B43C34 /* Debug */,
+				67739DA42367034A00B43C34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67739DA52367034A00B43C34 /* Build configuration list for PBXNativeTarget "DrinksMateUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67739DA62367034A00B43C34 /* Debug */,
+				67739DA72367034A00B43C34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67739D6D2367034300B43C34 /* Project object */;
+}
