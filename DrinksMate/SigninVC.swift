@@ -46,23 +46,23 @@ class SigninVC: UIViewController {
             HUD.hide()
             guard response.result.isSuccess else {
                 
-                self.showErrorMessage(message: "Server connection failed.")
+                self.showErrorMessage(message: "Login Error!")
                 return
             }
 
             let value = response.result.value as! [String: Any]
-            //let status = value["status"] as! Bool
-            AppUtil.user = DrinkUser()
-            AppUtil.user.setDrinkUser(user: value)
+            let status = value["userHashPassword"] as! String
             
-//            if (status) {
-//
-//            }
-//            else {
-//                let errorMsg = value["message"] as! String
-//                self.showErrorMessage(message: errorMsg)
-//            }
-
+            if (status == "_invalid_password_") {
+                self.showErrorMessage(message: "Invalid Password!")
+            }
+            else {
+                AppUtil.user = DrinkUser()
+                AppUtil.user.setDrinkUser(user: value)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainVC") as! MainVC
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: false, completion: nil)
+            }
         }
     }
     
@@ -78,9 +78,16 @@ class SigninVC: UIViewController {
     }
     
     @IBAction func goPasswordAction(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "ForgotPasswordVC")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordVC")
         vc?.modalPresentationStyle = .fullScreen
         self.present(vc!, animated: false, completion: nil)
+    }
+    
+    func isValidEmail(emailStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: emailStr)
     }
     
 //    func sha256(_ data: Data) -> Data? {

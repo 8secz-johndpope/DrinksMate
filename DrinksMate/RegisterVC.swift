@@ -19,13 +19,27 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var dateTxt: UITextField!
     
     @IBOutlet weak var acceptSwitch: UISwitch!
+    @IBOutlet weak var termsBtn: UIButton!
+    
+    @IBOutlet weak var policyBtn: UIButton!
     
     var birthdayDate : Date!
+    let yourAttributes: [NSAttributedString.Key: Any] = [
+                                                            .font: UIFont.systemFont(ofSize: 15),
+                                                            .foregroundColor: UIColor.blue,
+                                                            .underlineStyle: NSUnderlineStyle.single.rawValue]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        var attributeString = NSMutableAttributedString(string: "Terms and Conditions",
+                                                        attributes: yourAttributes)
+        self.termsBtn.setAttributedTitle(attributeString, for: .normal)
+        
+        attributeString = NSMutableAttributedString(string: "Privacy Policy",
+        attributes: yourAttributes)
+        self.policyBtn.setAttributedTitle(attributeString, for: .normal)
     }
     
     @IBAction func textFieldEditing(_ sender: Any) {
@@ -51,16 +65,16 @@ class RegisterVC: UIViewController {
     }
     
     @IBAction func goTermsAction(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "PolicyVC") as! PolicyVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PolicyVC") as! PolicyVC
         vc.modalPresentationStyle = .fullScreen
-        vc.isPolicy = false
+        vc.isPolicy = 0
         self.present(vc, animated: false, completion: nil)
     }
     
     @IBAction func goPolicyAction(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "PolicyVC") as! PolicyVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PolicyVC") as! PolicyVC
         vc.modalPresentationStyle = .fullScreen
-        vc.isPolicy = true
+        vc.isPolicy = 1
         self.present(vc, animated: false, completion: nil)
     }
     
@@ -70,8 +84,18 @@ class RegisterVC: UIViewController {
             return
         }
         
+        if (self.fullnameTxt.text!.count > 100) {
+            self.showErrorMessage(message: "Name too long!")
+            return
+        }
+        
         if (self.phonenumberTxt.text?.count == 0) {
             self.showErrorMessage(message: "Please input a phone number!")
+            return
+        }
+        
+        if (self.phonenumberTxt.text!.count > 15) {
+            self.showErrorMessage(message: "Phone number too long!")
             return
         }
         
@@ -80,8 +104,28 @@ class RegisterVC: UIViewController {
             return
         }
         
+        if (self.emailTxt.text!.count > 50) {
+            self.showErrorMessage(message: "Email too long!")
+            return
+        }
+        
+        if (!self.isValidEmail(emailStr: self.emailTxt.text!)) {
+            self.showErrorMessage(message: "Email invalid!")
+            return
+        }
+        
         if (self.passwordTxt.text?.count == 0) {
             self.showErrorMessage(message: "Please input a password!")
+            return
+        }
+        
+        if (self.passwordTxt.text!.count < 6) {
+            self.showErrorMessage(message: "Password too short!")
+            return
+        }
+        
+        if (self.passwordTxt.text!.count > 100) {
+            self.showErrorMessage(message: "Password too long!")
             return
         }
         
@@ -97,7 +141,7 @@ class RegisterVC: UIViewController {
         }
         
         if (!self.acceptSwitch.isOn) {
-            self.showErrorMessage(message: "Please check the terms and conditions, privacy policy!")
+            self.showErrorMessage(message: "You must agree terms and conditions!")
             return
         }
         
@@ -117,17 +161,27 @@ class RegisterVC: UIViewController {
             }
 
             let value = response.result.value as! [String: Any]
-            let status = value["status"] as! Bool
-
-            if (status) {
-                
+            let status = value["userEmail"] as! String
+            
+            if (status == "_email_not_unique_") {
+                self.showErrorMessage(message: "Email already registered!")
             }
             else {
-                let errorMsg = value["message"] as! String
-                self.showErrorMessage(message: errorMsg)
+                AppUtil.user = DrinkUser()
+                AppUtil.user.setDrinkUser(user: value)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainVC") as! MainVC
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: false, completion: nil)
             }
 
         }
+    }
+    
+    func isValidEmail(emailStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: emailStr)
     }
     
     func showErrorMessage(message: String) {

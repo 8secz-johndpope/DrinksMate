@@ -8,11 +8,14 @@
 
 import UIKit
 import Alamofire
+import PKHUD
 
 class FirstVC: UIViewController {
 
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var ageView: UIView!
+    @IBOutlet weak var signinBtn: UIButton!
+    @IBOutlet weak var registerBtn: UIButton!
     
     
     override func viewDidLoad() {
@@ -28,9 +31,8 @@ class FirstVC: UIViewController {
                 return
             }
 
-            let value = response.result.value as! [String: Any]
-            //let status = value["status"] as! Bool
-            AppUtil.config = value
+            AppUtil.config = response.result.value as? [String: Any]
+            self.showMessage(msg: "Configuration Up To Date!")
         }
     }
     
@@ -40,7 +42,13 @@ class FirstVC: UIViewController {
     }
     
     @IBAction func noAction(_ sender: Any) {
-        exit(0)
+        self.backView.isHidden = true
+        self.ageView.isHidden = true
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PolicyVC") as! PolicyVC
+        vc.modalPresentationStyle = .popover
+        vc.isPolicy = 2
+        self.present(vc, animated: false, completion: nil)
     }
     /*
     // MARK: - Navigation
@@ -53,15 +61,27 @@ class FirstVC: UIViewController {
     */
 
     @IBAction func goSigninAction(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "SigninVC")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SigninVC")
         vc?.modalPresentationStyle = .fullScreen
         self.present(vc!, animated: false, completion: nil)
     }
     
     @IBAction func goRegisterAction(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "RegisterVC")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "RegisterVC")
         vc?.modalPresentationStyle = .fullScreen
         self.present(vc!, animated: false, completion: nil)
+    }
+    
+    func showMessage(msg: String) {
+        PKHUD.sharedHUD.contentView = PKHUDTextView(text: msg)
+        PKHUD.sharedHUD.show()
+        PKHUD.sharedHUD.hide(afterDelay: 1.0) { success in
+            // Completion Handler
+            self.signinBtn.isHidden = false
+            self.registerBtn.isHidden = false
+            self.backView.isHidden = false
+            self.ageView.isHidden = false
+        }
     }
     
 }

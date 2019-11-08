@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import WebKit
 
 class PolicyVC: UIViewController {
     
+    @IBOutlet weak var webView: UIWebView!
     
-    @IBOutlet weak var webView: WKWebView!
-    
-    var isPolicy: Bool = false
+    var isPolicy: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +20,17 @@ class PolicyVC: UIViewController {
         // Do any additional setup after loading the view.
         var url = Bundle.main.url(forResource: "terms_conditions", withExtension: "htm", subdirectory: nil)!
         
-        if (self.isPolicy) {
+        if (self.isPolicy == 1) {
             url = Bundle.main.url(forResource: "privacy_policy", withExtension: "htm", subdirectory: nil)!
         }
         
-        webView.loadFileURL(url, allowingReadAccessTo: url)
+        if (self.isPolicy == 2) {
+            url = URL(string: "https://www.alcohol.org.nz")!
+        }
+        
+        //webView.loadFileURL(url, allowingReadAccessTo: url)
         let request = URLRequest(url: url)
-        webView.load(request)
+        webView.loadRequest(request)
     }
     
     @IBAction func goBackAction(_ sender: Any) {
