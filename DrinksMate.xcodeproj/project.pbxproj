@@ -15,6 +15,8 @@
 		6722CFA8237013CF002824F7 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CFA7237013CF002824F7 /* HomeVC.swift */; };
 		6722CFAA237013E8002824F7 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CFA9237013E8002824F7 /* AccountVC.swift */; };
 		6722CFAC237013FA002824F7 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CFAB237013FA002824F7 /* CartVC.swift */; };
+		67309E3D2375865D004E5D55 /* IntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67309E3C2375865D004E5D55 /* IntroCell.swift */; };
+		67309E412377EA3F004E5D55 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67309E402377EA3F004E5D55 /* MenuVC.swift */; };
 		67739D792367034300B43C34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739D782367034300B43C34 /* AppDelegate.swift */; };
 		67739D7D2367034300B43C34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739D7C2367034300B43C34 /* ViewController.swift */; };
 		67739D802367034300B43C34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67739D7E2367034300B43C34 /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 		67739DAF2367833600B43C34 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739DAE2367833600B43C34 /* ForgotPasswordVC.swift */; };
 		678C873223743DD000B4E133 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678C873123743DD000B4E133 /* ResetPasswordVC.swift */; };
 		678C873423752F0400B4E133 /* BarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678C873323752F0400B4E133 /* BarVC.swift */; };
+		67A05A0C2377F22300C49877 /* about_us.htm in Resources */ = {isa = PBXBuildFile; fileRef = 67A05A0B2377F22300C49877 /* about_us.htm */; };
+		67A05A0E2377F47F00C49877 /* ContactUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A05A0D2377F47F00C49877 /* ContactUsVC.swift */; };
 		67F3BFEA2368AD8F0075B0B2 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F3BFE92368AD8F0075B0B2 /* AppUtil.swift */; };
 		67F8F0252369C51D00CB667C /* DrinkUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8F0242369C51D00CB667C /* DrinkUser.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +61,8 @@
 		6722CFA7237013CF002824F7 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		6722CFA9237013E8002824F7 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		6722CFAB237013FA002824F7 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
+		67309E3C2375865D004E5D55 /* IntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroCell.swift; sourceTree = "<group>"; };
+		67309E402377EA3F004E5D55 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		67739D752367034300B43C34 /* DrinksMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinksMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67739D782367034300B43C34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67739D7C2367034300B43C34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +82,8 @@
 		67739DAE2367833600B43C34 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		678C873123743DD000B4E133 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		678C873323752F0400B4E133 /* BarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarVC.swift; sourceTree = "<group>"; };
+		67A05A0B2377F22300C49877 /* about_us.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about_us.htm; sourceTree = "<group>"; };
+		67A05A0D2377F47F00C49877 /* ContactUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsVC.swift; sourceTree = "<group>"; };
 		67F3BFE92368AD8F0075B0B2 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
 		67F8F0242369C51D00CB667C /* DrinkUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkUser.swift; sourceTree = "<group>"; };
 		6B06B0480E5E917450A934E4 /* Pods-DrinksMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrinksMate.release.xcconfig"; path = "Target Support Files/Pods-DrinksMate/Pods-DrinksMate.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +117,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67309E3B23758637004E5D55 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				67309E3C2375865D004E5D55 /* IntroCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		67739D6C2367034300B43C34 = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +150,8 @@
 		67739D772367034300B43C34 /* DrinksMate */ = {
 			isa = PBXGroup;
 			children = (
+				67309E3B23758637004E5D55 /* Cells */,
+				67A05A0B2377F22300C49877 /* about_us.htm */,
 				670A0E81236881A00000EE68 /* privacy_policy.htm */,
 				670A0E82236881A00000EE68 /* terms_conditions.htm */,
 				67739D782367034300B43C34 /* AppDelegate.swift */,
@@ -155,6 +173,8 @@
 				6722CFAB237013FA002824F7 /* CartVC.swift */,
 				678C873123743DD000B4E133 /* ResetPasswordVC.swift */,
 				678C873323752F0400B4E133 /* BarVC.swift */,
+				67309E402377EA3F004E5D55 /* MenuVC.swift */,
+				67A05A0D2377F47F00C49877 /* ContactUsVC.swift */,
 			);
 			path = DrinksMate;
 			sourceTree = "<group>";
@@ -305,6 +325,7 @@
 				670A0E83236881A10000EE68 /* privacy_policy.htm in Resources */,
 				670A0E84236881A10000EE68 /* terms_conditions.htm in Resources */,
 				67739D802367034300B43C34 /* Main.storyboard in Resources */,
+				67A05A0C2377F22300C49877 /* about_us.htm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,8 +396,11 @@
 				67F8F0252369C51D00CB667C /* DrinkUser.swift in Sources */,
 				678C873423752F0400B4E133 /* BarVC.swift in Sources */,
 				6722CFAC237013FA002824F7 /* CartVC.swift in Sources */,
+				67309E412377EA3F004E5D55 /* MenuVC.swift in Sources */,
+				67A05A0E2377F47F00C49877 /* ContactUsVC.swift in Sources */,
 				67739DAF2367833600B43C34 /* ForgotPasswordVC.swift in Sources */,
 				670A0E8023687E090000EE68 /* PolicyVC.swift in Sources */,
+				67309E3D2375865D004E5D55 /* IntroCell.swift in Sources */,
 				6722CFA62370139B002824F7 /* MainVC.swift in Sources */,
 				67739DA92367810B00B43C34 /* FirstVC.swift in Sources */,
 				67739DAB236782CF00B43C34 /* SigninVC.swift in Sources */,
@@ -490,7 +514,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -544,7 +568,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -560,7 +584,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = H77AGDMGJC;
 				INFOPLIST_FILE = DrinksMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -580,7 +604,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = H77AGDMGJC;
 				INFOPLIST_FILE = DrinksMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

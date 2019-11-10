@@ -28,6 +28,10 @@ class PolicyVC: UIViewController {
             url = URL(string: "https://www.alcohol.org.nz")!
         }
         
+        if (self.isPolicy == 3) {
+            url = Bundle.main.url(forResource: "about_us", withExtension: "htm", subdirectory: nil)!
+        }
+        
         //webView.loadFileURL(url, allowingReadAccessTo: url)
         let request = URLRequest(url: url)
         webView.loadRequest(request)

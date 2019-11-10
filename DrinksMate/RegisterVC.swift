@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import PKHUD
+import NotificationBannerSwift
 
 class RegisterVC: UIViewController {
     
@@ -145,7 +146,8 @@ class RegisterVC: UIViewController {
             return
         }
         
-        let hashPass = self.passwordTxt.text?.sha1()
+        let hashData = self.passwordTxt.text!.data(using: .utf8)?.sha1()
+        let hashPass = hashData?.base64EncodedString()
         
         let url = URL(string: AppUtil.serverURL + "auth/register")
         let params : Parameters = ["clientId": 6, "userEmail":self.emailTxt.text!, "userHashPassword": hashPass!, "userName": self.fullnameTxt.text!, "userPhonenumber": self.phonenumberTxt.text!, "userId":0,"userLoyaltyPoints":0,"userReferral":0]
@@ -185,9 +187,10 @@ class RegisterVC: UIViewController {
     }
     
     func showErrorMessage(message: String) {
-        PKHUD.sharedHUD.contentView = PKHUDErrorView(title: nil, subtitle: message)
-        PKHUD.sharedHUD.show()
-        PKHUD.sharedHUD.hide(afterDelay: 2)
+        let banner = NotificationBanner(title: nil, subtitle: message, style: .danger)
+        banner.duration = 1
+        banner.show(queuePosition: .front, bannerPosition: .bottom, queue: .default, on: self)
+        
     }
     
     @IBAction func goBackAction(_ sender: Any) {

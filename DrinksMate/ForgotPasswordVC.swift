@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import PKHUD
+import NotificationBannerSwift
 
 class ForgotPasswordVC: UIViewController {
 
@@ -99,9 +100,11 @@ class ForgotPasswordVC: UIViewController {
     }
     
     func showErrorMessage(message: String) {
-        PKHUD.sharedHUD.contentView = PKHUDErrorView(title: nil, subtitle: message)
-        PKHUD.sharedHUD.show()
-        PKHUD.sharedHUD.hide(afterDelay: 2)
+
+        let banner = NotificationBanner(title: nil, subtitle: message, style: .danger)
+        banner.duration = 1
+        banner.show(queuePosition: .front, bannerPosition: .bottom, queue: .default, on: self)
+        
     }
     
     func showMessage(msg: String) {

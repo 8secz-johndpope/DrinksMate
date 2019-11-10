@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import PKHUD
 import CryptoSwift
+import NotificationBannerSwift
 
 class SigninVC: UIViewController {
 
@@ -35,7 +36,8 @@ class SigninVC: UIViewController {
             return
         }
         
-        let hashPass = self.passTxt.text?.sha1()
+        let hashData = self.passTxt.text!.data(using: .utf8)?.sha1()
+        let hashPass = hashData?.base64EncodedString()
         
         let url = URL(string: AppUtil.serverURL + "auth/login")
         let params : Parameters = ["clientId": 6, "userEmail":self.emailTxt.text!, "userHashPassword": hashPass!]
@@ -67,9 +69,16 @@ class SigninVC: UIViewController {
     }
     
     func showErrorMessage(message: String) {
-        PKHUD.sharedHUD.contentView = PKHUDErrorView(title: nil, subtitle: message)
-        PKHUD.sharedHUD.show()
-        PKHUD.sharedHUD.hide(afterDelay: 2)
+//        PKHUD.sharedHUD.contentView = PKHUDTextView(text: message)
+//        PKHUD.sharedHUD.show()
+//        PKHUD.sharedHUD.hide(afterDelay: 2.0) { success in
+//            // Completion Handler
+//
+//        }
+        let banner = NotificationBanner(title: nil, subtitle: message, style: .danger)
+        banner.duration = 1
+        banner.show(queuePosition: .front, bannerPosition: .bottom, queue: .default, on: self)
+        
     }
     
 

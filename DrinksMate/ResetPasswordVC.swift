@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import PKHUD
 import CryptoSwift
+import NotificationBannerSwift
 
 class ResetPasswordVC: UIViewController {
 
@@ -77,12 +78,12 @@ class ResetPasswordVC: UIViewController {
             self.showErrorMessage(message: "Password doesn't match!")
             return
         }
+    
+        let hashData = self.passTxt.text!.data(using: .utf8)?.sha1()
+        let newhashPass = hashData?.base64EncodedString()
         
-        let oldhashPass = self.passTxt.text?.sha1()
-        let newhashPass = self.passNewTxt.text?.sha1()
-        
-        let url = URL(string: AppUtil.serverURL + "auth/resetpassword")
-        let params : Parameters = ["clientId": 6, "userEmail":self.emailTxt.text!, "oldHashPassword": oldhashPass!, "newHashPassword": newhashPass!]
+        let url = URL(string: AppUtil.serverURL + "auth/resetpasswordwhileloggedout")
+        let params : Parameters = ["clientId": 6, "userEmail":self.emailTxt.text!, "newHashPassword": newhashPass!]
         
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
             

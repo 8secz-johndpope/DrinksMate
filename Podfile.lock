@@ -2,15 +2,21 @@ PODS:
   - Alamofire (4.9.1)
   - CryptoSwift (1.1.3)
   - IQKeyboardManager (6.5.3)
+  - MarqueeLabel/Swift (3.2.1)
+  - NotificationBannerSwift (2.0.1):
+    - MarqueeLabel/Swift (~> 3.2.0)
+    - SnapKit (~> 4.2.0)
   - PKHUD (5.3.0)
   - SDWebImage (5.2.5):
     - SDWebImage/Core (= 5.2.5)
   - SDWebImage/Core (5.2.5)
+  - SnapKit (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
   - CryptoSwift (~> 1.0)
   - IQKeyboardManager
+  - NotificationBannerSwift (= 2.0.1)
   - PKHUD (~> 5.0)
   - SDWebImage
 
@@ -19,16 +25,22 @@ SPEC REPOS:
     - Alamofire
     - CryptoSwift
     - IQKeyboardManager
+    - MarqueeLabel
+    - NotificationBannerSwift
     - PKHUD
     - SDWebImage
+    - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   CryptoSwift: 6b6e488df0598b3e9fa49254ed1a65e8c1b1e10b
   IQKeyboardManager: c2f901164d56807a35788483584d09fa69192e8e
+  MarqueeLabel: 2daf039bf916937c8a4c9adfc13577cc5e51b4ce
+  NotificationBannerSwift: 007774aa590cc9680647b92b2f217bef5c00c32c
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   SDWebImage: 4eabf2fa6695c95c47724214417a9c036c965e4a
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: b26f72272a4a4de561ac0983e8eccd6068e0e4d4
+PODFILE CHECKSUM: 3be1dd9d0786a42fdc00413cbb0f3bde34cbeea1
 
 COCOAPODS: 1.8.4
