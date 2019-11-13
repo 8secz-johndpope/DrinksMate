@@ -12,7 +12,7 @@ import PKHUD
 import CryptoSwift
 import NotificationBannerSwift
 
-class ResetPasswordVC: UIViewController {
+class ResetPasswordVC: UIViewController{
 
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var passTxt: UITextField!
@@ -127,6 +127,8 @@ class ResetPasswordVC: UIViewController {
     @IBAction func goBackAction(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
     }
+    
+    
     
     /*
     // MARK: - Navigation

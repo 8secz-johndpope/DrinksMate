@@ -15,4 +15,5 @@ class AppUtil: NSObject {
     public static var otp : String!
     
     public static var config : [String : Any]!
+    public static var categories : [MenuCategory]!
 }

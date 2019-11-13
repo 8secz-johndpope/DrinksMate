@@ -9,6 +9,8 @@
 import UIKit
 
 class MenuVC: UIViewController {
+    
+    var homeVC : HomeVC!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +18,6 @@ class MenuVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
     @IBAction func aboutUsAction(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "PolicyVC") as! PolicyVC
         vc.modalPresentationStyle = .fullScreen
@@ -25,7 +26,11 @@ class MenuVC: UIViewController {
     }
     
     @IBAction func accountAction(_ sender: Any) {
-    
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: false, completion: nil)
+        self.homeVC.tabBarController?.selectedIndex = 1
+        self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func menuAction(_ sender: Any) {

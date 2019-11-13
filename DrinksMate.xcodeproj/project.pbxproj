@@ -15,6 +15,11 @@
 		6722CFA8237013CF002824F7 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CFA7237013CF002824F7 /* HomeVC.swift */; };
 		6722CFAA237013E8002824F7 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CFA9237013E8002824F7 /* AccountVC.swift */; };
 		6722CFAC237013FA002824F7 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CFAB237013FA002824F7 /* CartVC.swift */; };
+		672423EB2379C4DE00A2A170 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672423EA2379C4DE00A2A170 /* ProfileVC.swift */; };
+		672423ED2379C51400A2A170 /* AddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672423EC2379C51400A2A170 /* AddressVC.swift */; };
+		672423EF2379C52400A2A170 /* OrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672423EE2379C52400A2A170 /* OrdersVC.swift */; };
+		672423F12379C53900A2A170 /* RewardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672423F02379C53900A2A170 /* RewardsVC.swift */; };
+		672423F42379E16C00A2A170 /* ResetPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672423F32379E16C00A2A170 /* ResetPassVC.swift */; };
 		67309E3D2375865D004E5D55 /* IntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67309E3C2375865D004E5D55 /* IntroCell.swift */; };
 		67309E412377EA3F004E5D55 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67309E402377EA3F004E5D55 /* MenuVC.swift */; };
 		67739D792367034300B43C34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739D782367034300B43C34 /* AppDelegate.swift */; };
@@ -30,6 +35,12 @@
 		67739DAF2367833600B43C34 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739DAE2367833600B43C34 /* ForgotPasswordVC.swift */; };
 		678C873223743DD000B4E133 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678C873123743DD000B4E133 /* ResetPasswordVC.swift */; };
 		678C873423752F0400B4E133 /* BarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678C873323752F0400B4E133 /* BarVC.swift */; };
+		679A5164237A82B30050A41E /* AccountMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679A5163237A82B30050A41E /* AccountMenuVC.swift */; };
+		679A5169237A9A340050A41E /* UIView+Border.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A5168237A9A340050A41E /* UIView+Border.m */; };
+		679A516C237B396A0050A41E /* MenuCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679A516B237B396A0050A41E /* MenuCategory.swift */; };
+		679A516E237B39790050A41E /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679A516D237B39790050A41E /* MenuItem.swift */; };
+		679A5170237B57510050A41E /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679A516F237B57510050A41E /* OrderCell.swift */; };
+		679A5172237BCF460050A41E /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679A5171237BCF460050A41E /* CategoryVC.swift */; };
 		67A05A0C2377F22300C49877 /* about_us.htm in Resources */ = {isa = PBXBuildFile; fileRef = 67A05A0B2377F22300C49877 /* about_us.htm */; };
 		67A05A0E2377F47F00C49877 /* ContactUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A05A0D2377F47F00C49877 /* ContactUsVC.swift */; };
 		67F3BFEA2368AD8F0075B0B2 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F3BFE92368AD8F0075B0B2 /* AppUtil.swift */; };
@@ -61,6 +72,11 @@
 		6722CFA7237013CF002824F7 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		6722CFA9237013E8002824F7 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		6722CFAB237013FA002824F7 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
+		672423EA2379C4DE00A2A170 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		672423EC2379C51400A2A170 /* AddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressVC.swift; sourceTree = "<group>"; };
+		672423EE2379C52400A2A170 /* OrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersVC.swift; sourceTree = "<group>"; };
+		672423F02379C53900A2A170 /* RewardsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsVC.swift; sourceTree = "<group>"; };
+		672423F32379E16C00A2A170 /* ResetPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassVC.swift; sourceTree = "<group>"; };
 		67309E3C2375865D004E5D55 /* IntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroCell.swift; sourceTree = "<group>"; };
 		67309E402377EA3F004E5D55 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		67739D752367034300B43C34 /* DrinksMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinksMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +98,14 @@
 		67739DAE2367833600B43C34 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		678C873123743DD000B4E133 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		678C873323752F0400B4E133 /* BarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarVC.swift; sourceTree = "<group>"; };
+		679A5163237A82B30050A41E /* AccountMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountMenuVC.swift; sourceTree = "<group>"; };
+		679A5166237A9A330050A41E /* DrinksMate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DrinksMate-Bridging-Header.h"; sourceTree = "<group>"; };
+		679A5167237A9A340050A41E /* UIView+Border.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Border.h"; sourceTree = "<group>"; };
+		679A5168237A9A340050A41E /* UIView+Border.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Border.m"; sourceTree = "<group>"; };
+		679A516B237B396A0050A41E /* MenuCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCategory.swift; sourceTree = "<group>"; };
+		679A516D237B39790050A41E /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		679A516F237B57510050A41E /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		679A5171237BCF460050A41E /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
 		67A05A0B2377F22300C49877 /* about_us.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about_us.htm; sourceTree = "<group>"; };
 		67A05A0D2377F47F00C49877 /* ContactUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsVC.swift; sourceTree = "<group>"; };
 		67F3BFE92368AD8F0075B0B2 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
@@ -117,10 +141,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		672423E92379C4A600A2A170 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				672423EA2379C4DE00A2A170 /* ProfileVC.swift */,
+				672423EC2379C51400A2A170 /* AddressVC.swift */,
+				672423EE2379C52400A2A170 /* OrdersVC.swift */,
+				672423F02379C53900A2A170 /* RewardsVC.swift */,
+				672423F32379E16C00A2A170 /* ResetPassVC.swift */,
+				679A5163237A82B30050A41E /* AccountMenuVC.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		67309E3B23758637004E5D55 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				67309E3C2375865D004E5D55 /* IntroCell.swift */,
+				679A516F237B57510050A41E /* OrderCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -150,6 +188,9 @@
 		67739D772367034300B43C34 /* DrinksMate */ = {
 			isa = PBXGroup;
 			children = (
+				679A516A237B393B0050A41E /* Models */,
+				679A5165237A9A0D0050A41E /* Util */,
+				672423E92379C4A600A2A170 /* Account */,
 				67309E3B23758637004E5D55 /* Cells */,
 				67A05A0B2377F22300C49877 /* about_us.htm */,
 				670A0E81236881A00000EE68 /* privacy_policy.htm */,
@@ -166,7 +207,6 @@
 				67739DAE2367833600B43C34 /* ForgotPasswordVC.swift */,
 				670A0E7F23687E090000EE68 /* PolicyVC.swift */,
 				67F3BFE92368AD8F0075B0B2 /* AppUtil.swift */,
-				67F8F0242369C51D00CB667C /* DrinkUser.swift */,
 				6722CFA52370139B002824F7 /* MainVC.swift */,
 				6722CFA7237013CF002824F7 /* HomeVC.swift */,
 				6722CFA9237013E8002824F7 /* AccountVC.swift */,
@@ -175,6 +215,7 @@
 				678C873323752F0400B4E133 /* BarVC.swift */,
 				67309E402377EA3F004E5D55 /* MenuVC.swift */,
 				67A05A0D2377F47F00C49877 /* ContactUsVC.swift */,
+				679A5171237BCF460050A41E /* CategoryVC.swift */,
 			);
 			path = DrinksMate;
 			sourceTree = "<group>";
@@ -195,6 +236,26 @@
 				67739D9C2367034A00B43C34 /* Info.plist */,
 			);
 			path = DrinksMateUITests;
+			sourceTree = "<group>";
+		};
+		679A5165237A9A0D0050A41E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				679A5167237A9A340050A41E /* UIView+Border.h */,
+				679A5168237A9A340050A41E /* UIView+Border.m */,
+				679A5166237A9A330050A41E /* DrinksMate-Bridging-Header.h */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		679A516A237B393B0050A41E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				67F8F0242369C51D00CB667C /* DrinkUser.swift */,
+				679A516B237B396A0050A41E /* MenuCategory.swift */,
+				679A516D237B39790050A41E /* MenuItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		AF807D5F17D19BE56E2F5A11 /* Frameworks */ = {
@@ -284,6 +345,7 @@
 				TargetAttributes = {
 					67739D742367034300B43C34 = {
 						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1120;
 					};
 					67739D8A2367034A00B43C34 = {
 						CreatedOnToolsVersion = 11.1;
@@ -393,13 +455,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				67739D7D2367034300B43C34 /* ViewController.swift in Sources */,
+				679A5164237A82B30050A41E /* AccountMenuVC.swift in Sources */,
+				679A5170237B57510050A41E /* OrderCell.swift in Sources */,
 				67F8F0252369C51D00CB667C /* DrinkUser.swift in Sources */,
 				678C873423752F0400B4E133 /* BarVC.swift in Sources */,
+				672423EB2379C4DE00A2A170 /* ProfileVC.swift in Sources */,
+				672423EF2379C52400A2A170 /* OrdersVC.swift in Sources */,
 				6722CFAC237013FA002824F7 /* CartVC.swift in Sources */,
+				672423F42379E16C00A2A170 /* ResetPassVC.swift in Sources */,
 				67309E412377EA3F004E5D55 /* MenuVC.swift in Sources */,
 				67A05A0E2377F47F00C49877 /* ContactUsVC.swift in Sources */,
 				67739DAF2367833600B43C34 /* ForgotPasswordVC.swift in Sources */,
+				672423F12379C53900A2A170 /* RewardsVC.swift in Sources */,
+				679A516C237B396A0050A41E /* MenuCategory.swift in Sources */,
 				670A0E8023687E090000EE68 /* PolicyVC.swift in Sources */,
+				679A5172237BCF460050A41E /* CategoryVC.swift in Sources */,
 				67309E3D2375865D004E5D55 /* IntroCell.swift in Sources */,
 				6722CFA62370139B002824F7 /* MainVC.swift in Sources */,
 				67739DA92367810B00B43C34 /* FirstVC.swift in Sources */,
@@ -408,6 +478,9 @@
 				67739DAD236782E100B43C34 /* RegisterVC.swift in Sources */,
 				67F3BFEA2368AD8F0075B0B2 /* AppUtil.swift in Sources */,
 				678C873223743DD000B4E133 /* ResetPasswordVC.swift in Sources */,
+				679A5169237A9A340050A41E /* UIView+Border.m in Sources */,
+				672423ED2379C51400A2A170 /* AddressVC.swift in Sources */,
+				679A516E237B39790050A41E /* MenuItem.swift in Sources */,
 				6722CFA8237013CF002824F7 /* HomeVC.swift in Sources */,
 				67739D792367034300B43C34 /* AppDelegate.swift in Sources */,
 			);
@@ -583,6 +656,7 @@
 			baseConfigurationReference = F1610FD7EDD897ACB2766FD3 /* Pods-DrinksMate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = H77AGDMGJC;
@@ -593,6 +667,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.devlee.DrinksMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DrinksMate/Util/DrinksMate-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -603,6 +679,7 @@
 			baseConfigurationReference = 6B06B0480E5E917450A934E4 /* Pods-DrinksMate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = H77AGDMGJC;
@@ -613,6 +690,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.devlee.DrinksMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DrinksMate/Util/DrinksMate-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

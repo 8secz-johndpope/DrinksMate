@@ -69,16 +69,9 @@ class SigninVC: UIViewController {
     }
     
     func showErrorMessage(message: String) {
-//        PKHUD.sharedHUD.contentView = PKHUDTextView(text: message)
-//        PKHUD.sharedHUD.show()
-//        PKHUD.sharedHUD.hide(afterDelay: 2.0) { success in
-//            // Completion Handler
-//
-//        }
         let banner = NotificationBanner(title: nil, subtitle: message, style: .danger)
         banner.duration = 1
         banner.show(queuePosition: .front, bannerPosition: .bottom, queue: .default, on: self)
-        
     }
     
 
