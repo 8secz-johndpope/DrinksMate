@@ -41,6 +41,7 @@
 		679A516E237B39790050A41E /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679A516D237B39790050A41E /* MenuItem.swift */; };
 		679A5170237B57510050A41E /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679A516F237B57510050A41E /* OrderCell.swift */; };
 		679A5172237BCF460050A41E /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679A5171237BCF460050A41E /* CategoryVC.swift */; };
+		679A5174237BF5A50050A41E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679A5173237BF5A50050A41E /* CategoryCell.swift */; };
 		67A05A0C2377F22300C49877 /* about_us.htm in Resources */ = {isa = PBXBuildFile; fileRef = 67A05A0B2377F22300C49877 /* about_us.htm */; };
 		67A05A0E2377F47F00C49877 /* ContactUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A05A0D2377F47F00C49877 /* ContactUsVC.swift */; };
 		67F3BFEA2368AD8F0075B0B2 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F3BFE92368AD8F0075B0B2 /* AppUtil.swift */; };
@@ -106,6 +107,7 @@
 		679A516D237B39790050A41E /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		679A516F237B57510050A41E /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		679A5171237BCF460050A41E /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
+		679A5173237BF5A50050A41E /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		67A05A0B2377F22300C49877 /* about_us.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about_us.htm; sourceTree = "<group>"; };
 		67A05A0D2377F47F00C49877 /* ContactUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsVC.swift; sourceTree = "<group>"; };
 		67F3BFE92368AD8F0075B0B2 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			children = (
 				67309E3C2375865D004E5D55 /* IntroCell.swift */,
 				679A516F237B57510050A41E /* OrderCell.swift */,
+				679A5173237BF5A50050A41E /* CategoryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				679A516E237B39790050A41E /* MenuItem.swift in Sources */,
 				6722CFA8237013CF002824F7 /* HomeVC.swift in Sources */,
 				67739D792367034300B43C34 /* AppDelegate.swift in Sources */,
+				679A5174237BF5A50050A41E /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,13 +662,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = H77AGDMGJC;
 				INFOPLIST_FILE = DrinksMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.devlee.DrinksMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DrinksMate/Util/DrinksMate-Bridging-Header.h";
@@ -681,13 +686,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = H77AGDMGJC;
 				INFOPLIST_FILE = DrinksMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.devlee.DrinksMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DrinksMate/Util/DrinksMate-Bridging-Header.h";

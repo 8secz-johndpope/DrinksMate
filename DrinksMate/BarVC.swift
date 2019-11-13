@@ -25,9 +25,16 @@ class BarVC: ButtonBarPagerTabStripViewController {
         self.settings.style.selectedBarHeight = 2
         self.settings.style.buttonBarItemBackgroundColor = UIColor.white
         self.settings.style.buttonBarItemTitleColor = UIColor.systemBlue
-        self.settings.style.buttonBarItemsShouldFillAvailableWidth = true
+        self.settings.style.buttonBarItemsShouldFillAvailableWidth = true 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        if (AppUtil.selectedCategory != nil && AppUtil.selectedCategory > 0) {
+            self.moveToViewController(at: AppUtil.selectedCategory)
+        }
+    }
 
     func loadMenuCategory() {
         let user = AppUtil.user.userEmail!
@@ -81,9 +88,7 @@ class BarVC: ButtonBarPagerTabStripViewController {
     */
     
     override public func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        
-        
-        
+
         var vcArray : [CategoryVC]! = []
         
         for category in AppUtil.categories {

@@ -19,5 +19,6 @@ target 'DrinksMate' do
   pod 'CryptoSwift', '~> 1.0'
   pod 'NotificationBannerSwift', '2.0.1'
   pod 'XLPagerTabStrip', '~> 9.0'
+  pod 'iOSDropDown'
 
 end

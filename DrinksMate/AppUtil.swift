@@ -16,4 +16,5 @@ class AppUtil: NSObject {
     
     public static var config : [String : Any]!
     public static var categories : [MenuCategory]!
+    public static var selectedCategory : Int!
 }

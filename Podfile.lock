@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.9.1)
   - CryptoSwift (1.1.3)
+  - iOSDropDown (0.3.4)
   - IQKeyboardManager (6.5.3)
   - MarqueeLabel/Swift (3.2.1)
   - NotificationBannerSwift (2.0.1):
@@ -16,6 +17,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - CryptoSwift (~> 1.0)
+  - iOSDropDown
   - IQKeyboardManager
   - NotificationBannerSwift (= 2.0.1)
   - PKHUD (~> 5.0)
@@ -26,6 +28,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - CryptoSwift
+    - iOSDropDown
     - IQKeyboardManager
     - MarqueeLabel
     - NotificationBannerSwift
@@ -37,6 +40,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   CryptoSwift: 6b6e488df0598b3e9fa49254ed1a65e8c1b1e10b
+  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   IQKeyboardManager: c2f901164d56807a35788483584d09fa69192e8e
   MarqueeLabel: 2daf039bf916937c8a4c9adfc13577cc5e51b4ce
   NotificationBannerSwift: 007774aa590cc9680647b92b2f217bef5c00c32c
@@ -45,6 +49,6 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: fb6bade38b704157852682b41be7969bcc156127
+PODFILE CHECKSUM: 57e175e8ad82ac8ea0187f7988390f2e59d8930b
 
 COCOAPODS: 1.8.4

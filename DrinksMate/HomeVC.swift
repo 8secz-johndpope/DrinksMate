@@ -25,6 +25,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        AppUtil.categories = []
         self.menuCategories = []
         self.menuTopOrders = []
         self.menuPrevOrders = []
@@ -141,13 +142,17 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
                 return 180
             case 1:
                 return 60
+            case 2:
+
+                let cellHeight = 160 * CGFloat(self.menuCategories.count) / 3
+                return cellHeight
             default:
                 return 180
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -170,6 +175,14 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
                 //break
             
             case 2:
+                cell_id = "category_cell"
+                let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath) as! CategoryCell
+                table_cell.homeVC = self
+                table_cell.loadCategories()
+                
+                return table_cell
+            
+            case 3:
                 cell_id = "order_cell"
                 let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath) as! OrderCell
                 table_cell.title = "Favorite Choices"
@@ -179,7 +192,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
                 return table_cell
                 
                 //break
-            case 3:
+            case 4:
                 cell_id = "order_cell"
                 let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath) as! OrderCell
                 table_cell.title = "Based on your likes"
