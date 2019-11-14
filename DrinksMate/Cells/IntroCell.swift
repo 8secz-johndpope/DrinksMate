@@ -13,9 +13,38 @@ class IntroCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDe
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageCtrl: UIPageControl!
     
+    var scrollIndex : Int! = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        self.startTimer()
+    }
+    
+    /**
+     Scroll to Next Cell
+     */
+    @objc func scrollToNextCell(){
+        if self.scrollIndex < 5 {
+            let indexPath = IndexPath(item: self.scrollIndex, section: 0)
+            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            self.scrollIndex = self.scrollIndex + 1
+            
+        } else {
+            self.scrollIndex = 0
+            self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+        }
+    }
+
+    /**
+     Invokes Timer to start Automatic Animation with repeat enabled
+     */
+    func startTimer() {
+
+        Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.scrollToNextCell), userInfo: nil, repeats: true);
+
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -76,6 +105,7 @@ class IntroCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         self.pageCtrl.currentPage = indexPath.row
+        self.scrollIndex = indexPath.row
     }
 
 }

@@ -24,7 +24,46 @@ class CategoryVC: UIViewController, IndicatorInfoProvider, UITableViewDataSource
         // Do any additional setup after loading the view.
         // The list of array to display. Can be changed dynamically
         self.sortTxt.optionArray = ["A - Z", "Z - A", "Price: Low to High", "Price: High to Low"]
+        self.sortTxt.didSelect { (selectedText , index ,id) in
+            self.sortByIndex(index: index)
+        }
+    }
+    
+    func sortByIndex(index : Int) {
+        switch index {
+            case 0:
+                self.category.menuItems = self.category.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
+                   let Obj1_Name = Obj1.menuitemName ?? ""
+                   let Obj2_Name = Obj2.menuitemName ?? ""
+                   return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedAscending)
+                })
+                break
+            case 1:
+                self.category.menuItems = self.category.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
+                   let Obj1_Name = Obj1.menuitemName ?? ""
+                   let Obj2_Name = Obj2.menuitemName ?? ""
+                   return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedDescending)
+                })
+                break
+            case 2:
+                self.category.menuItems = self.category.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
+                   let Obj1_Name = Obj1.menuitemPrice ?? 0
+                   let Obj2_Name = Obj2.menuitemPrice ?? 0
+                   return (Obj1_Name < Obj2_Name)
+                })
+                break
+            case 3:
+                self.category.menuItems = self.category.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
+                   let Obj1_Name = Obj1.menuitemPrice ?? 0
+                   let Obj2_Name = Obj2.menuitemPrice ?? 0
+                   return (Obj1_Name > Obj2_Name)
+                })
+                break
+            default:
+                break
+        }
         
+        self.menuItemTable.reloadData()
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -50,6 +89,13 @@ class CategoryVC: UIViewController, IndicatorInfoProvider, UITableViewDataSource
         priceLbl.text = "$\(menuItem.menuitemPrice!)"
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuItemVC") as! MenuItemVC
+        vc.menuItem = self.category.menuItems[indexPath.row]
+        
+        self.present(vc, animated: false, completion: nil)
     }
     /*
     // MARK: - Navigation

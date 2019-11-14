@@ -11,6 +11,7 @@
 		670A0E8023687E090000EE68 /* PolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670A0E7F23687E090000EE68 /* PolicyVC.swift */; };
 		670A0E83236881A10000EE68 /* privacy_policy.htm in Resources */ = {isa = PBXBuildFile; fileRef = 670A0E81236881A00000EE68 /* privacy_policy.htm */; };
 		670A0E84236881A10000EE68 /* terms_conditions.htm in Resources */ = {isa = PBXBuildFile; fileRef = 670A0E82236881A00000EE68 /* terms_conditions.htm */; };
+		67200935237D638F00006DCB /* MenuItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67200934237D638F00006DCB /* MenuItemVC.swift */; };
 		6722CFA62370139B002824F7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CFA52370139B002824F7 /* MainVC.swift */; };
 		6722CFA8237013CF002824F7 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CFA7237013CF002824F7 /* HomeVC.swift */; };
 		6722CFAA237013E8002824F7 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CFA9237013E8002824F7 /* AccountVC.swift */; };
@@ -69,6 +70,7 @@
 		670A0E7F23687E090000EE68 /* PolicyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyVC.swift; sourceTree = "<group>"; };
 		670A0E81236881A00000EE68 /* privacy_policy.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy_policy.htm; sourceTree = "<group>"; };
 		670A0E82236881A00000EE68 /* terms_conditions.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms_conditions.htm; sourceTree = "<group>"; };
+		67200934237D638F00006DCB /* MenuItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemVC.swift; sourceTree = "<group>"; };
 		6722CFA52370139B002824F7 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		6722CFA7237013CF002824F7 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		6722CFA9237013E8002824F7 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				67309E402377EA3F004E5D55 /* MenuVC.swift */,
 				67A05A0D2377F47F00C49877 /* ContactUsVC.swift */,
 				679A5171237BCF460050A41E /* CategoryVC.swift */,
+				67200934237D638F00006DCB /* MenuItemVC.swift */,
 			);
 			path = DrinksMate;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				67739DAF2367833600B43C34 /* ForgotPasswordVC.swift in Sources */,
 				672423F12379C53900A2A170 /* RewardsVC.swift in Sources */,
 				679A516C237B396A0050A41E /* MenuCategory.swift in Sources */,
+				67200935237D638F00006DCB /* MenuItemVC.swift in Sources */,
 				670A0E8023687E090000EE68 /* PolicyVC.swift in Sources */,
 				679A5172237BCF460050A41E /* CategoryVC.swift in Sources */,
 				67309E3D2375865D004E5D55 /* IntroCell.swift in Sources */,
@@ -662,7 +666,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = H77AGDMGJC;
 				INFOPLIST_FILE = DrinksMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -686,7 +690,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = H77AGDMGJC;
 				INFOPLIST_FILE = DrinksMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

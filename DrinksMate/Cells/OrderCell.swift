@@ -14,10 +14,10 @@ class OrderCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDe
     @IBOutlet weak var typeLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    public var orders : [MenuItem]!
+    var orders : [MenuItem]!
     var type : Bool!
-    public var title : String!
-    
+    var title : String!
+    var homeVC : HomeVC!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -77,6 +77,14 @@ class OrderCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDe
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let vc = self.homeVC.storyboard?.instantiateViewController(withIdentifier: "MenuItemVC") as! MenuItemVC
+        vc.menuItem = self.orders[indexPath.row]
+        
+        self.homeVC.present(vc, animated: false, completion: nil)
     }
 
 }

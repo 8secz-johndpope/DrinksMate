@@ -10,13 +10,39 @@ import UIKit
 
 class AccountMenuVC: UIViewController {
 
+    var accountVC : AccountVC!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func goProfileAction(_ sender: Any) {
+        self.accountVC.moveToViewController(at: 0)
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func goResetPasswordAction(_ sender: Any) {
+        self.accountVC.moveToViewController(at: 1)
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func goAddressesAction(_ sender: Any) {
+        self.accountVC.moveToViewController(at: 2)
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func goOrdersAction(_ sender: Any) {
+        self.accountVC.moveToViewController(at: 3)
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func goRewardsAction(_ sender: Any) {
+        self.accountVC.moveToViewController(at: 4)
+        self.dismiss(animated: false, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -31,6 +31,8 @@ class AccountVC: ButtonBarPagerTabStripViewController, UIPopoverPresentationCont
     
     @IBAction func showMenuAction(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "AccountMenuVC") as! AccountMenuVC
+        
+        vc.accountVC = self
             vc.modalPresentationStyle = UIModalPresentationStyle.popover
             vc.preferredContentSize = CGSize(width: 240, height: 320)
             

@@ -185,6 +185,8 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
             case 3:
                 cell_id = "order_cell"
                 let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath) as! OrderCell
+                
+                table_cell.homeVC = self
                 table_cell.title = "Favorite Choices"
                 table_cell.orders = self.menuTopOrders
                 table_cell.loadOrders()
