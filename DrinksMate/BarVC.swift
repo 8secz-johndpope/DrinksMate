@@ -12,30 +12,49 @@ import Alamofire
 import PKHUD
 import NotificationBannerSwift
 
+
 class BarVC: ButtonBarPagerTabStripViewController {
 
+    @IBOutlet weak var cartBtn: UIButton!
+    @IBOutlet weak var cartLbl: UILabel!
+    
     var menuCategories : [MenuCategory]!
+    var cartVC : CartVC!
     
     override func viewDidLoad() {
+        
+        self.settings.style.selectedBarHeight = 2
+        self.settings.style.buttonBarItemBackgroundColor = UIColor.white
+        self.settings.style.buttonBarItemTitleColor = UIColor.systemBlue
+        self.settings.style.buttonBarItemsShouldFillAvailableWidth = true
+        self.settings.style.buttonBarLeftContentInset = self.view.frame.width / 2 - self.buttonBarView.selectedBar.frame.width / 2
+        self.settings.style.buttonBarRightContentInset = self.view.frame.width / 2 - self.buttonBarView.selectedBar.frame.width / 2
+        self.settings.style.buttonBarMinimumInteritemSpacing = 70
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         // ButtonBar Type
         self.buttonBarView.selectedBar.backgroundColor = UIColor.systemBlue
-        self.settings.style.selectedBarHeight = 2
-        self.settings.style.buttonBarItemBackgroundColor = UIColor.white
-        self.settings.style.buttonBarItemTitleColor = UIColor.systemBlue
-        self.settings.style.buttonBarItemsShouldFillAvailableWidth = true 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        if (AppUtil.selectedCategory != nil && AppUtil.selectedCategory > 0) {
-            self.moveToViewController(at: AppUtil.selectedCategory)
+        self.showCartBadge()
+    }
+
+    func showCartBadge() {
+        if (AppUtil.cartsList.count > 0) {
+            self.cartLbl.isHidden = false
+            self.cartLbl.text = "\(AppUtil.cartsList.count)"
+        }
+        else {
+            self.cartLbl.isHidden = true
         }
     }
 
+    
     func loadMenuCategory() {
         let user = AppUtil.user.userEmail!
         let password = AppUtil.user.userHashPassword!
@@ -69,7 +88,7 @@ class BarVC: ButtonBarPagerTabStripViewController {
     }
     
     @IBAction func goBackAction(_ sender: Any) {
-        self.tabBarController?.selectedIndex = 0
+        self.dismiss(animated: false, completion: nil)
     }
     
     func showErrorMessage(message: String) {
@@ -89,15 +108,40 @@ class BarVC: ButtonBarPagerTabStripViewController {
     
     override public func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
 
-        var vcArray : [CategoryVC]! = []
+        //var vcArray : [UIViewController]! = []
         
-        for category in AppUtil.categories {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "CategoryVC") as! CategoryVC
-            vc.category = category
-            vcArray.append(vc)
+        let selectedCategory = AppUtil.categories[AppUtil.selectedCategory]
+        if (selectedCategory.subCategories.count > 0) {
+            var vcArray : [UIViewController]! = []
+            
+            for subCategory in selectedCategory.subCategories {
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "CategoryVC") as! CategoryVC
+                vc.isSub = true
+                vc.subCategory = subCategory
+                vc.barVC = self
+                
+                vcArray.append(vc)
+            }
+            
+            self.cartVC = self.storyboard?.instantiateViewController(withIdentifier: "CartVC") as? CartVC
+            
+            vcArray.append(cartVC)
+            
+            return vcArray
         }
-        
-        return vcArray
+        else {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "CategoryVC") as! CategoryVC
+            vc.category = selectedCategory
+            vc.isSub = false
+            vc.barVC = self
+            
+            self.cartVC = self.storyboard?.instantiateViewController(withIdentifier: "CartVC") as? CartVC
+            
+            return [vc, cartVC]
+        }
     }
 
+    @IBAction func goCartAction(_ sender: Any) {
+        self.moveTo(viewController: self.cartVC)
+    }
 }

@@ -12,23 +12,57 @@ import Alamofire
 import NotificationBannerSwift
 import PKHUD
 
-class ProfileVC: UIViewController, IndicatorInfoProvider {
-    
+class ProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegate, IndicatorInfoProvider {
+
     @IBOutlet weak var nameTxt: UITextField!
     @IBOutlet weak var phoneTxt: UITextField!
-    @IBOutlet weak var billTxt: UITextField!
-    @IBOutlet weak var descTxt: UITextField!
-    
+    @IBOutlet weak var addressTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        AppUtil.addressList = []
         
         if (AppUtil.user != nil) {
             self.nameTxt.text = AppUtil.user.userName
             self.phoneTxt.text = AppUtil.user.userPhonenumber
             
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.loadAddresses()
+        
+    }
+    
+    func loadAddresses() {
+        
+        let user = AppUtil.user.userEmail!
+        let password = AppUtil.user.userHashPassword!
+        let credentialData = "\(user)===6:\(password)".data(using: String.Encoding.utf8)!
+        let base64Credentials = credentialData.base64EncodedString(options: [])
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let url = URL(string: AppUtil.serverURL + "checkout/addresses")
+
+        Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
+            
+            guard response.result.isSuccess else {
+                
+                return
+            }
+
+            let value = response.result.value as! [[String : Any]]
+            
+            AppUtil.addressList = []
+            for address in value {
+                let userAddress = UserAddress(address: address)
+                AppUtil.addressList.append(userAddress)
+            }
+            
+            self.addressTable.reloadData()
         }
     }
     
@@ -74,11 +108,35 @@ class ProfileVC: UIViewController, IndicatorInfoProvider {
         }
     }
     
+    @IBAction func addNewAddressAction(_ sender: Any) {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectAddressVC") as! SelectAddressVC
+        self.present(vc, animated: false, completion: nil)
+    }
+    
     func showErrorMessage(message: String) {
         let banner = NotificationBanner(title: nil, subtitle: message, style: .danger)
         banner.duration = 1
         banner.show(queuePosition: .front, bannerPosition: .bottom, queue: .default, on: self)
         
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return AppUtil.addressList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let address = AppUtil.addressList[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "address_cell", for: indexPath) as! AddressCell
+        
+        cell.tableView = tableView
+        cell.userAddress = address
+        cell.addressTxt.text = address.address
+        cell.optionImg.isHidden = !address.isDefault
+        
+        return cell
     }
     /*
     // MARK: - Navigation

@@ -45,18 +45,22 @@ class OrderCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "order_collection_cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "order_collection_cell", for: indexPath) as! MenuItemCell
         
         let menuItem = self.orders[indexPath.row]
         
-        let imageView = cell.viewWithTag(10) as! UIImageView
-        let titleLbl = cell.viewWithTag(11) as! UILabel
-        let priceLbl = cell.viewWithTag(12) as! UILabel
+        cell.setMenuItemCell(item: menuItem)
+        cell.homeVC = self.homeVC
+//        cell.menuItem = menuItem
         
-        imageView.sd_setImage(with: URL(string: menuItem.menuitemPhoto!), placeholderImage: UIImage(named: "beer_full.png"))
-        
-        titleLbl.text = menuItem.menuitemName!
-        priceLbl.text = "$\(menuItem.menuitemPrice!)"
+//        let imageView = cell.viewWithTag(10) as! UIImageView
+//        let titleLbl = cell.viewWithTag(11) as! UILabel
+//        let priceLbl = cell.viewWithTag(12) as! UILabel
+//        
+//        imageView.sd_setImage(with: URL(string: menuItem.menuitemPhoto!), placeholderImage: UIImage(named: "beer_full.png"))
+//        
+//        titleLbl.text = menuItem.menuitemName!
+//        priceLbl.text = "$\(menuItem.menuitemPrice!)"
         
         return cell
     }
@@ -86,5 +90,6 @@ class OrderCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDe
         
         self.homeVC.present(vc, animated: false, completion: nil)
     }
+    
 
 }

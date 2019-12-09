@@ -13,6 +13,7 @@ class MenuCategory: NSObject {
     var categoryName : String!
     var photo : String!
     var menuItems : [MenuItem]!
+    var subCategories : [SubCategory]!
     
     func setMenuCategory(category : [String : Any]) {
         
@@ -27,6 +28,16 @@ class MenuCategory: NSObject {
             menuItem.setMenuItem(item: item)
             
             self.menuItems.append(menuItem)
+        }
+        
+        self.subCategories = []
+        
+        let subs = category["subCategories"] as? [[String : Any]]
+        for sub in subs! {
+            let subCategory = SubCategory()
+            subCategory.setSubCategory(sub: sub)
+            
+            self.subCategories.append(subCategory)
         }
     }
 

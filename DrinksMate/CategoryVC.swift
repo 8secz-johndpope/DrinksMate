@@ -16,8 +16,11 @@ class CategoryVC: UIViewController, IndicatorInfoProvider, UITableViewDataSource
     @IBOutlet weak var sortTxt: DropDown!
     @IBOutlet weak var menuItemTable: UITableView!
     
+    var barVC : BarVC!
+    var isSub : Bool!
     var category : MenuCategory!
-
+    var subCategory : SubCategory!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,32 +35,72 @@ class CategoryVC: UIViewController, IndicatorInfoProvider, UITableViewDataSource
     func sortByIndex(index : Int) {
         switch index {
             case 0:
-                self.category.menuItems = self.category.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
-                   let Obj1_Name = Obj1.menuitemName ?? ""
-                   let Obj2_Name = Obj2.menuitemName ?? ""
-                   return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedAscending)
-                })
+                if (self.isSub) {
+                    self.subCategory.menuItems = self.subCategory.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
+                       let Obj1_Name = Obj1.menuitemName ?? ""
+                       let Obj2_Name = Obj2.menuitemName ?? ""
+                       return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedAscending)
+                    })
+                }
+                else {
+                    self.category.menuItems = self.category.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
+                       let Obj1_Name = Obj1.menuitemName ?? ""
+                       let Obj2_Name = Obj2.menuitemName ?? ""
+                       return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedAscending)
+                    })
+                }
+
                 break
             case 1:
-                self.category.menuItems = self.category.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
-                   let Obj1_Name = Obj1.menuitemName ?? ""
-                   let Obj2_Name = Obj2.menuitemName ?? ""
-                   return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedDescending)
-                })
+                if (self.isSub) {
+                    self.subCategory.menuItems = self.subCategory.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
+                       let Obj1_Name = Obj1.menuitemName ?? ""
+                       let Obj2_Name = Obj2.menuitemName ?? ""
+                       return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedDescending)
+                    })
+                }
+                else {
+                    self.category.menuItems = self.category.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
+                       let Obj1_Name = Obj1.menuitemName ?? ""
+                       let Obj2_Name = Obj2.menuitemName ?? ""
+                       return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedDescending)
+                    })
+                }
+                
                 break
             case 2:
-                self.category.menuItems = self.category.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
-                   let Obj1_Name = Obj1.menuitemPrice ?? 0
-                   let Obj2_Name = Obj2.menuitemPrice ?? 0
-                   return (Obj1_Name < Obj2_Name)
-                })
+                if (self.isSub) {
+                    self.subCategory.menuItems = self.subCategory.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
+                       let Obj1_Name = Obj1.menuitemPrice ?? 0
+                       let Obj2_Name = Obj2.menuitemPrice ?? 0
+                       return (Obj1_Name < Obj2_Name)
+                    })
+                }
+                else {
+                    self.category.menuItems = self.category.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
+                       let Obj1_Name = Obj1.menuitemPrice ?? 0
+                       let Obj2_Name = Obj2.menuitemPrice ?? 0
+                       return (Obj1_Name < Obj2_Name)
+                    })
+                }
+                
                 break
             case 3:
-                self.category.menuItems = self.category.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
-                   let Obj1_Name = Obj1.menuitemPrice ?? 0
-                   let Obj2_Name = Obj2.menuitemPrice ?? 0
-                   return (Obj1_Name > Obj2_Name)
-                })
+                if (self.isSub) {
+                    self.subCategory.menuItems = self.subCategory.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
+                       let Obj1_Name = Obj1.menuitemPrice ?? 0
+                       let Obj2_Name = Obj2.menuitemPrice ?? 0
+                       return (Obj1_Name > Obj2_Name)
+                    })
+                }
+                else {
+                    self.category.menuItems = self.category.menuItems.sorted(by: { (Obj1, Obj2) -> Bool in
+                       let Obj1_Name = Obj1.menuitemPrice ?? 0
+                       let Obj2_Name = Obj2.menuitemPrice ?? 0
+                       return (Obj1_Name > Obj2_Name)
+                    })
+                }
+
                 break
             default:
                 break
@@ -67,17 +110,21 @@ class CategoryVC: UIViewController, IndicatorInfoProvider, UITableViewDataSource
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: self.category.categoryName!)
+        
+        return self.isSub ? IndicatorInfo(title: self.subCategory.subcategoryName!) : IndicatorInfo(title: self.category.categoryName!)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.category.menuItems.count
+        return self.isSub ? self.subCategory.menuItems.count : self.category.menuItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "menuitem_cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "menuitem_cell", for: indexPath) as! CategoryItemCell
         
-        let menuItem = self.category.menuItems[indexPath.row]
+        let menuItem = self.isSub ? self.subCategory.menuItems[indexPath.row] : self.category.menuItems[indexPath.row]
+        cell.menuItem = menuItem
+        cell.checkCarts()
+        cell.barVC = self.barVC
         
         let imageView = cell.viewWithTag(10) as! UIImageView
         let titleLbl = cell.viewWithTag(11) as! UILabel
@@ -93,7 +140,7 @@ class CategoryVC: UIViewController, IndicatorInfoProvider, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuItemVC") as! MenuItemVC
-        vc.menuItem = self.category.menuItems[indexPath.row]
+        vc.menuItem = self.isSub ? self.subCategory.menuItems[indexPath.row] : self.category.menuItems[indexPath.row]
         
         self.present(vc, animated: false, completion: nil)
     }

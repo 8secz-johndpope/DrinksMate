@@ -7,16 +7,164 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
-class CartVC: UIViewController {
+class CartVC: UIViewController, IndicatorInfoProvider, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
 
+    @IBOutlet weak var cartsTable: UITableView!
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerHeight: NSLayoutConstraint!
+    @IBOutlet weak var menuBtn: UIButton!
+    
+    var isSub : Bool! = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if (self.isSub) {
+            self.headerView.isHidden = true
+            self.headerHeight.constant = -20
+        }
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.cartsTable.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if (AppUtil.cartsList.count > 0) {
+            switch indexPath.row {
+                case AppUtil.cartsList.count:
+                        return 80
+                default:
+                    return 44
+            }
+        }
+        else {
+            switch indexPath.row {
+                case 0:
+                    return 240
+                case 1:
+                    return 80
+                default:
+                    return 44
+            }
+        }  
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if (AppUtil.cartsList.count > 0) {
+            return AppUtil.cartsList.count + 1
+        }
+        else {
+            return 2
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var cell_id = ""
+        
+        if (AppUtil.cartsList.count > 0) {
+            switch indexPath.row {
+                
+                case AppUtil.cartsList.count:
+                    cell_id = "last_cell"
+                    let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath)
+                    let btn = table_cell.viewWithTag(10) as! UIButton
+                    btn.setTitle("CHECK OUT", for: .normal)
+                    btn.addTarget(self, action: #selector(self.goCheckOutAction(_:)), for: .touchUpInside)
+                    
+                    return table_cell
+                default:
+                    cell_id = "cart_cell"
+                    let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath) as! CartCell
+                    table_cell.setMenuItemCell(item: AppUtil.cartsList[indexPath.row])
+                    table_cell.tableView = tableView
+                    return table_cell
+            }
+        }
+        else {
+            switch indexPath.row {
+                case 0:
+                    cell_id = "empty_cell"
+                    let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath)
+                    return table_cell
+                case 1:
+                    cell_id = "last_cell"
+                    let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath)
+                    let btn = table_cell.viewWithTag(10) as! UIButton
+                    btn.setTitle("CONTINUE SHOPPING", for: .normal)
+                    
+                    btn.addTarget(self, action: #selector(self.goCheckOutAction(_:)), for: .touchUpInside)
+                    
+                    return table_cell
+                default:
+                    cell_id = "empty_cell"
+                    let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath)
+                    return table_cell
+            }
+        }
+        
+    }
+    
+    @objc func goShoppingAction() {
+        
+    }
+    
+    @objc func goCheckOutAction(_ sender : UIButton) {
+        
+        if (sender.titleLabel?.text == "CHECK OUT") {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "CheckOutVC") as! CheckOutVC
+            self.present(vc, animated: false, completion: nil)
+        }
+        else {
+            self.tabBarController?.selectedIndex = 0
+        }
+    }
+    
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        
+        self.isSub = true
+        return "Carts"
+    }
+    
+    @IBAction func menuAction(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+        vc.modalPresentationStyle = UIModalPresentationStyle.popover
+        vc.preferredContentSize = CGSize(width: 200, height: 360)
+        
+        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
+        
+        popover.permittedArrowDirections = .any
+        popover.sourceView = self.view
+        popover.sourceRect = self.menuBtn.frame
+        popover.delegate = self
+        
+        vc.homeVC = self
+        present(vc, animated: false, completion: nil)
+        //self.present(vc, animated: false, completion: nil)
+    }
+    
+    //UIPopoverPresentationControllerDelegate inherits from UIAdaptivePresentationControllerDelegate, we will use this method to define the presentation style for popover presentation controller
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+     
+    //UIPopoverPresentationControllerDelegate
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+     
+    }
+     
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        return true
+    }
     /*
     // MARK: - Navigation
 

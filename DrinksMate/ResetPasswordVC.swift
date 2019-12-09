@@ -103,6 +103,7 @@ class ResetPasswordVC: UIViewController{
             else {
                 AppUtil.user = DrinkUser()
                 AppUtil.user.userHashPassword = status
+                UserDefaults.standard.setValue(AppUtil.user.userHashPassword, forKey: "user_password")
                 
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainVC") as! MainVC
                 vc.modalPresentationStyle = .fullScreen

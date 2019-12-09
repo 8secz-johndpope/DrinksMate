@@ -24,7 +24,7 @@ class AccountMenuVC: UIViewController {
     }
     
     @IBAction func goResetPasswordAction(_ sender: Any) {
-        self.accountVC.moveToViewController(at: 1)
+        self.accountVC.moveToViewController(at: 3)
         self.dismiss(animated: false, completion: nil)
     }
     
@@ -34,14 +34,10 @@ class AccountMenuVC: UIViewController {
     }
     
     @IBAction func goOrdersAction(_ sender: Any) {
-        self.accountVC.moveToViewController(at: 3)
+        self.accountVC.moveToViewController(at: 1)
         self.dismiss(animated: false, completion: nil)
     }
     
-    @IBAction func goRewardsAction(_ sender: Any) {
-        self.accountVC.moveToViewController(at: 4)
-        self.dismiss(animated: false, completion: nil)
-    }
     
     /*
     // MARK: - Navigation

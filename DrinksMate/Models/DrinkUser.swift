@@ -23,6 +23,17 @@ class DrinkUser: NSObject {
         self.userHashPassword = user["userHashPassword"] as? String
         self.userName = user["userName"] as? String
         self.userPhonenumber = user["userPhonenumber"] as? String
+        self.userId = user["userId"] as? Int
+    }
+    
+    func getAuthentification() -> [String : String] {
+        let user = AppUtil.user.userEmail!
+        let password = AppUtil.user.userHashPassword!
+        let credentialData = "\(user)===6:\(password)".data(using: String.Encoding.utf8)!
+        let base64Credentials = credentialData.base64EncodedString(options: [])
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        
+        return headers
     }
 
 }

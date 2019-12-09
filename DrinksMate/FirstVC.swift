@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import PKHUD
+import NotificationBannerSwift
 
 class FirstVC: UIViewController {
 
@@ -16,24 +17,78 @@ class FirstVC: UIViewController {
     @IBOutlet weak var ageView: UIView!
     @IBOutlet weak var signinBtn: UIButton!
     @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var logoImg: UIImageView!
+    @IBOutlet weak var homeImg: UIImageView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIView.animate(withDuration: 3, animations: {
+            self.logoImg.center.x = self.logoImg.center.x + 200
+        }) { (isComplete) in
+            // Do any additional setup after loading the view.
+            let url = URL(string: AppUtil.serverURL + "features/6")
+            
+            // Config api
+            Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
+                        
+                guard response.result.isSuccess else {
+                    return
+                }
 
-        // Do any additional setup after loading the view.
-        let url = URL(string: AppUtil.serverURL + "features/6")
-        
-        // Config api
-        Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
+                AppUtil.config = response.result.value as? [String: Any]
+                self.showMessage(msg: "Configuration Up To Date!")
+                
+                self.homeImg.isHidden = true
+                self.logoImg.isHidden = true
+                
+                let loginStatus = UserDefaults.standard.bool(forKey : "user_login")
+                
+                if (loginStatus) {
+                    self.backView.isHidden = true
+                    self.ageView.isHidden = true
                     
+                    self.autoLogin()
+                }
+            }
+        }
+    }
+    
+    func autoLogin() {
+        let url = URL(string: AppUtil.serverURL + "auth/login")
+        let params : Parameters = ["clientId": 6, "userEmail":UserDefaults.standard.string(forKey: "user_email")!, "userHashPassword": UserDefaults.standard.string(forKey: "user_password")!]
+
+        HUD.show(.progress)
+        Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
+            
+            HUD.hide()
             guard response.result.isSuccess else {
+                
+                self.showErrorMessage(message: "Login Error!")
                 return
             }
 
-            AppUtil.config = response.result.value as? [String: Any]
-            self.showMessage(msg: "Configuration Up To Date!")
+            let value = response.result.value as! [String: Any]
+            let status = value["userHashPassword"] as! String
+            
+            if (status == "_invalid_password_") {
+                self.showErrorMessage(message: "Invalid Password!")
+            }
+            else {
+                AppUtil.user = DrinkUser()
+                AppUtil.user.setDrinkUser(user: value)
+            
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainVC") as! MainVC
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: false, completion: nil)
+            }
         }
+    }
+    
+    func showErrorMessage(message: String) {
+        let banner = NotificationBanner(title: nil, subtitle: message, style: .danger)
+        banner.duration = 1
+        banner.show(queuePosition: .front, bannerPosition: .bottom, queue: .default, on: self)
     }
     
     @IBAction func yesAction(_ sender: Any) {

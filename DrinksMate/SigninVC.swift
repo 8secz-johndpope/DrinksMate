@@ -61,6 +61,12 @@ class SigninVC: UIViewController {
             else {
                 AppUtil.user = DrinkUser()
                 AppUtil.user.setDrinkUser(user: value)
+                
+                UserDefaults.standard.setValue(true, forKey: "user_login")
+                UserDefaults.standard.setValue(AppUtil.user.userEmail, forKey: "user_email")
+                UserDefaults.standard.setValue(AppUtil.user.userHashPassword, forKey: "user_password")
+                
+                
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainVC") as! MainVC
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: false, completion: nil)

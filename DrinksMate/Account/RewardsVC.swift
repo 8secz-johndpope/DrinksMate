@@ -9,8 +9,10 @@
 import UIKit
 import XLPagerTabStrip
 
-class RewardsVC: UIViewController, IndicatorInfoProvider  {
+class RewardsVC: UIViewController, IndicatorInfoProvider, UIPopoverPresentationControllerDelegate {
 
+    @IBOutlet weak var menuBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +21,37 @@ class RewardsVC: UIViewController, IndicatorInfoProvider  {
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return "Rewards"
+    }
+    
+    @IBAction func menuAction(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+        vc.modalPresentationStyle = UIModalPresentationStyle.popover
+        vc.preferredContentSize = CGSize(width: 200, height: 360)
+        
+        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
+        
+        popover.permittedArrowDirections = .any
+        popover.sourceView = self.view
+        popover.sourceRect = self.menuBtn.frame
+        popover.delegate = self
+        
+        vc.homeVC = self
+        present(vc, animated: false, completion: nil)
+        //self.present(vc, animated: false, completion: nil)
+    }
+    
+    //UIPopoverPresentationControllerDelegate inherits from UIAdaptivePresentationControllerDelegate, we will use this method to define the presentation style for popover presentation controller
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+     
+    //UIPopoverPresentationControllerDelegate
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+     
+    }
+     
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        return true
     }
 
     /*

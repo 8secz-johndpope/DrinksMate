@@ -39,6 +39,14 @@ Permission is granted to anyone to use this software for any purpose,including c
 - Redistributions of any form whatsoever must retain the following acknowledgment: 'This product includes software developed by the "Marcin Krzyzanowski" (http://krzyzanowskim.com/).'
 
 
+## GoogleMaps
+
+Copyright 2019 Google
+
+## GooglePlaces
+
+Copyright 2019 Google
+
 ## IQKeyboardManager
 
 MIT License

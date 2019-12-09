@@ -10,15 +10,21 @@ import UIKit
 import Alamofire
 import PKHUD
 import NotificationBannerSwift
+import MessageUI
 
-class ContactUsVC: UIViewController {
+class ContactUsVC: UIViewController, MFMailComposeViewControllerDelegate, UITextViewDelegate {
 
     @IBOutlet weak var nameTxt: UITextField!
     @IBOutlet weak var phoneTxt: UITextField!
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var subjectTxt: UITextField!
-    @IBOutlet weak var messageTxt: UITextField!
+    @IBOutlet weak var messageTxt: UITextView!
     
+    
+    let yourAttributes: [NSAttributedString.Key: Any] = [
+                                                        .font: UIFont.systemFont(ofSize: 15),
+                                                        .foregroundColor: UIColor.blue,
+                                                        .underlineStyle: NSUnderlineStyle.single.rawValue]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,10 +79,16 @@ class ContactUsVC: UIViewController {
         }
         
         let url = URL(string: AppUtil.serverURL + "misc/contactus")
-        let params : Parameters = ["clientId": 6, "name":self.nameTxt.text!, "phone": self.phoneTxt.text!, "email": self.emailTxt.text!, "subject": self.subjectTxt.text!, "message":self.messageTxt.text!]
+        let params : Parameters = ["name":self.nameTxt.text!, "phone": self.phoneTxt.text!, "email": self.emailTxt.text!, "subject": self.subjectTxt.text!, "message":self.messageTxt.text!]
 
+        let user = AppUtil.user.userEmail!
+        let password = AppUtil.user.userHashPassword!
+        let credentialData = "\(user)===6:\(password)".data(using: String.Encoding.utf8)!
+        let base64Credentials = credentialData.base64EncodedString(options: [])
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        
         HUD.show(.progress)
-        Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
+        Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseData { response in
             
             HUD.hide()
             guard response.result.isSuccess else {
@@ -109,6 +121,56 @@ class ContactUsVC: UIViewController {
         banner.show(queuePosition: .front, bannerPosition: .bottom, queue: .default, on: self)
         
     }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Message" {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Message"
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
+    @IBAction func goBackAction(_ sender: Any) {
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func phoneCallAction(_ sender: Any) {
+        UIApplication.shared.openURL(NSURL(string: "tel://+6493920055")! as URL)
+    }
+    
+    @IBAction func sendEmailAction(_ sender: Any) {
+        if MFMailComposeViewController.canSendMail() {
+            let composeVC = MFMailComposeViewController()
+            composeVC.mailComposeDelegate = self
+
+            // Configure the fields of the interface.
+            composeVC.setToRecipients(["support@drinksmate.kiwi"])
+            composeVC.setSubject("")
+            composeVC.setMessageBody("", isHTML: false)
+
+            // Present the view controller modally.
+            present(composeVC, animated: true, completion: nil)
+        } else {
+            // show failure alert
+        }
+        
+        
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult, error: Error?) {
+        // Check the result or perform other tasks.
+
+        // Dismiss the mail compose view controller.
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -10,7 +10,7 @@ import UIKit
 
 class MenuVC: UIViewController {
     
-    var homeVC : HomeVC!
+    var homeVC : UIViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,18 +26,19 @@ class MenuVC: UIViewController {
     }
     
     @IBAction func accountAction(_ sender: Any) {
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
-//        vc.modalPresentationStyle = .fullScreen
-//        self.present(vc, animated: false, completion: nil)
-        self.homeVC.tabBarController?.selectedIndex = 1
-        self.dismiss(animated: false, completion: nil)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false, completion: nil)
     }
     
     @IBAction func menuAction(_ sender: Any) {
-    
+        self.homeVC.tabBarController?.selectedIndex = 2
+        self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func cartAction(_ sender: Any) {
+        self.homeVC.tabBarController?.selectedIndex = 3
+        self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func contactUsAction(_ sender: Any) {
@@ -45,7 +46,18 @@ class MenuVC: UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ContactUsVC") as! ContactUsVC
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: false, completion: nil)
+        
     }
+    
+    @IBAction func logoutAction(_ sender: Any) {
+        AppUtil.user = DrinkUser()
+        UserDefaults.standard.removeObject(forKey: "user_login")
+        UserDefaults.standard.removeObject(forKey: "user_email")
+        UserDefaults.standard.removeObject(forKey: "user_password")
+        
+        self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
+    }
+    
     
     
     /*

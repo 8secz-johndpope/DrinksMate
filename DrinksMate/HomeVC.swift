@@ -26,11 +26,23 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
 
         // Do any additional setup after loading the view.
         AppUtil.categories = []
+        AppUtil.cartsList = []
+        
         self.menuCategories = []
         self.menuTopOrders = []
         self.menuPrevOrders = []
         
         self.loadMenuCategory()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        if (AppUtil.cartsList.count > 0) {
+            let tabItem = self.tabBarController?.tabBar.items
+            let cartTab = tabItem![3]
+            cartTab.badgeValue = "\(AppUtil.cartsList.count)"
+        }
     }
     
     func loadMenuCategory() {
@@ -65,6 +77,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
             }
             
             AppUtil.categories = self.menuCategories
+            //self.loadPrevOrder()
             self.loadTopOrder()
         }
     }
@@ -143,8 +156,14 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
             case 1:
                 return 60
             case 2:
-
-                let cellHeight = 160 * CGFloat(self.menuCategories.count) / 3
+                var cellHeight : CGFloat = 0.0
+                if (self.menuCategories.count % 3 == 0) {
+                    cellHeight = 160 * CGFloat(self.menuCategories.count) / 3
+                }
+                else {
+                    cellHeight = 160 * (CGFloat(self.menuCategories.count) / 3 + 1)
+                }
+                
                 return cellHeight
             default:
                 return 180
@@ -170,6 +189,10 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
             case 1:
                 cell_id = "search_cell"
                 let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath)
+                
+                let searchTxt = table_cell.viewWithTag(10) as! UITextField
+                searchTxt.addTarget(self, action: #selector(self.searchAction(_:)), for: .editingDidEndOnExit)
+                
                 return table_cell
                 
                 //break
@@ -197,6 +220,8 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
             case 4:
                 cell_id = "order_cell"
                 let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath) as! OrderCell
+                
+                table_cell.homeVC = self
                 table_cell.title = "Based on your likes"
                 table_cell.orders = self.menuPrevOrders
                 table_cell.loadOrders()
@@ -211,23 +236,63 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
                 
                 //break
         }
-        
-        
-        
-       
     }
     
     @IBAction func logoutAction(_ sender: Any) {
         AppUtil.user = DrinkUser()
-        
+        UserDefaults.standard.removeObject(forKey: "user_login")
+        UserDefaults.standard.removeObject(forKey: "user_email")
+        UserDefaults.standard.removeObject(forKey: "user_password")
         //let vc = self.storyboard?.instantiateViewController(withIdentifier: "FirstVC") as! FirstVC
         self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
+    }
+    
+    @objc func searchAction(_ sender: UITextField) {
+        let searchKey = sender.text!
+        
+        if (searchKey.count > 0) {
+            
+            sender.text = ""
+            
+            var menuItems = [] as! [MenuItem]
+            
+            for category in AppUtil.categories {
+                
+                if (category.subCategories.count > 0) {
+                    
+                    for sub in category.subCategories {
+                        
+                        for item in sub.menuItems {
+                            if (item.menuitemName.uppercased().contains(searchKey.uppercased())) {
+                                menuItems.append(item)
+                            }
+                        }
+                    }
+                }
+                else {
+                    for item in category.menuItems {
+                        if (item.menuitemName.uppercased().contains(searchKey.uppercased())) {
+                            menuItems.append(item)
+                        }
+                    }
+                }
+            }
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchVC") as! SearchVC
+            vc.menuItems = menuItems
+            self.present(vc, animated: false, completion: nil)
+            
+        }
+    }
+    
+    @IBAction func notificationAction(_ sender: Any) {
+        
     }
     
     @IBAction func menuAction(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
         vc.modalPresentationStyle = UIModalPresentationStyle.popover
-        vc.preferredContentSize = CGSize(width: 240, height: 320)
+        vc.preferredContentSize = CGSize(width: 200, height: 360)
         
         let popover: UIPopoverPresentationController = vc.popoverPresentationController!
         

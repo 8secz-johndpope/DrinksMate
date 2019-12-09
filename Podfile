@@ -6,7 +6,16 @@ target 'DrinksMate' do
   use_frameworks!
 
   # Pods for DrinksMate
+  
+  # Firebase
+#  pod 'FirebaseFirestore'
+#  pod 'FirebaseCore'
+#  pod 'FirebaseMessaging'
 
+  # Google
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+  
   pod 'PKHUD', '~> 5.0'
   pod 'IQKeyboardManager'
   

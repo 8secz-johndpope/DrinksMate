@@ -74,7 +74,10 @@ class CategoryCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         AppUtil.selectedCategory = indexPath.row
-        self.homeVC.tabBarController?.selectedIndex = 2
+        
+        let vc = self.homeVC.storyboard?.instantiateViewController(withIdentifier: "BarVC") as! BarVC
+        self.homeVC.present(vc, animated: true , completion: nil)
+        //self.homeVC.tabBarController?.selectedIndex = 2
     }
     
     func loadCategories() {

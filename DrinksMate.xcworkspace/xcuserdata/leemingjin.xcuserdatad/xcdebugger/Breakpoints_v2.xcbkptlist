@@ -3,4 +3,70 @@
    uuid = "13D55F26-53E3-4320-A8CB-E9AA4F8E2E22"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E4530FD4-9F59-4FD7-9C76-FE8FD3AA1ADA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DrinksMate/Account/ResetPassVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "resetPasswordAction(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E4530FD4-9F59-4FD7-9C76-FE8FD3AA1ADA - d922828cfbe485f5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DrinksMate.ResetPassVC.resetPasswordAction(Any) -&gt; ()"
+                  moduleName = "DrinksMate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leemingjin/Documents/Work/GitDrinksMate/DrinksMate/Account/ResetPassVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "12580">
+               </Location>
+               <Location
+                  uuid = "E4530FD4-9F59-4FD7-9C76-FE8FD3AA1ADA - f833687f0d535194"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in DrinksMate.ResetPassVC.resetPasswordAction(Any) -&gt; ()"
+                  moduleName = "DrinksMate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leemingjin/Documents/Work/GitDrinksMate/DrinksMate/Account/ResetPassVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "132">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4B1D53D8-8991-4CE3-8821-06A792C488E4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DrinksMate/Account/ResetPassVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "resetPasswordAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -8,25 +8,32 @@
 
 import UIKit
 import XLPagerTabStrip
+import IQKeyboardManager
 
 class AccountVC: ButtonBarPagerTabStripViewController, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var menuBtn: UIButton!
     
     override func viewDidLoad() {
+        self.settings.style.selectedBarHeight = 2
+        self.settings.style.buttonBarItemBackgroundColor = UIColor.white
+        self.settings.style.buttonBarItemTitleColor = UIColor.systemBlue
+        self.settings.style.buttonBarItemsShouldFillAvailableWidth = true
+        self.settings.style.buttonBarLeftContentInset = self.view.frame.width / 2 - self.buttonBarView.selectedBar.frame.width / 2
+        self.settings.style.buttonBarRightContentInset = self.view.frame.width / 2 - self.buttonBarView.selectedBar.frame.width / 2
+        self.settings.style.buttonBarMinimumInteritemSpacing = 70
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         // ButtonBar Type
         self.buttonBarView.selectedBar.backgroundColor = UIColor.systemBlue
-        self.settings.style.selectedBarHeight = 2
-        self.settings.style.buttonBarItemBackgroundColor = UIColor.white
-        self.settings.style.buttonBarItemTitleColor = UIColor.systemBlue
-        self.settings.style.buttonBarItemsShouldFillAvailableWidth = true
+        self.containerView.shouldIgnoreScrollingAdjustment = true
+        
     }
     
     @IBAction func goBackAction(_ sender: Any) {
-        self.tabBarController?.selectedIndex = 0
+        self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func showMenuAction(_ sender: Any) {
@@ -34,7 +41,7 @@ class AccountVC: ButtonBarPagerTabStripViewController, UIPopoverPresentationCont
         
         vc.accountVC = self
             vc.modalPresentationStyle = UIModalPresentationStyle.popover
-            vc.preferredContentSize = CGSize(width: 240, height: 320)
+            vc.preferredContentSize = CGSize(width: 200, height: 240)
             
             let popover: UIPopoverPresentationController = vc.popoverPresentationController!
             
@@ -66,11 +73,11 @@ class AccountVC: ButtonBarPagerTabStripViewController, UIPopoverPresentationCont
         
         let profileVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
         let resetPassVC = self.storyboard?.instantiateViewController(withIdentifier: "ResetPassVC") as! ResetPassVC
-        let addressVC = self.storyboard?.instantiateViewController(withIdentifier: "AddressVC") as! AddressVC
+        let wishVC = self.storyboard?.instantiateViewController(withIdentifier: "WishListVC") as! WishListVC
         let ordersVC = self.storyboard?.instantiateViewController(withIdentifier: "OrdersVC") as! OrdersVC
-        let rewardsVC = self.storyboard?.instantiateViewController(withIdentifier: "RewardsVC") as! RewardsVC
+    
         
-        return [profileVC, resetPassVC, addressVC, ordersVC, rewardsVC]
+        return [profileVC, ordersVC, wishVC, resetPassVC]
     }
     /*
     // MARK: - Navigation

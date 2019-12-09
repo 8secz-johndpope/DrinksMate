@@ -79,6 +79,12 @@ class ResetPassVC: UIViewController, IndicatorInfoProvider  {
             return
         }
         
+        let user = AppUtil.user.userEmail!
+        let password = AppUtil.user.userHashPassword!
+        let credentialData = "\(user)===6:\(password)".data(using: String.Encoding.utf8)!
+        let base64Credentials = credentialData.base64EncodedString(options: [])
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        
         let oldhashData = self.passOldTxt.text!.data(using: .utf8)?.sha1()
         let oldhashPass = oldhashData?.base64EncodedString()
         
@@ -86,10 +92,10 @@ class ResetPassVC: UIViewController, IndicatorInfoProvider  {
             .text!.data(using: .utf8)?.sha1()
         let newhashPass = newhashData?.base64EncodedString()
         
-        let url = URL(string: AppUtil.serverURL + "auth/resetpasswordwhileloggedout")
+        let url = URL(string: AppUtil.serverURL + "auth/resetpassword")
         let params : Parameters = ["clientId": 6, "userEmail":AppUtil.user.userEmail!,"oldHashPassword": oldhashPass!, "newHashPassword": newhashPass!]
         
-        Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
+        Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
             
             HUD.hide()
             guard response.result.isSuccess else {
@@ -107,6 +113,9 @@ class ResetPassVC: UIViewController, IndicatorInfoProvider  {
             else {
                 AppUtil.user = DrinkUser()
                 AppUtil.user.userHashPassword = status
+                UserDefaults.standard.setValue(AppUtil.user.userHashPassword, forKey: "user_password")
+                
+                self.showMessage(message: "Password Changed!")
             }
         }
     }
@@ -115,6 +124,13 @@ class ResetPassVC: UIViewController, IndicatorInfoProvider  {
         PKHUD.sharedHUD.contentView = PKHUDErrorView(title: nil, subtitle: message)
         PKHUD.sharedHUD.show()
         PKHUD.sharedHUD.hide(afterDelay: 2)
+    }
+    
+    func showMessage(message: String) {
+        let banner = NotificationBanner(title: nil, subtitle: message, style: .success)
+        banner.duration = 1
+        banner.show(queuePosition: .front, bannerPosition: .bottom, queue: .default, on: self)
+        
     }
     /*
     // MARK: - Navigation
