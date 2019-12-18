@@ -3686,13 +3686,58 @@
                                 <rect key="frame" x="0.0" y="80" width="414" height="782"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8Z-Ac-CMy">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="payment" translatesAutoresizingMaskIntoConstraints="NO" id="poV-9d-eB1">
+                                        <rect key="frame" x="132" y="312" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="iRH-bc-PYh"/>
+                                            <constraint firstAttribute="width" constant="150" id="lT5-g6-ciy"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Successful!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yga-Sr-ksd">
+                                        <rect key="frame" x="8" y="470" width="398" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="W5C-RJ-Odl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please pay at the time of delivery." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fab-N2-vrV">
+                                        <rect key="frame" x="8" y="499" width="398" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="H50-Jb-mFS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Yga-Sr-ksd" secondAttribute="trailing" constant="8" id="J3R-rz-QaO"/>
+                                    <constraint firstItem="Yga-Sr-ksd" firstAttribute="top" secondItem="poV-9d-eB1" secondAttribute="bottom" constant="8" id="MDU-rE-GhJ"/>
+                                    <constraint firstItem="fab-N2-vrV" firstAttribute="top" secondItem="Yga-Sr-ksd" secondAttribute="bottom" constant="8" id="MoK-7b-e2Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="fab-N2-vrV" secondAttribute="trailing" constant="8" id="d0J-K8-cx2"/>
+                                    <constraint firstItem="Yga-Sr-ksd" firstAttribute="leading" secondItem="J8Z-Ac-CMy" secondAttribute="leading" constant="8" id="d2j-bJ-rrJ"/>
+                                    <constraint firstItem="fab-N2-vrV" firstAttribute="leading" secondItem="J8Z-Ac-CMy" secondAttribute="leading" constant="8" id="edn-V7-OYn"/>
+                                    <constraint firstItem="poV-9d-eB1" firstAttribute="centerY" secondItem="J8Z-Ac-CMy" secondAttribute="centerY" id="gcV-D5-QlM"/>
+                                    <constraint firstItem="poV-9d-eB1" firstAttribute="centerX" secondItem="J8Z-Ac-CMy" secondAttribute="centerX" id="ieH-pb-gmM"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Bvl-yC-biX" firstAttribute="leading" secondItem="VfF-Bd-QQG" secondAttribute="leading" id="Dwi-Sm-egl"/>
+                            <constraint firstItem="J8Z-Ac-CMy" firstAttribute="trailing" secondItem="VfF-Bd-QQG" secondAttribute="trailing" id="Lns-1d-Nfm"/>
                             <constraint firstItem="Bvl-yC-biX" firstAttribute="bottom" secondItem="VfF-Bd-QQG" secondAttribute="bottom" id="P0P-oY-UK9"/>
                             <constraint firstItem="Bvl-yC-biX" firstAttribute="trailing" secondItem="VfF-Bd-QQG" secondAttribute="trailing" id="RZq-4i-wqG"/>
+                            <constraint firstItem="J8Z-Ac-CMy" firstAttribute="top" secondItem="iSm-6z-jPe" secondAttribute="bottom" constant="8" symbolic="YES" id="WYr-wV-Sqx"/>
                             <constraint firstItem="iSm-6z-jPe" firstAttribute="trailing" secondItem="VfF-Bd-QQG" secondAttribute="trailing" id="Yp4-TE-99j"/>
+                            <constraint firstItem="J8Z-Ac-CMy" firstAttribute="bottom" secondItem="VfF-Bd-QQG" secondAttribute="bottom" id="ZOW-4C-f8d"/>
+                            <constraint firstItem="J8Z-Ac-CMy" firstAttribute="leading" secondItem="VfF-Bd-QQG" secondAttribute="leading" id="c8S-li-BBR"/>
                             <constraint firstItem="iSm-6z-jPe" firstAttribute="top" secondItem="hLM-zX-x7D" secondAttribute="top" constant="20" id="g96-f6-d2X"/>
                             <constraint firstItem="Bvl-yC-biX" firstAttribute="top" secondItem="iSm-6z-jPe" secondAttribute="bottom" id="mkU-Yy-5d0"/>
                             <constraint firstItem="iSm-6z-jPe" firstAttribute="leading" secondItem="VfF-Bd-QQG" secondAttribute="leading" id="qvc-ZJ-s5D"/>
@@ -3701,6 +3746,9 @@
                     </view>
                     <connections>
                         <outlet property="menuBtn" destination="3P4-th-gct" id="fhz-gV-2St"/>
+                        <outlet property="paymentView" destination="J8Z-Ac-CMy" id="3dC-ld-Wgf"/>
+                        <outlet property="statusLbl" destination="Yga-Sr-ksd" id="GMk-l2-DHg"/>
+                        <outlet property="subLbl" destination="fab-N2-vrV" id="z5h-PP-0XO"/>
                         <outlet property="webView" destination="Bvl-yC-biX" id="da5-jZ-KYi"/>
                     </connections>
                 </viewController>
@@ -4677,6 +4725,7 @@
         <image name="notification" width="36" height="36"/>
         <image name="option" width="36" height="36"/>
         <image name="orders" width="36" height="36"/>
+        <image name="payment" width="395" height="512"/>
         <image name="reset" width="36" height="36"/>
         <image name="rewards" width="36" height="36"/>
         <image name="search_glass" width="36" height="36"/>

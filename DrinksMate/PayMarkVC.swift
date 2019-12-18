@@ -16,6 +16,10 @@ class PayMarkVC: UIViewController, UIPopoverPresentationControllerDelegate, UIWe
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var webView: UIWebView!
     
+    @IBOutlet weak var paymentView: UIView!
+    @IBOutlet weak var statusLbl: UILabel!
+    @IBOutlet weak var subLbl: UILabel!
+    
     var orderId : Int!
     var totalBudget : Double!
     
@@ -52,9 +56,56 @@ class PayMarkVC: UIViewController, UIPopoverPresentationControllerDelegate, UIWe
 
             self.webView.loadRequest(request)
         }
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
         
     }
     
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        webView.loadRequest(URLRequest(url: URL(string: "")!))
+    }
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
+        
+        let urlStr = request.url!.absoluteString
+        if (urlStr.contains("https://app/")) {
+            
+            let url = URL(string: AppUtil.serverURL + "payment/status")!
+            
+            let headers = AppUtil.user.getAuthentification()
+            let params = ["orderId" : self.orderId]
+            Alamofire.request(url, method: .get, parameters: params as Parameters, encoding: URLEncoding.queryString, headers: headers).validate().responseJSON { response in
+                
+                self.paymentView.isHidden = false
+                
+                guard response.result.isSuccess else {
+
+                    return
+                }
+                
+                let order = Order(order: response.result.value as! [String : Any])
+                
+                if (order.paymentStatus != "SUCCESSFUL") {
+                    self.statusLbl.text = "PAYMENT DUE!"
+                    self.subLbl.isHidden = false
+                }
+                else {
+                    self.statusLbl.text = "PAYMENT SUCCESSFUL!"
+                    self.subLbl.isHidden = true
+                }
+                
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrdersVC") as! OrdersVC
+                self.present(vc, animated: false, completion: nil)
+            }
+        }
+        
+        return true
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        
+    }
     
     @IBAction func notificationAction(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
