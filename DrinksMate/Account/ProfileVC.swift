@@ -82,10 +82,11 @@ class ProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegate, I
         }
         
         let url = URL(string: AppUtil.serverURL + "auth/update")
-        let params : Parameters = ["clientId": 6, "userEmail":AppUtil.user.userEmail!, "userHashPassword": AppUtil.user.userHashPassword!, "userName": self.nameTxt.text!, "userPhonenumber": self.phoneTxt.text!, "userId":0,"userLoyaltyPoints":0,"userReferral":0]
+        let params : Parameters = ["clientId": 6, "userEmail":AppUtil.user.userEmail!, "userHashPassword": AppUtil.user.userHashPassword!, "userName": self.nameTxt.text!, "userPhonenumber": self.phoneTxt.text!, "userId":AppUtil.user.userId!]
+        let headers = AppUtil.user.getAuthentification()
 
         HUD.show(.progress)
-        Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
+        Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
             
             HUD.hide()
             guard response.result.isSuccess else {
@@ -111,6 +112,7 @@ class ProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegate, I
     @IBAction func addNewAddressAction(_ sender: Any) {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectAddressVC") as! SelectAddressVC
+        vc.prevVC = self
         self.present(vc, animated: false, completion: nil)
     }
     

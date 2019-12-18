@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import PKHUD
 import NotificationBannerSwift
+import MediaPlayer
 
 class FirstVC: UIViewController {
 
@@ -20,6 +21,7 @@ class FirstVC: UIViewController {
     @IBOutlet weak var logoImg: UIImageView!
     @IBOutlet weak var homeImg: UIImageView!
     
+    var player : AVPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,31 +29,58 @@ class FirstVC: UIViewController {
             self.logoImg.center.x = self.logoImg.center.x + 200
         }) { (isComplete) in
             // Do any additional setup after loading the view.
-            let url = URL(string: AppUtil.serverURL + "features/6")
-            
-            // Config api
-            Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
-                        
-                guard response.result.isSuccess else {
-                    return
-                }
+            self.playVideo()
+        }
+    }
+    
+    func playVideo() {
 
-                AppUtil.config = response.result.value as? [String: Any]
-                self.showMessage(msg: "Configuration Up To Date!")
-                
-                self.homeImg.isHidden = true
-                self.logoImg.isHidden = true
-                
-                let loginStatus = UserDefaults.standard.bool(forKey : "user_login")
-                
-                if (loginStatus) {
-                    self.backView.isHidden = true
-                    self.ageView.isHidden = true
-                    
-                    self.autoLogin()
-                }
+        let filepath: String? = Bundle.main.path(forResource: "splash_video", ofType: "mp4")
+        if let filepath = filepath {
+            let fileURL = URL.init(fileURLWithPath: filepath)
+            player = AVPlayer(url: fileURL)
+            let playerLayer = AVPlayerLayer(player: player)
+            // Register for notification
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(playerItemDidReachEnd),
+                                                             name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
+                                                             object: nil) // Add observer
+
+            playerLayer.frame = self.view.bounds
+            self.view.layer.addSublayer(playerLayer)
+            player.play()
+        }
+    }
+    
+    // Notification Handling
+    @objc func playerItemDidReachEnd(notification: NSNotification) {
+        let url = URL(string: AppUtil.serverURL + "features/6")
+        // Config api
+        Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
+
+            guard response.result.isSuccess else {
+                return
+            }
+
+            AppUtil.config = response.result.value as? [String: Any]
+            self.showMessage(msg: "Configuration Up To Date!")
+
+            self.homeImg.isHidden = true
+            self.logoImg.isHidden = true
+
+            let loginStatus = UserDefaults.standard.bool(forKey : "user_login")
+
+            if (loginStatus) {
+                self.backView.isHidden = true
+                self.ageView.isHidden = true
+
+                self.autoLogin()
             }
         }
+    }
+    // Remove Observer
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func autoLogin() {

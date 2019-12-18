@@ -18,6 +18,7 @@ class WishListVC: UIViewController,UITableViewDataSource, UITableViewDelegate, I
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerHeight: NSLayoutConstraint!
     @IBOutlet weak var menuBtn: UIButton!
+    @IBOutlet weak var notFoundLbl: UILabel!
     
     var isSub : Bool! = false
     
@@ -29,15 +30,14 @@ class WishListVC: UIViewController,UITableViewDataSource, UITableViewDelegate, I
             self.headerView.isHidden = true
             self.headerHeight.constant = -20
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
         AppUtil.wishlist = []
         
-        let user = AppUtil.user.userEmail!
-        let password = AppUtil.user.userHashPassword!
-        let credentialData = "\(user)===6:\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
-        
+        let headers = AppUtil.user.getAuthentification()
         let url = URL(string: AppUtil.serverURL + "wishlist/list")
         HUD.show(.progress)
         Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
@@ -57,6 +57,13 @@ class WishListVC: UIViewController,UITableViewDataSource, UITableViewDelegate, I
                 menuItem.setMenuItem(item: item)
                 
                 AppUtil.wishlist.append(menuItem)
+            }
+            
+            if (AppUtil.wishlist.count == 0) {
+                self.notFoundLbl.isHidden = false
+            }
+            else {
+                self.notFoundLbl.isHidden = true
             }
             
             self.wishTable.reloadData()
@@ -80,7 +87,9 @@ class WishListVC: UIViewController,UITableViewDataSource, UITableViewDelegate, I
         let titleLbl = cell.viewWithTag(11) as! UILabel
         let priceLbl = cell.viewWithTag(12) as! UILabel
         
-        imageView.sd_setImage(with: URL(string: menuItem.menuitemPhoto!), placeholderImage: UIImage(named: "beer_full.png"))
+        imageView.sd_setImage(with: URL(string: menuItem.menuitemPhoto!)) { (image, error, type, url) in
+            imageView.image = image
+        }
         
         titleLbl.text = menuItem.menuitemName!
         priceLbl.text = "$\(menuItem.menuitemPrice!)"
@@ -104,6 +113,12 @@ class WishListVC: UIViewController,UITableViewDataSource, UITableViewDelegate, I
         let banner = NotificationBanner(title: nil, subtitle: message, style: .danger)
         banner.duration = 1
         banner.show(queuePosition: .front, bannerPosition: .bottom, queue: .default, on: self)
+    }
+    
+    @IBAction func notificationAction(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "NotificationVC") as! NotificationVC
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false, completion: nil)
     }
     
     @IBAction func menuAction(_ sender: Any) {

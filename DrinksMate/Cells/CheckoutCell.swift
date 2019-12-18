@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import NotificationBannerSwift
+import Alamofire
 
 class CheckoutCell: UITableViewCell, UITextViewDelegate {
 
@@ -19,6 +21,7 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
     
     var selectedAddress : UserAddress!
     var checkoutVC : CheckOutVC!
+    var tableView : UITableView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,6 +49,11 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
             textView.textColor = UIColor.lightGray
         }
     }
+    
+    func loadSelectedAddress() {
+        self.addressView.isHidden = false
+        self.addressLbl.text = self.selectedAddress.address
+    }
 
     @IBAction func promoApplyAction(_ sender: Any) {
     }
@@ -54,9 +62,47 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
         self.selectAddress()
     }
     
+    @IBAction func termsSelectAction(_ sender: Any) {
+        //self.termsSelect.isOn = !self.termsSelect.isOn
+    }
+    
     @IBAction func addLocationAction(_ sender: Any) {
         if (self.selectedAddress != nil) {
+            if (!self.termsSelect.isOn) {
+                
+                self.showMessage(message: "Please agree Terms and Conditions!")
+                return
+            }
             
+            let url = URL(string: AppUtil.serverURL + "checkout/updateorder")
+            
+            let orderId = Date().timeIntervalSince1970
+            var orderedItems = [] as! [[String : Any]]
+            
+            for item in AppUtil.cartsList {
+                let orderedItem = ["menuitemId" : item.menuitemId!, "quantity": item.cartsNumber!]
+                orderedItems.append(orderedItem)
+            }
+            
+            var comments = ""
+            if (self.commentsTxt.text.count > 0) {
+                comments = self.commentsTxt.text!
+            }
+            
+            let params = ["comments": comments, "deliveryAddressId":self.selectedAddress.addressId!, "entryId":0, "orderId": Int(orderId * 1000), "orderTotal": self.checkoutVC.totalBudget!, "orderedItems": orderedItems, "taxBreakdown":["amount":1.5495,"name":"GST"]] as [String : Any]
+            let headers = AppUtil.user.getAuthentification()
+            
+            Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
+                
+//                guard response.result.isSuccess else {
+//
+//                    return
+//                }
+                let vc = self.checkoutVC.storyboard?.instantiateViewController(withIdentifier: "PayMarkVC") as! PayMarkVC
+                vc.orderId = Int(orderId * 1000)
+                vc.totalBudget = self.checkoutVC.totalBudget!
+                self.checkoutVC.present(vc, animated: false, completion: nil)
+            }
         }
         else {
             self.selectAddress()
@@ -65,6 +111,7 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
     }
     
     func selectAddress() {
+        
         let addressDialog = UIAlertController(title: "Select Delivery Address", message: nil, preferredStyle: .alert)
         
         for address in AppUtil.addressList {
@@ -81,12 +128,36 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
         
         let anotherAction = UIAlertAction(title: "New Address", style: .default) { (action) in
             let vc = self.checkoutVC.storyboard?.instantiateViewController(withIdentifier: "SelectAddressVC") as! SelectAddressVC
+            vc.prevVC = self.checkoutVC
             self.checkoutVC.present(vc, animated: false, completion: nil)
         }
         
         addressDialog.addAction(anotherAction)
         
         self.checkoutVC.present(addressDialog, animated: true, completion: nil)
+    }
+    
+    func showPaymentDialog() {
+        let addressDialog = UIAlertController(title: "Select Payment Transfer", message: nil, preferredStyle: .alert)
+                    
+        let card = UIAlertAction(title: "Credit Card / Bank Transfer", style: .default) { (action) in
+
+        }
+        
+        let cod = UIAlertAction(title: "COD", style: .default) { (action) in
+
+        }
+        
+        addressDialog.addAction(card)
+        addressDialog.addAction(cod)
+        
+        self.checkoutVC.present(addressDialog, animated: true, completion: nil)
+    }
+    
+    func showMessage(message: String) {
+        let banner = NotificationBanner(title: nil, subtitle: message, style: .success)
+        banner.duration = 1
+        banner.show(queuePosition: .front, bannerPosition: .bottom, queue: .default, on: self.checkoutVC)
     }
     
 }

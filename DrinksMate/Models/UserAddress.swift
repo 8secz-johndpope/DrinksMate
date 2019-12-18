@@ -23,6 +23,7 @@ class UserAddress: NSObject {
     
     public init(address : [String : Any]) {
         self.address = address["address"] as? String
+        self.addressId = address["addressId"] as? Int
         self.addressPin = address["addressPin"] as? String
         self.addressCity = address["addressCity"] as? String
         self.addressState = address["addressState"] as? String

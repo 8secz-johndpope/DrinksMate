@@ -286,7 +286,9 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
     }
     
     @IBAction func notificationAction(_ sender: Any) {
-        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "NotificationVC") as! NotificationVC
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false, completion: nil)
     }
     
     @IBAction func menuAction(_ sender: Any) {

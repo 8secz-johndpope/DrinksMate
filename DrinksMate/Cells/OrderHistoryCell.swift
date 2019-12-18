@@ -26,6 +26,10 @@ class OrderHistoryCell: UITableViewCell, UITableViewDataSource, UITableViewDeleg
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 30
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (self.order != nil) {
             return self.order.orderedItems.count + 2
@@ -47,7 +51,26 @@ class OrderHistoryCell: UITableViewCell, UITableViewDataSource, UITableViewDeleg
                 let priceLbl = table_cell.viewWithTag(11) as! UILabel
                 
                 titleLbl.text = "#\(self.order.orderId!)"
-                priceLbl.text = self.order.paymentResponse.transactionDate
+                
+                let format = DateFormatter()
+                
+                if (self.order.paymentResponse != nil) {
+                    
+                    format.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                    let due_date = format.date(from: self.order.paymentResponse.transactionDate!)
+                    format.dateFormat = "MMM dd, yyyy HH:mm a"
+                    format.amSymbol = "AM"
+                    format.pmSymbol = "PM"
+                    
+                    priceLbl.text = format.string(from: due_date!)
+                }
+                else {
+                    format.dateFormat = "MMM dd, yyyy HH:mm a"
+                    format.amSymbol = "AM"
+                    format.pmSymbol = "PM"
+                    
+                    priceLbl.text = format.string(from: Date(timeIntervalSince1970: TimeInterval(self.order.orderId! / 1000)))
+                }
                 
                 return table_cell
             
@@ -57,7 +80,11 @@ class OrderHistoryCell: UITableViewCell, UITableViewDataSource, UITableViewDeleg
                 let titleLbl = table_cell.viewWithTag(10) as! UILabel
                 let priceLbl = table_cell.viewWithTag(11) as! UILabel
                 
-                titleLbl.text = self.order.paymentStatus
+                titleLbl.text = "PAYMENT " + self.order.paymentStatus
+                if (self.order.paymentStatus != "SUCCESSFUL") {
+                    titleLbl.text = "PAYMENT DUE"
+                }
+                
                 priceLbl.text = "$\(self.order.orderTotal!)"
                 
                 return table_cell
@@ -68,7 +95,7 @@ class OrderHistoryCell: UITableViewCell, UITableViewDataSource, UITableViewDeleg
                 let titleLbl = table_cell.viewWithTag(10) as! UILabel
                 let priceLbl = table_cell.viewWithTag(11) as! UILabel
                 let menuItem = self.order.orderedItems[indexPath.row - 1]
- //               titleLbl.text = menuItem.menuitemName!
+                titleLbl.text = menuItem.menuitemName!
                 priceLbl.text = "$\(menuItem.menuitemPurchasePrice!)"
                 
                 return table_cell

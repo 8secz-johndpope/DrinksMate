@@ -66,6 +66,7 @@ class WishlistCell: UITableViewCell {
         
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
             
+            AppUtil.wishlist.remove(at: AppUtil.wishlist.firstIndex(of: self.menuItem)!)
             self.tableView.reloadData()
         }
     }

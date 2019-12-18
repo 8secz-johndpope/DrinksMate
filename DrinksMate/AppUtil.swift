@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GooglePlaces
+import GoogleMaps
 
 class AppUtil: NSObject {
     
@@ -17,6 +19,8 @@ class AppUtil: NSObject {
     public static var config : [String : Any]!
     public static var categories : [MenuCategory]!
     public static var selectedCategory : Int!
+    public static var isAddressSelected : Bool!
+    
     public static var wishlist : [MenuItem]!
     public static var cartsList : [MenuItem]!
     public static var addressList : [UserAddress]!

@@ -41,7 +41,9 @@ class CategoryCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
         let imageView = cell.viewWithTag(10) as! UIImageView
         let titleLbl = cell.viewWithTag(11) as! UILabel
         
-        imageView.sd_setImage(with: URL(string: category.photo!), placeholderImage: UIImage(named: "beer_full.png"))
+        imageView.sd_setImage(with: URL(string: category.photo!)) { (image, error, type, url) in
+            imageView.image = image
+        }
         
         titleLbl.text = category.categoryName!
         

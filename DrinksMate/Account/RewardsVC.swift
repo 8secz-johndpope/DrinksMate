@@ -23,6 +23,12 @@ class RewardsVC: UIViewController, IndicatorInfoProvider, UIPopoverPresentationC
         return "Rewards"
     }
     
+    @IBAction func notificationAction(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "NotificationVC") as! NotificationVC
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false, completion: nil)
+    }
+    
     @IBAction func menuAction(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
         vc.modalPresentationStyle = UIModalPresentationStyle.popover

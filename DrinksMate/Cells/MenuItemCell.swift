@@ -23,11 +23,12 @@ class MenuItemCell: UICollectionViewCell {
     func setMenuItemCell (item : MenuItem) {
         self.menuItem = item
         
-        photoImg.sd_setImage(with: URL(string: item.menuitemPhoto!), placeholderImage: UIImage(named: "beer_full.png"))
+        photoImg.sd_setImage(with: URL(string: item.menuitemPhoto!)) { (image, error, type, url) in
+            self.photoImg.image = image
+        }
         
         nameLbl.text = item.menuitemName!
         priceLbl.text = "$\(item.menuitemPrice!)"
-        
         
         if (self.menuItem.cartsNumber > 0) {
             self.cartView.isHidden = false

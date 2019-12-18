@@ -44,7 +44,9 @@ class SearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
         let titleLbl = cell.viewWithTag(11) as! UILabel
         let priceLbl = cell.viewWithTag(12) as! UILabel
         
-        imageView.sd_setImage(with: URL(string: menuItem.menuitemPhoto!), placeholderImage: UIImage(named: ""))
+        imageView.sd_setImage(with: URL(string: menuItem.menuitemPhoto!)) { (image, error, type, url) in
+            imageView.image = image
+        }
         
         titleLbl.text = menuItem.menuitemName!
         priceLbl.text = "$\(menuItem.menuitemPrice!)"

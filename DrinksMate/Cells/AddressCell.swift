@@ -43,9 +43,8 @@ class AddressCell: UITableViewCell {
     }
     
     @IBAction func deleteAction(_ sender: Any) {
-        let indexPath = self.tableView.indexPath(for: self)
-        AppUtil.addressList.remove(at: indexPath!.row)
-        self.tableView.reloadData()
+        
+        self.deleteAddress()
     }
     
     @IBAction func editAction(_ sender: Any) {
@@ -79,8 +78,10 @@ class AddressCell: UITableViewCell {
         let params = ["addressId": self.userAddress.addressId!, "address": self.userAddress.address!] as [String : Any]
         let headers = AppUtil.user.getAuthentification()
         
-        Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
+        Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().response { response in
             
+            let indexPath = self.tableView.indexPath(for: self)
+            AppUtil.addressList.remove(at: indexPath!.row)
             self.tableView.reloadData()
         }
     }

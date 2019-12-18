@@ -114,6 +114,11 @@ class AddressVC: UIViewController, CLLocationManagerDelegate, UISearchBarDelegat
                 addresses.addAction(addressAction)
                 if (addresses.actions.count == 3) {
                     
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                        
+                    }
+                    addresses.addAction(cancelAction)
+                    
                     self.present(addresses, animated: true, completion: nil)
                     return
                 }
@@ -135,7 +140,16 @@ class AddressVC: UIViewController, CLLocationManagerDelegate, UISearchBarDelegat
         let headers = AppUtil.user.getAuthentification()
         
         let url = URL(string: AppUtil.serverURL + "checkout/saveaddress")
-        let params = ["address": address, "addressCity":self.selectedAddress.subLocality!, "addressPin":self.selectedAddress.postalCode!, "addressState":self.selectedAddress.administrativeArea!, "latitude": self.selectedAddress.coordinate.latitude, "longitude":self.selectedAddress.coordinate.longitude] as [String : Any]
+        
+        var params = [:] as [String : Any]
+        
+        if (self.selectedAddress != nil) {
+            params = ["address": address, "addressCity":self.selectedAddress.subLocality!, "addressPin":self.selectedAddress.postalCode!, "addressState":self.selectedAddress.administrativeArea!, "latitude": self.selectedAddress.coordinate.latitude, "longitude":self.selectedAddress.coordinate.longitude]
+        }
+        else {
+            params = ["address": address, "addressCity":"", "addressPin":"", "addressState":"", "latitude": 0.0, "longitude":0.0]
+        }
+        
 
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
 
@@ -143,9 +157,8 @@ class AddressVC: UIViewController, CLLocationManagerDelegate, UISearchBarDelegat
 
                 return
             }
-
-            //let value = response.result.value
             
+            AppUtil.isAddressSelected = true
             self.dismiss(animated: false, completion: nil)
         }
  
@@ -169,6 +182,7 @@ class AddressVC: UIViewController, CLLocationManagerDelegate, UISearchBarDelegat
         // Specify a filter.
         let filter = GMSAutocompleteFilter()
         filter.type = .address
+        filter.country = "NZ"
         autocompleteController.autocompleteFilter = filter
 
         // Display the autocomplete view controller.
@@ -176,7 +190,6 @@ class AddressVC: UIViewController, CLLocationManagerDelegate, UISearchBarDelegat
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-
         self.mapView.clear()
         
         self.mapView.camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude,
@@ -188,6 +201,19 @@ class AddressVC: UIViewController, CLLocationManagerDelegate, UISearchBarDelegat
         
         self.mapView.animate(to: self.mapView.camera)
         dismiss(animated: true, completion: nil)
+        
+        placesClient.lookUpPlaceID(place.placeID!) { (place, error) in
+            
+            GMSGeocoder().reverseGeocodeCoordinate((place?.coordinate)!) { (response, error) in
+                if (error != nil) {
+                    return
+                }
+                
+                let value = response?.results()
+                self.selectedAddress = value![0]
+            }
+        }
+
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
@@ -201,6 +227,8 @@ class AddressVC: UIViewController, CLLocationManagerDelegate, UISearchBarDelegat
     func viewController(_ viewController: GMSAutocompleteViewController, didSelect prediction: GMSAutocompletePrediction) -> Bool {
         
         self.addressLbl.text = prediction.attributedFullText.string
+        
+        
         return true
     }
     

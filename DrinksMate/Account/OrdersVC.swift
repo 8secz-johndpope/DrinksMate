@@ -20,6 +20,11 @@ class OrdersVC: UIViewController, UITableViewDataSource, UITableViewDelegate, In
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
         self.orderList = []
         self.loadOrderHistory()
     }
@@ -54,7 +59,7 @@ class OrdersVC: UIViewController, UITableViewDataSource, UITableViewDelegate, In
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         let orderItem = self.orderList[indexPath.row]
-        return CGFloat(44 * (orderItem.orderedItems.count + 2) + 22)
+        return CGFloat(30 * (orderItem.orderedItems.count + 2) + 24)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

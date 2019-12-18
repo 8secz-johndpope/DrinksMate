@@ -7,47 +7,63 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E4530FD4-9F59-4FD7-9C76-FE8FD3AA1ADA"
+            uuid = "DB3179CB-79D1-4C6A-B739-D01AA05A97C6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DrinksMate/Account/ResetPassVC.swift"
+            filePath = "DrinksMate/Account/ProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "resetPasswordAction(_:)"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "saveProfileAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A4265206-6858-4BCF-B634-C885B57A6A5D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DrinksMate/Cells/AddressCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "updateAddress()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "E4530FD4-9F59-4FD7-9C76-FE8FD3AA1ADA - d922828cfbe485f5"
+                  uuid = "A4265206-6858-4BCF-B634-C885B57A6A5D - f3412bd4d4bdb487"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "DrinksMate.ResetPassVC.resetPasswordAction(Any) -&gt; ()"
+                  symbolName = "DrinksMate.AddressCell.updateAddress() -&gt; ()"
                   moduleName = "DrinksMate"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/leemingjin/Documents/Work/GitDrinksMate/DrinksMate/Account/ResetPassVC.swift"
+                  urlString = "file:///Users/leemingjin/Documents/Work/GitDrinksMate/DrinksMate/Cells/AddressCell.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "12580">
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "2032">
                </Location>
                <Location
-                  uuid = "E4530FD4-9F59-4FD7-9C76-FE8FD3AA1ADA - f833687f0d535194"
+                  uuid = "A4265206-6858-4BCF-B634-C885B57A6A5D - 82a9bc9e6fbfeb77"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in DrinksMate.ResetPassVC.resetPasswordAction(Any) -&gt; ()"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in DrinksMate.AddressCell.updateAddress() -&gt; ()"
                   moduleName = "DrinksMate"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/leemingjin/Documents/Work/GitDrinksMate/DrinksMate/Account/ResetPassVC.swift"
+                  urlString = "file:///Users/leemingjin/Documents/Work/GitDrinksMate/DrinksMate/Cells/AddressCell.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "132">
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "116">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -55,16 +71,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4B1D53D8-8991-4CE3-8821-06A792C488E4"
+            uuid = "45A247B9-301E-4D99-B6C2-48E7F7B76C7D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DrinksMate/Account/ResetPassVC.swift"
+            filePath = "DrinksMate/Cells/AddressCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "resetPasswordAction(_:)"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "editAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

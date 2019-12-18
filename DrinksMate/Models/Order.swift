@@ -48,9 +48,7 @@ class Order: NSObject {
             self.paymentResponse = Payment(payment: json!)
         } catch let error as NSError {
             print (error)
-        }
-        
-        
+        }   
     }
 
 }

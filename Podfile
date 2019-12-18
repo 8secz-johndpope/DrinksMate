@@ -24,7 +24,7 @@ target 'DrinksMate' do
 
   # Http Request and Response
   pod 'Alamofire'
-  
+  pod 'SWXMLHash', '~> 5.0.0'
   pod 'CryptoSwift', '~> 1.0'
   pod 'NotificationBannerSwift', '2.0.1'
   pod 'XLPagerTabStrip', '~> 9.0'

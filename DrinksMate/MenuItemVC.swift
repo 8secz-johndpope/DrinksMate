@@ -32,7 +32,9 @@ class MenuItemVC: UIViewController {
         if (self.menuItem != nil) {
             
             self.nameLbl.text = self.menuItem.menuitemName
-            self.photoImg.sd_setImage(with: URL(string: self.menuItem.menuitemPhoto!), placeholderImage: UIImage(named: "beer_full.png"))
+            self.photoImg.sd_setImage(with: URL(string: self.menuItem.menuitemPhoto!)) { (image, error, type, url) in
+                self.photoImg.image = image
+            }
             self.priceLbl.text = "$\(self.menuItem.menuitemPrice!)"
             self.infoLbl.text = self.menuItem.menuitemInfo
             

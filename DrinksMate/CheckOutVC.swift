@@ -12,6 +12,7 @@ import Alamofire
 class CheckOutVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    var selectedAddress : UserAddress!
     
     var totalBudget : Double!
     
@@ -19,6 +20,12 @@ class CheckOutVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        AppUtil.isAddressSelected = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
         let url = URL(string: AppUtil.serverURL + "checkout/addresses")
         let headers = AppUtil.user.getAuthentification()
         
@@ -34,8 +41,16 @@ class CheckOutVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             AppUtil.addressList = []
             for address in value {
                 let userAddress = UserAddress(address: address)
+                
+                if (AppUtil.isAddressSelected && userAddress.isDefault) {
+                    self.selectedAddress = userAddress
+                    AppUtil.isAddressSelected = false
+                }
+                
                 AppUtil.addressList.append(userAddress)
             }
+            
+            self.tableView.reloadData()
         }
     }
     
@@ -94,7 +109,13 @@ class CheckOutVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 cell_id = "last_cell"
                 let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath) as! CheckoutCell
                 table_cell.checkoutVC = self
-            
+                table_cell.tableView = tableView
+                if (self.selectedAddress != nil) {
+                    table_cell.selectedAddress = self.selectedAddress
+                    table_cell.loadSelectedAddress()
+                    self.selectedAddress = nil
+                }
+                
                 return table_cell
             
             default:

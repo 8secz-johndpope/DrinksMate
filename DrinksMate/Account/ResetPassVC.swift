@@ -130,7 +130,6 @@ class ResetPassVC: UIViewController, IndicatorInfoProvider  {
         let banner = NotificationBanner(title: nil, subtitle: message, style: .success)
         banner.duration = 1
         banner.show(queuePosition: .front, bannerPosition: .bottom, queue: .default, on: self)
-        
     }
     /*
     // MARK: - Navigation

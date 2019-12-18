@@ -9,6 +9,8 @@
 import UIKit
 
 class SelectAddressVC: UIViewController {
+    
+    var prevVC : UIViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,14 +21,17 @@ class SelectAddressVC: UIViewController {
     @IBAction func currentLocationAction(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddressVC") as! AddressVC
         vc.isOther = false
-
-        self.present(vc, animated: false, completion: nil)
+        self.dismiss(animated: false) {
+            self.prevVC.present(vc, animated: false, completion: nil)
+        }
     }
     
     @IBAction func otherLocationAction(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddressVC") as! AddressVC
         vc.isOther = true
-        self.present(vc, animated: false, completion: nil)
+        self.dismiss(animated: false) {
+            self.prevVC.present(vc, animated: false, completion: nil)
+        }
     }
     
     
