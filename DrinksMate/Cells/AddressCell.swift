@@ -50,7 +50,7 @@ class AddressCell: UITableViewCell {
     @IBAction func editAction(_ sender: Any) {
         if (self.addressTxt.isEditable) {
             self.addressTxt.isEditable = false
-            
+            self.addressTxt.resignFirstResponder()
             self.editBtn.setBackgroundImage(UIImage(named: "edit"), for: .normal)
             self.userAddress.address = self.addressTxt.text
             
@@ -58,6 +58,7 @@ class AddressCell: UITableViewCell {
         }
         else {
             self.addressTxt.isEditable = true
+            self.addressTxt.becomeFirstResponder()
             self.editBtn.setBackgroundImage(UIImage(named: "save"), for: .normal)
         }
     }

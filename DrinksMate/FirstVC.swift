@@ -22,6 +22,7 @@ class FirstVC: UIViewController {
     @IBOutlet weak var homeImg: UIImageView!
     
     var player : AVPlayer!
+    var playerLayer : AVPlayerLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,45 +40,48 @@ class FirstVC: UIViewController {
         if let filepath = filepath {
             let fileURL = URL.init(fileURLWithPath: filepath)
             player = AVPlayer(url: fileURL)
-            let playerLayer = AVPlayerLayer(player: player)
-            // Register for notification
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(playerItemDidReachEnd),
-                                                             name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
-                                                             object: nil) // Add observer
+            
+            playerLayer = AVPlayerLayer(player: player)
 
             playerLayer.frame = self.view.bounds
             self.view.layer.addSublayer(playerLayer)
             player.play()
+            
+            Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { (timer) in
+                timer.invalidate()
+                
+                let url = URL(string: AppUtil.serverURL + "features/6")
+                // Config api
+                Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
+
+                    self.player.pause()
+                    
+                    guard response.result.isSuccess else {
+                        return
+                    }
+
+                    AppUtil.config = response.result.value as? [String: Any]
+                    self.showMessage(msg: "Configuration Up To Date!")
+
+                    self.homeImg.isHidden = true
+                    self.logoImg.isHidden = true
+
+                    let loginStatus = UserDefaults.standard.bool(forKey : "user_login")
+
+                    if (loginStatus) {
+                        self.backView.isHidden = true
+                        self.ageView.isHidden = true
+
+                        self.autoLogin()
+                    }
+                    else {
+                        self.playerLayer.removeFromSuperlayer()
+                    }
+                }
+            }
         }
     }
     
-    // Notification Handling
-    @objc func playerItemDidReachEnd(notification: NSNotification) {
-        let url = URL(string: AppUtil.serverURL + "features/6")
-        // Config api
-        Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
-
-            guard response.result.isSuccess else {
-                return
-            }
-
-            AppUtil.config = response.result.value as? [String: Any]
-            self.showMessage(msg: "Configuration Up To Date!")
-
-            self.homeImg.isHidden = true
-            self.logoImg.isHidden = true
-
-            let loginStatus = UserDefaults.standard.bool(forKey : "user_login")
-
-            if (loginStatus) {
-                self.backView.isHidden = true
-                self.ageView.isHidden = true
-
-                self.autoLogin()
-            }
-        }
-    }
     // Remove Observer
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -87,12 +91,11 @@ class FirstVC: UIViewController {
         let url = URL(string: AppUtil.serverURL + "auth/login")
         let params : Parameters = ["clientId": 6, "userEmail":UserDefaults.standard.string(forKey: "user_email")!, "userHashPassword": UserDefaults.standard.string(forKey: "user_password")!]
 
-        HUD.show(.progress)
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
             
-            HUD.hide()
             guard response.result.isSuccess else {
                 
+                self.playerLayer.removeFromSuperlayer()
                 self.showErrorMessage(message: "Login Error!")
                 return
             }

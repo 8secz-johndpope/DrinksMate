@@ -1725,10 +1725,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Vl-BI-2Qz">
-                                <rect key="frame" x="0.0" y="244" width="414" height="446"/>
+                                <rect key="frame" x="0.0" y="244" width="414" height="524"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCt-1o-YVT">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="446"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="524"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="address_cell" rowHeight="80" id="q90-7G-EF2" customClass="AddressCell" customModule="DrinksMate" customModuleProvider="target">
@@ -1833,10 +1833,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ipb-UM-6A6">
-                                <rect key="frame" x="0.0" y="698" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="776" width="414" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3Y-gc-gu1">
-                                        <rect key="frame" x="42" y="0.0" width="332" height="60"/>
+                                        <rect key="frame" x="42" y="0.0" width="332" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="ADD NEW ADDRESS"/>
                                         <connections>
@@ -1846,7 +1846,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="7yN-VM-hqJ"/>
+                                    <constraint firstAttribute="height" constant="30" id="7yN-VM-hqJ"/>
                                     <constraint firstItem="Q3Y-gc-gu1" firstAttribute="top" secondItem="Ipb-UM-6A6" secondAttribute="top" id="UWM-4L-99C"/>
                                     <constraint firstItem="Q3Y-gc-gu1" firstAttribute="leading" secondItem="Ipb-UM-6A6" secondAttribute="leading" constant="42" id="WT2-NB-sfb"/>
                                     <constraint firstAttribute="bottom" secondItem="Q3Y-gc-gu1" secondAttribute="bottom" id="pgg-7R-PcN"/>
@@ -1854,7 +1854,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cct-LR-yki">
-                                <rect key="frame" x="40" y="778" width="334" height="44"/>
+                                <rect key="frame" x="40" y="806" width="334" height="44"/>
                                 <color key="backgroundColor" red="1" green="0.4319669169" blue="0.01263231029" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="wh2-5J-Fbj"/>
@@ -1875,8 +1875,8 @@
                             <constraint firstItem="jCr-S8-TOR" firstAttribute="trailing" secondItem="cct-LR-yki" secondAttribute="trailing" constant="40" id="5Qe-oT-JyV"/>
                             <constraint firstItem="SwS-AR-Ahp" firstAttribute="leading" secondItem="jCr-S8-TOR" secondAttribute="leading" id="7Wo-rr-Rg5"/>
                             <constraint firstItem="8Vl-BI-2Qz" firstAttribute="top" secondItem="h8M-pS-4ua" secondAttribute="bottom" id="8Ik-VC-20a"/>
-                            <constraint firstItem="jCr-S8-TOR" firstAttribute="bottom" secondItem="cct-LR-yki" secondAttribute="bottom" constant="40" id="AsJ-uM-Cfj"/>
-                            <constraint firstItem="cct-LR-yki" firstAttribute="top" secondItem="Ipb-UM-6A6" secondAttribute="bottom" constant="20" id="Fh5-hj-eLU"/>
+                            <constraint firstItem="jCr-S8-TOR" firstAttribute="bottom" secondItem="cct-LR-yki" secondAttribute="bottom" constant="12" id="AsJ-uM-Cfj"/>
+                            <constraint firstItem="cct-LR-yki" firstAttribute="top" secondItem="Ipb-UM-6A6" secondAttribute="bottom" id="Fh5-hj-eLU"/>
                             <constraint firstItem="Ipb-UM-6A6" firstAttribute="trailing" secondItem="jCr-S8-TOR" secondAttribute="trailing" id="IHg-Y5-JES"/>
                             <constraint firstItem="cct-LR-yki" firstAttribute="leading" secondItem="jCr-S8-TOR" secondAttribute="leading" constant="40" id="RBS-un-g6V"/>
                             <constraint firstItem="h8M-pS-4ua" firstAttribute="leading" secondItem="jCr-S8-TOR" secondAttribute="leading" id="VZD-w2-yJl"/>
