@@ -64,6 +64,7 @@
 		679A5174237BF5A50050A41E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679A5173237BF5A50050A41E /* CategoryCell.swift */; };
 		67A05A0C2377F22300C49877 /* about_us.htm in Resources */ = {isa = PBXBuildFile; fileRef = 67A05A0B2377F22300C49877 /* about_us.htm */; };
 		67A05A0E2377F47F00C49877 /* ContactUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A05A0D2377F47F00C49877 /* ContactUsVC.swift */; };
+		67AB3BC023B4CD5B0081B479 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67AB3BBF23B4CD5A0081B479 /* GoogleService-Info.plist */; };
 		67E2CCE12389F64700EDF979 /* SubCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E2CCE02389F64700EDF979 /* SubCategory.swift */; };
 		67F3BFEA2368AD8F0075B0B2 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F3BFE92368AD8F0075B0B2 /* AppUtil.swift */; };
 		67F8F0252369C51D00CB667C /* DrinkUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8F0242369C51D00CB667C /* DrinkUser.swift */; };
@@ -151,6 +152,8 @@
 		679A5173237BF5A50050A41E /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		67A05A0B2377F22300C49877 /* about_us.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about_us.htm; sourceTree = "<group>"; };
 		67A05A0D2377F47F00C49877 /* ContactUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsVC.swift; sourceTree = "<group>"; };
+		67AB3BBF23B4CD5A0081B479 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		67AB3BC123B4F84A0081B479 /* DrinksMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DrinksMate.entitlements; sourceTree = "<group>"; };
 		67E2CCE02389F64700EDF979 /* SubCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategory.swift; sourceTree = "<group>"; };
 		67F3BFE92368AD8F0075B0B2 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
 		67F8F0242369C51D00CB667C /* DrinkUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkUser.swift; sourceTree = "<group>"; };
@@ -243,6 +246,7 @@
 		67739D772367034300B43C34 /* DrinksMate */ = {
 			isa = PBXGroup;
 			children = (
+				67AB3BC123B4F84A0081B479 /* DrinksMate.entitlements */,
 				679A516A237B393B0050A41E /* Models */,
 				679A5165237A9A0D0050A41E /* Util */,
 				672423E92379C4A600A2A170 /* Account */,
@@ -255,6 +259,7 @@
 				67739D7E2367034300B43C34 /* Main.storyboard */,
 				67739D812367034A00B43C34 /* Assets.xcassets */,
 				67739D832367034A00B43C34 /* LaunchScreen.storyboard */,
+				67AB3BBF23B4CD5A0081B479 /* GoogleService-Info.plist */,
 				67739D862367034A00B43C34 /* Info.plist */,
 				67739DA82367810B00B43C34 /* FirstVC.swift */,
 				67739DAA236782CF00B43C34 /* SigninVC.swift */,
@@ -450,6 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6788060D23A9810200F5C533 /* splash_video.mp4 in Resources */,
+				67AB3BC023B4CD5B0081B479 /* GoogleService-Info.plist in Resources */,
 				67739D852367034A00B43C34 /* LaunchScreen.storyboard in Resources */,
 				67739D822367034A00B43C34 /* Assets.xcassets in Resources */,
 				670A0E83236881A10000EE68 /* privacy_policy.htm in Resources */,
@@ -763,8 +769,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = DrinksMate/DrinksMate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = H77AGDMGJC;
 				INFOPLIST_FILE = DrinksMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -787,8 +794,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = DrinksMate/DrinksMate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = H77AGDMGJC;
 				INFOPLIST_FILE = DrinksMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

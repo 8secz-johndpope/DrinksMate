@@ -24,4 +24,6 @@ class AppUtil: NSObject {
     public static var wishlist : [MenuItem]!
     public static var cartsList : [MenuItem]!
     public static var addressList : [UserAddress]!
+    
+    public static var fcmToken : String!
 }

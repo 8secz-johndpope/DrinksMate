@@ -26,12 +26,18 @@ class FirstVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         UIView.animate(withDuration: 3, animations: {
             self.logoImg.center.x = self.logoImg.center.x + 200
         }) { (isComplete) in
             // Do any additional setup after loading the view.
             self.playVideo()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+
     }
     
     func playVideo() {
@@ -92,6 +98,8 @@ class FirstVC: UIViewController {
         let params : Parameters = ["clientId": 6, "userEmail":UserDefaults.standard.string(forKey: "user_email")!, "userHashPassword": UserDefaults.standard.string(forKey: "user_password")!]
 
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
+            
+            self.playerLayer.removeFromSuperlayer()
             
             guard response.result.isSuccess else {
                 

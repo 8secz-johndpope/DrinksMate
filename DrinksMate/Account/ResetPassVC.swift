@@ -111,7 +111,7 @@ class ResetPassVC: UIViewController, IndicatorInfoProvider  {
                 self.showErrorMessage(message: "Incorrect Password!")
             }
             else {
-                AppUtil.user = DrinkUser()
+                //AppUtil.user = DrinkUser()
                 AppUtil.user.userHashPassword = status
                 UserDefaults.standard.setValue(AppUtil.user.userHashPassword, forKey: "user_password")
                 

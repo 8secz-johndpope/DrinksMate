@@ -9,6 +9,8 @@
 import UIKit
 import NotificationBannerSwift
 import Alamofire
+import PKHUD
+import SWXMLHash
 
 class CheckoutCell: UITableViewCell, UITextViewDelegate {
 
@@ -92,21 +94,45 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
             let params = ["comments": comments, "deliveryAddressId":self.selectedAddress.addressId!, "entryId":0, "orderId": Int(orderId * 1000), "orderTotal": self.checkoutVC.totalBudget!, "orderedItems": orderedItems, "taxBreakdown":["amount":1.5495,"name":"GST"]] as [String : Any]
             let headers = AppUtil.user.getAuthentification()
             
+            HUD.show(.progress)
             Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
                 
 //                guard response.result.isSuccess else {
 //
 //                    return
 //                }
-                let vc = self.checkoutVC.storyboard?.instantiateViewController(withIdentifier: "PayMarkVC") as! PayMarkVC
-                vc.orderId = Int(orderId * 1000)
-                vc.totalBudget = self.checkoutVC.totalBudget!
-                self.checkoutVC.present(vc, animated: false, completion: nil)
+                
+                self.loadPaymark(orderId: Int(orderId * 1000), totalBudget: self.checkoutVC.totalBudget!)
             }
         }
         else {
             self.selectAddress()
             self.paymentBtn.setTitle("MAKE PAYMENT", for: .normal)
+        }
+    }
+    
+    func loadPaymark(orderId : Int, totalBudget: Double) {
+        let returnUrl = "http://107.150.52.222:8088/payment/completepaymark?orderId=\(orderId)&applicationConfigurationId=\(AppUtil.config["configurationId"]!)"
+        let url = URL(string: "https://demo.paymarkclick.co.nz/api/webpayments/paymentservice/rest/WPRequest")!
+        
+        let headers = [
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        let params = ["username": 103969, "password": "OBh3C03ijPzBCm2a", "account_id": 625352, "cmd": "_xclick", "amount": totalBudget, "return_url": returnUrl.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!] as [String : Any]
+                
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).validate().responseString { response in
+            
+            HUD.hide()
+            guard response.result.isSuccess else {
+
+                return
+            }
+
+            let urlStr = SWXMLHash.parse(response.result.value!)
+            let vc = self.checkoutVC.storyboard?.instantiateViewController(withIdentifier: "PayMarkVC") as! PayMarkVC
+            vc.urlStr = urlStr["string"].element!.text
+            self.checkoutVC.present(vc, animated: false, completion: nil)
         }
     }
     

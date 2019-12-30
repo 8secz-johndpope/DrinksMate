@@ -22,47 +22,26 @@ class PayMarkVC: UIViewController, UIPopoverPresentationControllerDelegate, UIWe
     
     var orderId : Int!
     var totalBudget : Double!
+    var urlStr : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        HUD.show(.progress)
+        
         self.webView.delegate = self
-        loadPaymark()
+        let request = URLRequest(url: URL(string: self.urlStr)!)
+        self.webView.loadRequest(request)
     }
     
-    func loadPaymark() {
-        let returnUrl = "http://107.150.52.222:8088/payment/completepaymark?orderId=\(self.orderId!)&applicationConfigurationId=\(AppUtil.config["configurationId"]!)"
-        let url = URL(string: "https://demo.paymarkclick.co.nz/api/webpayments/paymentservice/rest/WPRequest")!
-        
-        let headers = [
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        let params = ["username": 103969, "password": "OBh3C03ijPzBCm2a", "account_id": 625352, "cmd": "_xclick", "amount": self.totalBudget!, "return_url": returnUrl.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!] as [String : Any]
-                
-        HUD.show(.progress)
-        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).validate().responseString { response in
-            
-            HUD.hide()
-            guard response.result.isSuccess else {
-
-                return
-            }
-
-            let urlStr = SWXMLHash.parse(response.result.value!)
-            
-            
-            let request = URLRequest(url: URL(string: urlStr["string"].element!.text)!)
-
-            self.webView.loadRequest(request)
-        }
-    }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         
     }
     
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+
         webView.loadRequest(URLRequest(url: URL(string: "")!))
     }
     
@@ -75,8 +54,11 @@ class PayMarkVC: UIViewController, UIPopoverPresentationControllerDelegate, UIWe
             
             let headers = AppUtil.user.getAuthentification()
             let params = ["orderId" : self.orderId]
+            
+            HUD.show(.progress)
             Alamofire.request(url, method: .get, parameters: params as Parameters, encoding: URLEncoding.queryString, headers: headers).validate().responseJSON { response in
                 
+                HUD.hide()
                 self.paymentView.isHidden = false
                 
                 guard response.result.isSuccess else {
@@ -104,7 +86,7 @@ class PayMarkVC: UIViewController, UIPopoverPresentationControllerDelegate, UIWe
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        
+        HUD.hide()
     }
     
     @IBAction func notificationAction(_ sender: Any) {

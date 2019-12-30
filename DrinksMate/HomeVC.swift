@@ -32,7 +32,19 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
         self.menuTopOrders = []
         self.menuPrevOrders = []
         
-        self.loadMenuCategory()
+        if (AppUtil.fcmToken != nil) {
+            let url = URL(string: AppUtil.serverURL + "notification/firebase_token")
+                    let headers = AppUtil.user.getAuthentification()
+            let params = ["token" : AppUtil.fcmToken!]
+                    
+            Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().response { response in
+            
+                self.loadMenuCategory()
+            }
+        }
+        else {
+            self.loadMenuCategory()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

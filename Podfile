@@ -7,10 +7,11 @@ target 'DrinksMate' do
 
   # Pods for DrinksMate
   
-  # Firebase
-#  pod 'FirebaseFirestore'
-#  pod 'FirebaseCore'
-#  pod 'FirebaseMessaging'
+  # Add the Firebase pod for Google Analytics
+  pod 'Firebase/Analytics'
+
+  # Add the pod for Firebase Cloud Messaging
+  pod 'Firebase/Messaging'
 
   # Google
   pod 'GoogleMaps'

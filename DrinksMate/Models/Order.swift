@@ -40,15 +40,17 @@ class Order: NSObject {
             self.orderedItems.append(menuItem)
         }
         
-        let paymentResponse = order["paymentResponse"] as? String
-        let jsonResponse = paymentResponse?.data(using: .utf8)
-        do {
-            
-            let json = try JSONSerialization.jsonObject(with: jsonResponse!, options: .allowFragments) as? [String : Any]
-            self.paymentResponse = Payment(payment: json!)
-        } catch let error as NSError {
-            print (error)
-        }   
+        if (order["paymentResponse"] != nil) {
+            let paymentResponse = order["paymentResponse"] as? String
+            let jsonResponse = paymentResponse?.data(using: .utf8)
+            do {
+                
+                let json = try JSONSerialization.jsonObject(with: jsonResponse!, options: .allowFragments) as? [String : Any]
+                self.paymentResponse = Payment(payment: json!)
+            } catch let error as NSError {
+                print (error)
+            }
+        }
     }
 
 }

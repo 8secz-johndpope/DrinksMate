@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>448471226152-rev26rpoipm1f9r5551h38o1bvc3dkcg.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.448471226152-rev26rpoipm1f9r5551h38o1bvc3dkcg</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>448471226152-8gbm3k5dpgpbleuu5l8bbk5hthh6st60.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB1lVJSqnfKjYTFS4vGCJks6VqHYn-kYIk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>448471226152</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.devlee.DrinksMate</string>
+	<key>PROJECT_ID</key>
+	<string>crapiticrap-bd2ce</string>
+	<key>STORAGE_BUCKET</key>
+	<string>crapiticrap-bd2ce.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:448471226152:ios:871f95726a5f04db02221d</string>
+	<key>DATABASE_URL</key>
+	<string>https://crapiticrap-bd2ce.firebaseio.com</string>
+</dict>
+</plist>
