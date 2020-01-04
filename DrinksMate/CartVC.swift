@@ -8,6 +8,8 @@
 
 import UIKit
 import XLPagerTabStrip
+import Alamofire
+import PKHUD
 
 class CartVC: UIViewController, IndicatorInfoProvider, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
 
@@ -121,8 +123,35 @@ class CartVC: UIViewController, IndicatorInfoProvider, UITableViewDataSource, UI
     @objc func goCheckOutAction(_ sender : UIButton) {
         
         if (sender.titleLabel?.text == "CHECK OUT") {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "CheckOutVC") as! CheckOutVC
-            self.present(vc, animated: false, completion: nil)
+            
+            let url = URL(string: AppUtil.serverURL + "checkout/placeorder")
+
+            var orderedItems = [] as! [[String : Any]]
+            
+            for item in AppUtil.cartsList {
+                let orderedItem = ["choosenSubOptions":[], "clientId": 6, "menuitemCategory": item.menuitemCategory!, "menuitemDescription": item.menuitemDescription!, "menuitemId": item.menuitemId!, "menuitemInfo": item.menuitemInfo!, "menuitemName": item.menuitemName!, "menuitemPhoto": item.menuitemPhoto!, "menuitemPrice": item.menuitemPrice!, "quantity": item.cartsNumber!, "quantityRemaining": 0, "suboptionCategories":[]] as [String : Any]
+                orderedItems.append(orderedItem)
+            }
+            
+            let params = ["cartList": orderedItems, "orderType":"DELIVERY", "restaurantId":1] as [String : Any]
+            let headers = AppUtil.user.getAuthentification()
+            
+            HUD.show(.progress)
+            Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseString { response in
+                
+                HUD.hide()
+                guard response.result.isSuccess else {
+
+                    return
+                }
+                
+                let value = response.result.value!
+                AppUtil.orderId = value
+                
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "CheckOutVC") as! CheckOutVC
+                self.present(vc, animated: false, completion: nil)
+            }
+            
         }
         else {
             self.tabBarController?.selectedIndex = 0

@@ -13,6 +13,7 @@ import IQKeyboardManager
 class AccountVC: ButtonBarPagerTabStripViewController, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var menuBtn: UIButton!
+    var fromWhere: Int!
     
     override func viewDidLoad() {
         self.settings.style.selectedBarHeight = 2
@@ -30,6 +31,14 @@ class AccountVC: ButtonBarPagerTabStripViewController, UIPopoverPresentationCont
         self.buttonBarView.selectedBar.backgroundColor = UIColor.systemBlue
         self.containerView.shouldIgnoreScrollingAdjustment = true
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear (true)
+        
+        if (self.fromWhere == 1) {
+            self.moveToViewController(at: 1)
+        }
     }
     
     @IBAction func goBackAction(_ sender: Any) {

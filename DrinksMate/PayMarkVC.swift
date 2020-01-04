@@ -20,7 +20,6 @@ class PayMarkVC: UIViewController, UIPopoverPresentationControllerDelegate, UIWe
     @IBOutlet weak var statusLbl: UILabel!
     @IBOutlet weak var subLbl: UILabel!
     
-    var orderId : Int!
     var totalBudget : Double!
     var urlStr : String!
     
@@ -42,7 +41,7 @@ class PayMarkVC: UIViewController, UIPopoverPresentationControllerDelegate, UIWe
     
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
 
-        webView.loadRequest(URLRequest(url: URL(string: "")!))
+        //webView.loadRequest(URLRequest(url: URL(string: "")!))
     }
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
@@ -50,13 +49,13 @@ class PayMarkVC: UIViewController, UIPopoverPresentationControllerDelegate, UIWe
         let urlStr = request.url!.absoluteString
         if (urlStr.contains("https://app/")) {
             
-            let url = URL(string: AppUtil.serverURL + "payment/status")!
+            let url = URL(string: AppUtil.serverURL + "payment/status?orderId=" + AppUtil.orderId)!
             
             let headers = AppUtil.user.getAuthentification()
-            let params = ["orderId" : self.orderId]
+            //let params = ["orderId" : AppUtil.orderId]
             
             HUD.show(.progress)
-            Alamofire.request(url, method: .get, parameters: params as Parameters, encoding: URLEncoding.queryString, headers: headers).validate().responseJSON { response in
+            Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.queryString, headers: headers).validate().responseJSON { response in
                 
                 HUD.hide()
                 self.paymentView.isHidden = false
@@ -77,8 +76,13 @@ class PayMarkVC: UIViewController, UIPopoverPresentationControllerDelegate, UIWe
                     self.subLbl.isHidden = true
                 }
                 
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrdersVC") as! OrdersVC
-                self.present(vc, animated: false, completion: nil)
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+                    timer.invalidate()
+                    
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
+                    vc.fromWhere = 1
+                    self.present(vc, animated: false, completion: nil)
+                }
             }
         }
         

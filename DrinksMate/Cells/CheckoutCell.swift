@@ -91,7 +91,9 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
                 comments = self.commentsTxt.text!
             }
             
-            let params = ["comments": comments, "deliveryAddressId":self.selectedAddress.addressId!, "entryId":0, "orderId": Int(orderId * 1000), "orderTotal": self.checkoutVC.totalBudget!, "orderedItems": orderedItems, "taxBreakdown":["amount":1.5495,"name":"GST"]] as [String : Any]
+            let tax = self.jsonToString(json: ["amount":1.5495,"name":"GST"])
+            
+            let params = ["comments": comments, "deliveryAddressId":self.selectedAddress.addressId!, "entryId":0, "orderId": AppUtil.orderId!, "orderTotal": self.checkoutVC.totalBudget!, "orderedItems": orderedItems, "taxBreakdown":tax!] as [String : Any]
             let headers = AppUtil.user.getAuthentification()
             
             HUD.show(.progress)
@@ -102,7 +104,7 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
 //                    return
 //                }
                 
-                self.loadPaymark(orderId: Int(orderId * 1000), totalBudget: self.checkoutVC.totalBudget!)
+                self.loadPaymark(orderId: AppUtil.orderId, totalBudget: self.checkoutVC.totalBudget!)
             }
         }
         else {
@@ -111,7 +113,18 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
         }
     }
     
-    func loadPaymark(orderId : Int, totalBudget: Double) {
+    func jsonToString(json: [String : Any]) -> String! {
+        do {
+            let data1 =  try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted) // first of all convert json to the data
+            let convertedString = String(data: data1, encoding: String.Encoding.utf8) // the data will be converted to the string
+            return convertedString
+        } catch let myJSONError {
+            return ""
+        }
+
+    }
+    
+    func loadPaymark(orderId : String, totalBudget: Double) {
         let returnUrl = "http://107.150.52.222:8088/payment/completepaymark?orderId=\(orderId)&applicationConfigurationId=\(AppUtil.config["configurationId"]!)"
         let url = URL(string: "https://demo.paymarkclick.co.nz/api/webpayments/paymentservice/rest/WPRequest")!
         

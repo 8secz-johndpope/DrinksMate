@@ -26,4 +26,5 @@ class AppUtil: NSObject {
     public static var addressList : [UserAddress]!
     
     public static var fcmToken : String!
+    public static var orderId : String!
 }
