@@ -146,12 +146,17 @@ class RegisterVC: UIViewController {
             return
         }
         
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        let dateStr = format.string(from: self.birthdayDate)
+        
         let hashData = self.passwordTxt.text!.data(using: .utf8)?.sha1()
         let hashPass = hashData?.base64EncodedString()
         
         let url = URL(string: AppUtil.serverURL + "auth/register")
-        let params : Parameters = ["clientId": 6, "userEmail":self.emailTxt.text!, "userHashPassword": hashPass!, "userName": self.fullnameTxt.text!, "userPhonenumber": self.phonenumberTxt.text!, "userId":0,"userLoyaltyPoints":0,"userReferral":0]
+//        let params : Parameters = ["clientId": 6, "userEmail":self.emailTxt.text!, "userHashPassword": hashPass!, "userName": self.fullnameTxt.text!, "userPhonenumber": self.phonenumberTxt.text!, "userId":0,"userLoyaltyPoints":0,"userReferral":0, "dob":dateStr]
 
+        let params : Parameters = ["clientId": 6, "userEmail":self.emailTxt.text!, "userHashPassword": self.passwordTxt.text!, "userName": self.fullnameTxt.text!, "userPhonenumber": self.phonenumberTxt.text!, "userId":0,"userLoyaltyPoints":0,"userReferral":0, "dob":dateStr]
         HUD.show(.progress)
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
             

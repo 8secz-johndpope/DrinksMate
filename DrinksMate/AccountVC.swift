@@ -84,7 +84,7 @@ class AccountVC: ButtonBarPagerTabStripViewController, UIPopoverPresentationCont
         let resetPassVC = self.storyboard?.instantiateViewController(withIdentifier: "ResetPassVC") as! ResetPassVC
         let wishVC = self.storyboard?.instantiateViewController(withIdentifier: "WishListVC") as! WishListVC
         let ordersVC = self.storyboard?.instantiateViewController(withIdentifier: "OrdersVC") as! OrdersVC
-    
+        ordersVC.fromWhere = true
         
         return [profileVC, ordersVC, wishVC, resetPassVC]
     }

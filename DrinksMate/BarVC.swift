@@ -56,11 +56,7 @@ class BarVC: ButtonBarPagerTabStripViewController {
 
     
     func loadMenuCategory() {
-        let user = AppUtil.user.userEmail!
-        let password = AppUtil.user.userHashPassword!
-        let credentialData = "\(user)===6:\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let headers = AppUtil.user.getAuthentification()
         
         let url = URL(string: AppUtil.serverURL + "menu/categories")
 

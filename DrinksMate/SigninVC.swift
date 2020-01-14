@@ -40,7 +40,8 @@ class SigninVC: UIViewController {
         let hashPass = hashData?.base64EncodedString()
         
         let url = URL(string: AppUtil.serverURL + "auth/login")
-        let params : Parameters = ["clientId": 6, "userEmail":self.emailTxt.text!, "userHashPassword": hashPass!]
+//        let params : Parameters = ["clientId": 6, "userEmail":self.emailTxt.text!, "userHashPassword": hashPass!]
+        let params : Parameters = ["clientId": 6, "userEmail":self.emailTxt.text!, "userHashPassword": self.passTxt.text!]
 
         HUD.show(.progress)
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in

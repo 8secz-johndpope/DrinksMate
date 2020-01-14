@@ -31,6 +31,7 @@ class DrinkUser: NSObject {
         let password = AppUtil.user.userHashPassword!
         let credentialData = "\(user)===6:\(password)".data(using: String.Encoding.utf8)!
         let base64Credentials = credentialData.base64EncodedString(options: [])
+        //let credentialStr = "\(user)===6:\(password)"
         let headers = ["Authorization": "Basic \(base64Credentials)"]
         
         return headers

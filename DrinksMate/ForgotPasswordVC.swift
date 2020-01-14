@@ -94,6 +94,7 @@ class ForgotPasswordVC: UIViewController {
                 self.showErrorMessage(message: "Email not found!")
             }
             else {
+                
                 self.showMessage(msg: "OTP resent.")
             }
         }

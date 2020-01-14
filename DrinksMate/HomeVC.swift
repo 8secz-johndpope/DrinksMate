@@ -58,11 +58,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
     }
     
     func loadMenuCategory() {
-        let user = AppUtil.user.userEmail!
-        let password = AppUtil.user.userHashPassword!
-        let credentialData = "\(user)===6:\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let headers = AppUtil.user.getAuthentification()
         
         let url = URL(string: AppUtil.serverURL + "menu/categories")
 
@@ -95,11 +91,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
     }
     
     func loadTopOrder() {
-        let user = AppUtil.user.userEmail!
-        let password = AppUtil.user.userHashPassword!
-        let credentialData = "\(user)===6:\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let headers = AppUtil.user.getAuthentification()
         
         let url = URL(string: AppUtil.serverURL + "order/top")
         let params = ["offset": 0, "limit":10]
@@ -128,11 +120,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
     }
     
     func loadPrevOrder() {
-        let user = AppUtil.user.userEmail!
-        let password = AppUtil.user.userHashPassword!
-        let credentialData = "\(user)===6:\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let headers = AppUtil.user.getAuthentification()
         
         let url = URL(string: AppUtil.serverURL + "order/previousitems")
         let params = ["offset": 0, "limit":10]
@@ -167,7 +155,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
                 return 180
             case 1:
                 return 60
-            case 2:
+            case 3:
                 var cellHeight : CGFloat = 0.0
                 if (self.menuCategories.count % 3 == 0) {
                     cellHeight = 160 * CGFloat(self.menuCategories.count) / 3
@@ -209,7 +197,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
                 
                 //break
             
-            case 2:
+            case 3:
                 cell_id = "category_cell"
                 let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath) as! CategoryCell
                 table_cell.homeVC = self
@@ -217,7 +205,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
                 
                 return table_cell
             
-            case 3:
+            case 4:
                 cell_id = "order_cell"
                 let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath) as! OrderCell
                 
@@ -229,12 +217,12 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
                 return table_cell
                 
                 //break
-            case 4:
+            case 2:
                 cell_id = "order_cell"
                 let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath) as! OrderCell
                 
                 table_cell.homeVC = self
-                table_cell.title = "Based on your likes"
+                table_cell.title = "Order Again"
                 table_cell.orders = self.menuPrevOrders
                 table_cell.loadOrders()
                 

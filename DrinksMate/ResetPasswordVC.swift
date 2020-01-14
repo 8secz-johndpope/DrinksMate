@@ -83,7 +83,8 @@ class ResetPasswordVC: UIViewController{
         let newhashPass = hashData?.base64EncodedString()
         
         let url = URL(string: AppUtil.serverURL + "auth/resetpasswordwhileloggedout")
-        let params : Parameters = ["clientId": 6, "userEmail":self.emailTxt.text!, "newHashPassword": newhashPass!]
+        //let params : Parameters = ["clientId": 6, "userEmail":self.emailTxt.text!, "newHashPassword": newhashPass!]
+        let params : Parameters = ["clientId": 6, "userEmail":self.emailTxt.text!, "newHashPassword": self.passNewTxt.text!]
         
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { response in
             

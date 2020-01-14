@@ -30,28 +30,49 @@ class CategoryCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return AppUtil.categories.count
+        return AppUtil.categories.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "category_collection_cell", for: indexPath)
         
-        let category = AppUtil.categories[indexPath.row]
-        
-        let imageView = cell.viewWithTag(10) as! UIImageView
-        let titleLbl = cell.viewWithTag(11) as! UILabel
-        
-        imageView.sd_setImage(with: URL(string: category.photo!)) { (image, error, type, url) in
-            imageView.image = image
+        if (indexPath.row == AppUtil.categories.count) {
+            let category = AppUtil.categories[indexPath.row - 1]
+            
+            let imageView = cell.viewWithTag(10) as! UIImageView
+            let titleLbl = cell.viewWithTag(11) as! UILabel
+            
+            imageView.sd_setImage(with: URL(string: category.photo!)) { (image, error, type, url) in
+                imageView.image = image
+            }
+            
+            titleLbl.text = category.categoryName!
         }
-        
-        titleLbl.text = category.categoryName!
-        
+        else if (indexPath.row == AppUtil.categories.count - 1) {
+            let imageView = cell.viewWithTag(10) as! UIImageView
+            imageView.image = nil
+            
+            let titleLbl = cell.viewWithTag(11) as! UILabel
+            titleLbl.text = ""
+        }
+        else {
+            let category = AppUtil.categories[indexPath.row]
+            
+            let imageView = cell.viewWithTag(10) as! UIImageView
+            let titleLbl = cell.viewWithTag(11) as! UILabel
+            
+            imageView.sd_setImage(with: URL(string: category.photo!)) { (image, error, type, url) in
+                imageView.image = image
+            }
+            
+            titleLbl.text = category.categoryName!
+        }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+
         return self.sectionInsets
     }
     
@@ -75,10 +96,18 @@ class CategoryCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        AppUtil.selectedCategory = indexPath.row
+        if (indexPath.row != AppUtil.categories.count - 1) {
+            AppUtil.selectedCategory = indexPath.row
+            
+            if (indexPath.row == AppUtil.categories.count) {
+                AppUtil.selectedCategory = AppUtil.categories.count - 1
+            }
+            
+            let vc = self.homeVC.storyboard?.instantiateViewController(withIdentifier: "BarVC") as! BarVC
+            self.homeVC.present(vc, animated: true , completion: nil)
+        }
         
-        let vc = self.homeVC.storyboard?.instantiateViewController(withIdentifier: "BarVC") as! BarVC
-        self.homeVC.present(vc, animated: true , completion: nil)
+        
         //self.homeVC.tabBarController?.selectedIndex = 2
     }
     

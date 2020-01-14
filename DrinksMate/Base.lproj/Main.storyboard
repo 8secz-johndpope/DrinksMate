@@ -889,11 +889,11 @@
                                             <action selector="menuAction:" destination="uG5-1v-1DB" eventType="touchUpInside" id="wyW-XA-Hcl"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drinksmate_logo" translatesAutoresizingMaskIntoConstraints="NO" id="voi-z3-4dL">
-                                        <rect key="frame" x="182" y="5" width="50" height="50"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="voi-z3-4dL">
+                                        <rect key="frame" x="167" y="5" width="80" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Ca3-VV-vQf"/>
-                                            <constraint firstAttribute="width" constant="50" id="hnO-7J-f30"/>
+                                            <constraint firstAttribute="width" constant="80" id="hnO-7J-f30"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -1132,11 +1132,11 @@
                                 <rect key="frame" x="0.0" y="86" width="414" height="776"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="last_cell" rowHeight="740" id="UG1-cU-pI5" customClass="CheckoutCell" customModule="DrinksMate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="740"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="last_cell" rowHeight="800" id="UG1-cU-pI5" customClass="CheckoutCell" customModule="DrinksMate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="800"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UG1-cU-pI5" id="6uE-In-Fz4">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="740"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you have any promotion code to enter, please enter in the box below and hit apply." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8G-q2-5Tt">
@@ -1192,8 +1192,16 @@
                                                         <outlet property="delegate" destination="UG1-cU-pI5" id="lYt-Jk-uxh"/>
                                                     </connections>
                                                 </textView>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select Delivery Time Slot" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="psv-1J-mBs" customClass="DropDown" customModule="iOSDropDown">
+                                                    <rect key="frame" x="20" y="224" width="374" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="xcF-4w-iUy"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tVu-uM-az3">
-                                                    <rect key="frame" x="20" y="224" width="49" height="31"/>
+                                                    <rect key="frame" x="20" y="276" width="49" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="31" id="TUJ-jf-QIV"/>
                                                         <constraint firstAttribute="width" constant="47" id="o3I-oo-5EG"/>
@@ -1203,7 +1211,7 @@
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to the Terms and Conditions below." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dl-85-A5j">
-                                                    <rect key="frame" x="75" y="229" width="319" height="21"/>
+                                                    <rect key="frame" x="75" y="281" width="319" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="hB0-2I-gBb"/>
                                                     </constraints>
@@ -1212,7 +1220,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytT-9F-ZMg">
-                                                    <rect key="frame" x="20" y="255" width="374" height="140"/>
+                                                    <rect key="frame" x="20" y="307" width="374" height="140"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="140" id="3rt-fI-F1e"/>
                                                     </constraints>
@@ -1223,7 +1231,7 @@
                                                     <string key="userLabel">Alcohol purchases must be signed for by someone over the age of 18 on delivery. Our staff will insist on age verification if you look 25 years of age or younger, it's a judgement call so please be flattered if they ask, it's not our intent to offend!. Only New Zealand or Overseas Passport, New Zealand Driver's License and Hanz's 18+ Card will be accepted as a valid ID.</string>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lM5-hz-m5L">
-                                                    <rect key="frame" x="20" y="395" width="374" height="80"/>
+                                                    <rect key="frame" x="20" y="447" width="374" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="80" id="764-7B-qai"/>
                                                     </constraints>
@@ -1234,7 +1242,7 @@
                                                     <string key="userLabel">Alcohol purchases must be signed for by someone over the age of 18 on delivery. Our staff will insist on age verification if you look 25 years of age or younger, it's a judgement call so please be flattered if they ask, it's not our intent to offend!. Only New Zealand or Overseas Passport, New Zealand Driver's License and Hanz's 18+ Card will be accepted as a valid ID.</string>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sm-FK-Ckr">
-                                                    <rect key="frame" x="20" y="475" width="374" height="90"/>
+                                                    <rect key="frame" x="20" y="527" width="374" height="90"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="90" id="3hU-3f-TjT"/>
                                                     </constraints>
@@ -1245,7 +1253,7 @@
                                                     <string key="userLabel">Alcohol purchases must be signed for by someone over the age of 18 on delivery. Our staff will insist on age verification if you look 25 years of age or younger, it's a judgement call so please be flattered if they ask, it's not our intent to offend!. Only New Zealand or Overseas Passport, New Zealand Driver's License and Hanz's 18+ Card will be accepted as a valid ID.</string>
                                                 </label>
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t3Q-70-OEZ">
-                                                    <rect key="frame" x="20" y="573" width="374" height="99"/>
+                                                    <rect key="frame" x="20" y="625" width="374" height="99"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deliver here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMv-8W-opm">
                                                             <rect key="frame" x="0.0" y="0.0" width="94" height="20"/>
@@ -1284,7 +1292,7 @@
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meb-N5-5KA">
-                                                    <rect key="frame" x="20" y="680" width="374" height="40"/>
+                                                    <rect key="frame" x="20" y="740" width="374" height="40"/>
                                                     <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="UZD-S2-63T"/>
@@ -1302,13 +1310,16 @@
                                                 <constraint firstItem="t3Q-70-OEZ" firstAttribute="leading" secondItem="6uE-In-Fz4" secondAttribute="leading" constant="20" id="0B3-eE-iWA"/>
                                                 <constraint firstItem="pB4-5Z-Utn" firstAttribute="top" secondItem="Y8G-q2-5Tt" secondAttribute="bottom" constant="8" id="0tJ-2E-VlD"/>
                                                 <constraint firstItem="meb-N5-5KA" firstAttribute="leading" secondItem="6uE-In-Fz4" secondAttribute="leading" constant="20" id="1WK-BK-wyw"/>
+                                                <constraint firstItem="psv-1J-mBs" firstAttribute="leading" secondItem="6uE-In-Fz4" secondAttribute="leading" constant="20" symbolic="YES" id="2AO-xt-V2X"/>
                                                 <constraint firstAttribute="trailing" secondItem="0Sm-FK-Ckr" secondAttribute="trailing" constant="20" id="2dV-ch-2nc"/>
                                                 <constraint firstItem="Y8G-q2-5Tt" firstAttribute="top" secondItem="6uE-In-Fz4" secondAttribute="top" id="49b-H4-e25"/>
                                                 <constraint firstItem="9dl-85-A5j" firstAttribute="leading" secondItem="tVu-uM-az3" secondAttribute="trailing" constant="8" id="4aO-3R-ByK"/>
                                                 <constraint firstItem="ytT-9F-ZMg" firstAttribute="top" secondItem="tVu-uM-az3" secondAttribute="bottom" id="7pc-02-NaL"/>
                                                 <constraint firstAttribute="trailing" secondItem="ytT-9F-ZMg" secondAttribute="trailing" constant="20" id="9HY-mL-ZUw"/>
+                                                <constraint firstItem="psv-1J-mBs" firstAttribute="top" secondItem="Bm0-d9-M64" secondAttribute="bottom" constant="8" id="AK1-aU-9dz"/>
                                                 <constraint firstItem="ytT-9F-ZMg" firstAttribute="leading" secondItem="6uE-In-Fz4" secondAttribute="leading" constant="20" id="Bhi-pV-G7Q"/>
                                                 <constraint firstAttribute="trailing" secondItem="pB4-5Z-Utn" secondAttribute="trailing" constant="20" id="BkM-qR-bhd"/>
+                                                <constraint firstItem="tVu-uM-az3" firstAttribute="top" secondItem="psv-1J-mBs" secondAttribute="bottom" constant="8" id="BnR-7c-GCd"/>
                                                 <constraint firstItem="YjV-fe-0Tf" firstAttribute="top" secondItem="Y8G-q2-5Tt" secondAttribute="bottom" constant="8" id="DIz-dh-SGM"/>
                                                 <constraint firstItem="Bm0-d9-M64" firstAttribute="trailing" secondItem="6uE-In-Fz4" secondAttribute="trailingMargin" id="He9-Ga-9zl"/>
                                                 <constraint firstItem="YjV-fe-0Tf" firstAttribute="leading" secondItem="6uE-In-Fz4" secondAttribute="leading" constant="20" id="LL1-h0-Yle"/>
@@ -1319,8 +1330,8 @@
                                                 <constraint firstItem="lM5-hz-m5L" firstAttribute="top" secondItem="ytT-9F-ZMg" secondAttribute="bottom" id="RKk-HM-hPv"/>
                                                 <constraint firstAttribute="trailing" secondItem="meb-N5-5KA" secondAttribute="trailing" constant="20" id="SCV-RV-ooR"/>
                                                 <constraint firstItem="pB4-5Z-Utn" firstAttribute="leading" secondItem="YjV-fe-0Tf" secondAttribute="trailing" constant="25" id="UP1-Kj-Avi"/>
+                                                <constraint firstItem="9dl-85-A5j" firstAttribute="top" secondItem="psv-1J-mBs" secondAttribute="bottom" constant="13" id="WPs-Rp-Z60"/>
                                                 <constraint firstAttribute="trailing" secondItem="9dl-85-A5j" secondAttribute="trailing" constant="20" id="ZmD-s3-byC"/>
-                                                <constraint firstItem="tVu-uM-az3" firstAttribute="top" secondItem="Bm0-d9-M64" secondAttribute="bottom" constant="8" id="eTL-at-Aag"/>
                                                 <constraint firstAttribute="trailing" secondItem="Y8G-q2-5Tt" secondAttribute="trailing" constant="20" id="f98-q6-cNi"/>
                                                 <constraint firstItem="Bm0-d9-M64" firstAttribute="leading" secondItem="6uE-In-Fz4" secondAttribute="leadingMargin" id="fPF-Iu-fdK"/>
                                                 <constraint firstAttribute="bottom" secondItem="meb-N5-5KA" secondAttribute="bottom" constant="20" id="jut-av-zTh"/>
@@ -1328,8 +1339,8 @@
                                                 <constraint firstItem="0Sm-FK-Ckr" firstAttribute="top" secondItem="lM5-hz-m5L" secondAttribute="bottom" id="ol4-1z-VfS"/>
                                                 <constraint firstAttribute="trailing" secondItem="lM5-hz-m5L" secondAttribute="trailing" constant="20" id="q6T-tU-DbN"/>
                                                 <constraint firstItem="Bm0-d9-M64" firstAttribute="top" secondItem="YjV-fe-0Tf" secondAttribute="bottom" constant="20" id="sC1-KF-BZS"/>
-                                                <constraint firstItem="9dl-85-A5j" firstAttribute="top" secondItem="Bm0-d9-M64" secondAttribute="bottom" constant="13" id="svc-kF-v8n"/>
                                                 <constraint firstItem="Y8G-q2-5Tt" firstAttribute="leading" secondItem="6uE-In-Fz4" secondAttribute="leading" constant="20" id="uvR-bQ-DBo"/>
+                                                <constraint firstAttribute="trailing" secondItem="psv-1J-mBs" secondAttribute="trailing" constant="20" symbolic="YES" id="x40-uy-uKV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1339,10 +1350,11 @@
                                             <outlet property="paymentBtn" destination="meb-N5-5KA" id="PYv-zv-Dir"/>
                                             <outlet property="promoTxt" destination="YjV-fe-0Tf" id="cKo-Rn-X9c"/>
                                             <outlet property="termsSelect" destination="tVu-uM-az3" id="UVJ-Nl-hUW"/>
+                                            <outlet property="timeSlot" destination="psv-1J-mBs" id="pLI-us-is0"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cart_cell" id="vqz-MK-iHa" customClass="CartCell" customModule="DrinksMate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="768" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="828" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vqz-MK-iHa" id="Nt0-AN-oDe">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -1446,7 +1458,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="fee_cell" rowHeight="90" id="edh-Ie-h4K">
-                                        <rect key="frame" x="0.0" y="812" width="414" height="90"/>
+                                        <rect key="frame" x="0.0" y="872" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="edh-Ie-h4K" id="6CI-Mb-m1B">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -1502,7 +1514,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="total_cell" id="how-KX-Pjy">
-                                        <rect key="frame" x="0.0" y="902" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="962" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="how-KX-Pjy" id="0O9-Uj-arp">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -1595,10 +1607,10 @@
                                             <action selector="showMenuAction:" destination="RpH-cu-a3I" eventType="touchUpInside" id="uLA-cA-om2"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drinksmate_logo" translatesAutoresizingMaskIntoConstraints="NO" id="NkU-Qx-wwe">
-                                        <rect key="frame" x="182" y="5" width="50" height="50"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="NkU-Qx-wwe">
+                                        <rect key="frame" x="167" y="5" width="80" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="1Pq-PV-njV"/>
+                                            <constraint firstAttribute="width" constant="80" id="1Pq-PV-njV"/>
                                             <constraint firstAttribute="height" constant="50" id="Gyz-lF-inn"/>
                                         </constraints>
                                     </imageView>
@@ -1932,11 +1944,11 @@
                                             <action selector="menuAction:" destination="OK3-dA-R2y" eventType="touchUpInside" id="2bn-Lc-BS8"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drinksmate_logo" translatesAutoresizingMaskIntoConstraints="NO" id="hym-pJ-zQ8">
-                                        <rect key="frame" x="182" y="5" width="50" height="50"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="hym-pJ-zQ8">
+                                        <rect key="frame" x="167" y="5" width="80" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="YkT-Wg-iIq"/>
-                                            <constraint firstAttribute="width" constant="50" id="p5o-q2-Bnr"/>
+                                            <constraint firstAttribute="width" constant="80" id="p5o-q2-Bnr"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -2323,8 +2335,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYT-O7-zhj">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4K-Nz-4Ni">
+                                        <rect key="frame" x="20" y="7.5" width="152" height="29"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOr-FG-Kjj">
+                                        <rect key="frame" x="370" y="4" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="17b-Dz-4WC"/>
+                                            <constraint firstAttribute="height" constant="36" id="GQE-i4-vx7"/>
+                                        </constraints>
+                                        <state key="normal" image="main"/>
+                                        <connections>
+                                            <action selector="goHomeAction:" destination="3I7-cX-woA" eventType="touchUpInside" id="jcQ-ru-qo3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="f4K-Nz-4Ni" firstAttribute="leading" secondItem="IYT-O7-zhj" secondAttribute="leading" constant="20" id="7XA-el-jK3"/>
+                                    <constraint firstAttribute="height" constant="44" id="MfA-yH-X5f"/>
+                                    <constraint firstItem="hOr-FG-Kjj" firstAttribute="centerY" secondItem="IYT-O7-zhj" secondAttribute="centerY" id="R8z-Cc-fzh"/>
+                                    <constraint firstAttribute="bottom" secondItem="f4K-Nz-4Ni" secondAttribute="bottom" constant="7.5" id="Vie-97-una"/>
+                                    <constraint firstAttribute="trailing" secondItem="hOr-FG-Kjj" secondAttribute="trailing" constant="8" id="WZ2-z3-O1F"/>
+                                    <constraint firstItem="f4K-Nz-4Ni" firstAttribute="top" secondItem="IYT-O7-zhj" secondAttribute="top" constant="7.5" id="gat-36-0a8"/>
+                                    <constraint firstItem="f4K-Nz-4Ni" firstAttribute="centerY" secondItem="IYT-O7-zhj" secondAttribute="centerY" id="zpq-IC-H5X"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tk4-fa-aN8">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="order_cell" rowHeight="300" id="wlL-mS-ws3" customClass="OrderHistoryCell" customModule="DrinksMate" customModuleProvider="target">
@@ -2483,12 +2527,17 @@
                         <constraints>
                             <constraint firstItem="tk4-fa-aN8" firstAttribute="trailing" secondItem="Y1z-0m-GVf" secondAttribute="trailing" id="J7A-1d-csn"/>
                             <constraint firstItem="tk4-fa-aN8" firstAttribute="leading" secondItem="Y1z-0m-GVf" secondAttribute="leading" id="JBP-9b-J6H"/>
-                            <constraint firstItem="tk4-fa-aN8" firstAttribute="top" secondItem="Y1z-0m-GVf" secondAttribute="top" id="TGu-FA-fCd"/>
+                            <constraint firstItem="tk4-fa-aN8" firstAttribute="top" secondItem="IYT-O7-zhj" secondAttribute="bottom" id="Ocz-Fg-FIw"/>
+                            <constraint firstItem="IYT-O7-zhj" firstAttribute="leading" secondItem="Y1z-0m-GVf" secondAttribute="leading" id="Vqt-EX-UFc"/>
+                            <constraint firstItem="IYT-O7-zhj" firstAttribute="trailing" secondItem="Y1z-0m-GVf" secondAttribute="trailing" id="hcQ-fp-qql"/>
                             <constraint firstItem="tk4-fa-aN8" firstAttribute="bottom" secondItem="Y1z-0m-GVf" secondAttribute="bottom" id="sCT-da-Cpi"/>
+                            <constraint firstItem="IYT-O7-zhj" firstAttribute="top" secondItem="Y1z-0m-GVf" secondAttribute="top" id="ule-7o-GKX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y1z-0m-GVf"/>
                     </view>
                     <connections>
+                        <outlet property="headerHeight" destination="MfA-yH-X5f" id="Gc2-GB-YZU"/>
+                        <outlet property="headerView" destination="IYT-O7-zhj" id="MMS-1X-QcR"/>
                         <outlet property="ordersTable" destination="tk4-fa-aN8" id="nxD-Vi-tRz"/>
                     </connections>
                 </viewController>
@@ -2518,10 +2567,10 @@
                                             <action selector="goBackAction:" destination="vx5-ui-FVs" eventType="touchUpInside" id="hX4-JF-SHs"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drinksmate_logo" translatesAutoresizingMaskIntoConstraints="NO" id="1Fw-jo-iPR">
-                                        <rect key="frame" x="182" y="5" width="50" height="50"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="1Fw-jo-iPR">
+                                        <rect key="frame" x="167" y="5" width="80" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="LK8-CP-QS6"/>
+                                            <constraint firstAttribute="width" constant="80" id="LK8-CP-QS6"/>
                                             <constraint firstAttribute="height" constant="50" id="cO6-B8-c09"/>
                                         </constraints>
                                     </imageView>
@@ -2647,10 +2696,10 @@
                                             <action selector="goBackAction:" destination="nri-tH-hvO" eventType="touchUpInside" id="hZV-fe-0UC"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drinksmate_logo" translatesAutoresizingMaskIntoConstraints="NO" id="fH9-sR-2BL">
-                                        <rect key="frame" x="182" y="5" width="50" height="50"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="fH9-sR-2BL">
+                                        <rect key="frame" x="167" y="5" width="80" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="Ail-NP-wbh"/>
+                                            <constraint firstAttribute="width" constant="80" id="Ail-NP-wbh"/>
                                             <constraint firstAttribute="height" constant="50" id="hAM-Hq-UGj"/>
                                         </constraints>
                                     </imageView>
@@ -2871,11 +2920,11 @@
                                             <action selector="menuAction:" destination="NgT-XA-1et" eventType="touchUpInside" id="NT1-x6-36X"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drinksmate_logo" translatesAutoresizingMaskIntoConstraints="NO" id="TyM-VZ-hMi">
-                                        <rect key="frame" x="182" y="5" width="50" height="50"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="TyM-VZ-hMi">
+                                        <rect key="frame" x="167" y="5" width="80" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ISV-wl-ouF"/>
-                                            <constraint firstAttribute="width" constant="50" id="nWX-9Y-lgN"/>
+                                            <constraint firstAttribute="width" constant="80" id="nWX-9Y-lgN"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -3309,11 +3358,11 @@
                                             <action selector="menuAction:" destination="du0-8X-q1Y" eventType="touchUpInside" id="6Mr-hY-Aw0"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drinksmate_logo" translatesAutoresizingMaskIntoConstraints="NO" id="iKu-Ij-iPh">
-                                        <rect key="frame" x="182" y="5" width="50" height="50"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="iKu-Ij-iPh">
+                                        <rect key="frame" x="167" y="5" width="80" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="4qB-6F-s6q"/>
-                                            <constraint firstAttribute="width" constant="50" id="cV0-c6-OX0"/>
+                                            <constraint firstAttribute="width" constant="80" id="cV0-c6-OX0"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -3533,10 +3582,10 @@
                                             <action selector="menuAction:" destination="YGF-b9-yog" eventType="touchUpInside" id="ixo-0W-Xe2"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drinksmate_logo" translatesAutoresizingMaskIntoConstraints="NO" id="AOn-qK-ezS">
-                                        <rect key="frame" x="182" y="5" width="50" height="50"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="AOn-qK-ezS">
+                                        <rect key="frame" x="167" y="5" width="80" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="KIY-5h-cpF"/>
+                                            <constraint firstAttribute="width" constant="80" id="KIY-5h-cpF"/>
                                             <constraint firstAttribute="height" constant="50" id="fFF-uu-E4Y"/>
                                         </constraints>
                                     </imageView>
@@ -3663,10 +3712,10 @@
                                             <action selector="menuAction:" destination="Iqd-Ad-4se" eventType="touchUpInside" id="J8W-Vd-TxP"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drinksmate_logo" translatesAutoresizingMaskIntoConstraints="NO" id="IIC-fQ-8BO">
-                                        <rect key="frame" x="182" y="5" width="50" height="50"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="IIC-fQ-8BO">
+                                        <rect key="frame" x="167" y="5" width="80" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="KBd-eC-1g8"/>
+                                            <constraint firstAttribute="width" constant="80" id="KBd-eC-1g8"/>
                                             <constraint firstAttribute="height" constant="50" id="vpq-Y6-C7H"/>
                                         </constraints>
                                     </imageView>
@@ -3789,10 +3838,10 @@
                                             <action selector="menuAction:" destination="uG5-1v-1DB" eventType="touchUpInside" id="pXS-zu-bDd"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drinksmate_logo" translatesAutoresizingMaskIntoConstraints="NO" id="yIA-b3-Tx4">
-                                        <rect key="frame" x="182" y="5" width="50" height="50"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="yIA-b3-Tx4">
+                                        <rect key="frame" x="167" y="5" width="80" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="h4j-KK-ujO"/>
+                                            <constraint firstAttribute="width" constant="80" id="h4j-KK-ujO"/>
                                             <constraint firstAttribute="height" constant="50" id="peb-e8-H6s"/>
                                         </constraints>
                                     </imageView>
@@ -3913,8 +3962,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Choices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxR-wF-M08">
-                                                    <rect key="frame" x="8" y="8" width="127" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="8" y="8" width="136" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

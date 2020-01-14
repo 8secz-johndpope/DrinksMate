@@ -13,13 +13,21 @@ import XLPagerTabStrip
 class OrdersVC: UIViewController, UITableViewDataSource, UITableViewDelegate, IndicatorInfoProvider  {
     
     @IBOutlet weak var ordersTable: UITableView!
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerHeight: NSLayoutConstraint!
     
+    var fromWhere : Bool! = false
     var orderList : [Order]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        if (self.fromWhere) {
+            self.headerView.isHidden = true
+            self.headerHeight.constant = -20
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,6 +36,13 @@ class OrdersVC: UIViewController, UITableViewDataSource, UITableViewDelegate, In
         self.orderList = []
         self.loadOrderHistory()
     }
+    
+    @IBAction func goHomeAction(_ sender: Any) {
+        let mainVC = self.storyboard?.instantiateViewController(withIdentifier: "MainVC")
+        mainVC?.modalPresentationStyle = .fullScreen
+        self.present(mainVC!, animated: true, completion: nil)
+    }
+    
     
     func loadOrderHistory() {
         let url = URL(string: AppUtil.serverURL + "order/previousorders")

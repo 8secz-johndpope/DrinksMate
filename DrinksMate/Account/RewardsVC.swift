@@ -19,6 +19,12 @@ class RewardsVC: UIViewController, IndicatorInfoProvider, UIPopoverPresentationC
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        
+    }
+    
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return "Rewards"
     }

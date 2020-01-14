@@ -35,9 +35,7 @@ class OrderCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDe
     
     func loadOrders() {
         self.typeLbl.text = self.title
-        if (self.orders.count > 0) {
-            self.collectionView.reloadData()
-        }
+        self.collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

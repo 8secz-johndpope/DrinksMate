@@ -11,6 +11,7 @@ import NotificationBannerSwift
 import Alamofire
 import PKHUD
 import SWXMLHash
+import iOSDropDown
 
 class CheckoutCell: UITableViewCell, UITextViewDelegate {
 
@@ -20,16 +21,24 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var addressView: UIView!
     @IBOutlet weak var paymentBtn: UIButton!
     @IBOutlet weak var addressLbl: UILabel!
+    @IBOutlet weak var timeSlot: DropDown!
     
     var selectedAddress : UserAddress!
     var checkoutVC : CheckOutVC!
     var tableView : UITableView!
+    
+    let slots = ["Select Delivery Time Slot", "10:00 AM - 11:00 AM", "10:30 AM - 11:30 AM","11:00 AM - 12:00 PM","11:30 AM - 12:30 PM","12:00 PM - 01:00 PM","12:30 PM - 01:30 PM","01:00 PM - 02:00 PM","01:30 PM - 02:30 PM","02:00 PM - 03:00 PM","02:30 PM - 03:30 PM","03:00 PM - 04:00 PM","03:30 PM - 04:30 PM","04:00 PM - 05:00 PM","04:30 PM - 05:30 PM","05:00 PM - 06:00 PM","05:30 PM - 06:30 PM","06:00 PM - 07:00 PM","06:30 PM - 07:30 PM","07:00 PM - 08:00 PM","07:30 PM - 08:30 PM","08:00 PM - 09:00 PM","08:30 PM - 09:30 PM","09:00 PM - 10:00 PM","09:30 PM - 10:00 PM"]
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
         self.commentsTxt.delegate = self
+        self.timeSlot.isSearchEnable = false
+        self.timeSlot.optionArray = self.slots
+        self.timeSlot.didSelect { (selectedTxt, index, id) in
+            
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -78,7 +87,7 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
             
             let url = URL(string: AppUtil.serverURL + "checkout/updateorder")
             
-            let orderId = Date().timeIntervalSince1970
+            //let orderId = Date().timeIntervalSince1970
             var orderedItems = [] as! [[String : Any]]
             
             for item in AppUtil.cartsList {
@@ -118,7 +127,7 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
             let data1 =  try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted) // first of all convert json to the data
             let convertedString = String(data: data1, encoding: String.Encoding.utf8) // the data will be converted to the string
             return convertedString
-        } catch let myJSONError {
+        } catch _ {
             return ""
         }
 

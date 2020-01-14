@@ -39,12 +39,8 @@ class ProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegate, I
     }
     
     func loadAddresses() {
-        
-        let user = AppUtil.user.userEmail!
-        let password = AppUtil.user.userHashPassword!
-        let credentialData = "\(user)===6:\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+
+        let headers = AppUtil.user.getAuthentification()
         let url = URL(string: AppUtil.serverURL + "checkout/addresses")
 
         Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in

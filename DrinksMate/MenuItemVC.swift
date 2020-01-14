@@ -53,11 +53,7 @@ class MenuItemVC: UIViewController {
 
     
     @IBAction func goWishlistAction(_ sender: Any) {
-        let user = AppUtil.user.userEmail!
-        let password = AppUtil.user.userHashPassword!
-        let credentialData = "\(user)===6:\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let headers = AppUtil.user.getAuthentification()
         
         let url = URL(string: AppUtil.serverURL + "wishlist/add")
         let params = ["clientId": 6, "menuitemId": self.menuItem.menuitemId!, "userId": AppUtil.user.userId!]

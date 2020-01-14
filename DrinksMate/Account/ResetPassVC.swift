@@ -78,12 +78,8 @@ class ResetPassVC: UIViewController, IndicatorInfoProvider  {
             self.showErrorMessage(message: "Password doesn't match!")
             return
         }
-        
-        let user = AppUtil.user.userEmail!
-        let password = AppUtil.user.userHashPassword!
-        let credentialData = "\(user)===6:\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+
+        let headers = AppUtil.user.getAuthentification()
         
         let oldhashData = self.passOldTxt.text!.data(using: .utf8)?.sha1()
         let oldhashPass = oldhashData?.base64EncodedString()
@@ -93,7 +89,8 @@ class ResetPassVC: UIViewController, IndicatorInfoProvider  {
         let newhashPass = newhashData?.base64EncodedString()
         
         let url = URL(string: AppUtil.serverURL + "auth/resetpassword")
-        let params : Parameters = ["clientId": 6, "userEmail":AppUtil.user.userEmail!,"oldHashPassword": oldhashPass!, "newHashPassword": newhashPass!]
+//        let params : Parameters = ["clientId": 6, "userEmail":AppUtil.user.userEmail!,"oldHashPassword": oldhashPass!, "newHashPassword": newhashPass!]
+        let params : Parameters = ["clientId": 6, "userEmail":AppUtil.user.userEmail!,"oldHashPassword": self.passOldTxt.text!, "newHashPassword": self.passNewTxt.text!]
         
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
             
@@ -112,6 +109,10 @@ class ResetPassVC: UIViewController, IndicatorInfoProvider  {
             }
             else {
                 //AppUtil.user = DrinkUser()
+                self.passOldTxt.text = ""
+                self.passNewTxt.text = ""
+                self.passNewAgainTxt.text = ""
+                
                 AppUtil.user.userHashPassword = status
                 UserDefaults.standard.setValue(AppUtil.user.userHashPassword, forKey: "user_password")
                 

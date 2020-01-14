@@ -81,11 +81,7 @@ class ContactUsVC: UIViewController, MFMailComposeViewControllerDelegate, UIText
         let url = URL(string: AppUtil.serverURL + "misc/contactus")
         let params : Parameters = ["name":self.nameTxt.text!, "phone": self.phoneTxt.text!, "email": self.emailTxt.text!, "subject": self.subjectTxt.text!, "message":self.messageTxt.text!]
 
-        let user = AppUtil.user.userEmail!
-        let password = AppUtil.user.userHashPassword!
-        let credentialData = "\(user)===6:\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let headers = AppUtil.user.getAuthentification()
         
         HUD.show(.progress)
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseData { response in
