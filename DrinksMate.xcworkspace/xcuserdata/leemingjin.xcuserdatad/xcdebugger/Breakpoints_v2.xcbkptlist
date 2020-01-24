@@ -20,5 +20,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D9E64F92-2213-4ED9-94FA-6746E2C56E10"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DrinksMate/CardVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "loadSavedPaymark()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D9E64F92-2213-4ED9-94FA-6746E2C56E10 - 62bf51554f859371"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DrinksMate.CardVC.loadSavedPaymark() -&gt; ()"
+                  moduleName = "DrinksMate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leemingjin/Documents/Work/GitDrinksMate/DrinksMate/CardVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "2092">
+               </Location>
+               <Location
+                  uuid = "D9E64F92-2213-4ED9-94FA-6746E2C56E10 - 4c951fece4ca94a1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in DrinksMate.CardVC.loadSavedPaymark() -&gt; ()"
+                  moduleName = "DrinksMate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leemingjin/Documents/Work/GitDrinksMate/DrinksMate/CardVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "168D1458-9FC2-4A71-BEDF-61118EE30131"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DrinksMate/CardVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "loadSavedPaymark()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -147,7 +147,6 @@ class CartVC: UIViewController, IndicatorInfoProvider, UITableViewDataSource, UI
                 
                 let value = response.result.value!
                 AppUtil.orderId = value
-                AppUtil.cartsList = []
                 
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "CheckOutVC") as! CheckOutVC
                 self.present(vc, animated: false, completion: nil)

@@ -11,6 +11,7 @@ import XLPagerTabStrip
 import Alamofire
 import NotificationBannerSwift
 import PKHUD
+import IQKeyboardManager
 
 class ProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegate, IndicatorInfoProvider {
 
@@ -22,6 +23,9 @@ class ProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegate, I
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
+        IQKeyboardManager.shared().isEnableAutoToolbar = false
+        
         AppUtil.addressList = []
         
         if (AppUtil.user != nil) {

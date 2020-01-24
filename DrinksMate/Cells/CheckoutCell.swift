@@ -10,7 +10,7 @@ import UIKit
 import NotificationBannerSwift
 import Alamofire
 import PKHUD
-import SWXMLHash
+
 import iOSDropDown
 
 class CheckoutCell: UITableViewCell, UITextViewDelegate {
@@ -27,7 +27,7 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
     var checkoutVC : CheckOutVC!
     var tableView : UITableView!
     
-    let slots = ["Select Delivery Time Slot", "10:00 AM - 11:00 AM", "10:30 AM - 11:30 AM","11:00 AM - 12:00 PM","11:30 AM - 12:30 PM","12:00 PM - 01:00 PM","12:30 PM - 01:30 PM","01:00 PM - 02:00 PM","01:30 PM - 02:30 PM","02:00 PM - 03:00 PM","02:30 PM - 03:30 PM","03:00 PM - 04:00 PM","03:30 PM - 04:30 PM","04:00 PM - 05:00 PM","04:30 PM - 05:30 PM","05:00 PM - 06:00 PM","05:30 PM - 06:30 PM","06:00 PM - 07:00 PM","06:30 PM - 07:30 PM","07:00 PM - 08:00 PM","07:30 PM - 08:30 PM","08:00 PM - 09:00 PM","08:30 PM - 09:30 PM","09:00 PM - 10:00 PM","09:30 PM - 10:00 PM"]
+    let slots = ["10:00 AM - 11:00 AM", "10:30 AM - 11:30 AM","11:00 AM - 12:00 PM","11:30 AM - 12:30 PM","12:00 PM - 01:00 PM","12:30 PM - 01:30 PM","01:00 PM - 02:00 PM","01:30 PM - 02:30 PM","02:00 PM - 03:00 PM","02:30 PM - 03:30 PM","03:00 PM - 04:00 PM","03:30 PM - 04:30 PM","04:00 PM - 05:00 PM","04:30 PM - 05:30 PM","05:00 PM - 06:00 PM","05:30 PM - 06:30 PM","06:00 PM - 07:00 PM","06:30 PM - 07:30 PM","07:00 PM - 08:00 PM","07:30 PM - 08:30 PM","08:00 PM - 09:00 PM","08:30 PM - 09:30 PM","09:00 PM - 10:00 PM","09:30 PM - 10:00 PM"]
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +35,24 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
         
         self.commentsTxt.delegate = self
         self.timeSlot.isSearchEnable = false
-        self.timeSlot.optionArray = self.slots
+        
+        self.timeSlot.optionArray = []
+        self.timeSlot.optionArray.append("Select Delivery Time Slot")
+        
+        
+        let timeFormat = DateFormatter()
+        timeFormat.dateFormat = "hh:mm a"
+        let currentTime = timeFormat.string(from: Date())
+        
+        for slot in slots {
+            let startTime = slot.prefix(8)
+            
+            if (timeFormat.date(from: String(startTime))! > timeFormat.date(from: currentTime)!) {
+                self.timeSlot.optionArray.append(slot)
+            }
+        }
+        
+        
         self.timeSlot.didSelect { (selectedTxt, index, id) in
             
         }
@@ -85,36 +102,11 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
                 return
             }
             
-            let url = URL(string: AppUtil.serverURL + "checkout/updateorder")
-            
-            //let orderId = Date().timeIntervalSince1970
-            var orderedItems = [] as! [[String : Any]]
-            
-            for item in AppUtil.cartsList {
-                let orderedItem = ["menuitemId" : item.menuitemId!, "quantity": item.cartsNumber!]
-                orderedItems.append(orderedItem)
-            }
-            
-            var comments = ""
-            if (self.commentsTxt.text.count > 0) {
-                comments = self.commentsTxt.text!
-            }
-            
-            let tax = self.jsonToString(json: ["amount":1.5495,"name":"GST"])
-            
-            let params = ["comments": comments, "deliveryAddressId":self.selectedAddress.addressId!, "entryId":0, "orderId": AppUtil.orderId!, "orderTotal": self.checkoutVC.totalBudget!, "orderedItems": orderedItems, "taxBreakdown":tax!] as [String : Any]
-            let headers = AppUtil.user.getAuthentification()
-            
-            HUD.show(.progress)
-            Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
-                
-//                guard response.result.isSuccess else {
-//
-//                    return
-//                }
-                
-                self.loadPaymark(orderId: AppUtil.orderId, totalBudget: self.checkoutVC.totalBudget!)
-            }
+            let vc = self.checkoutVC.storyboard?.instantiateViewController(withIdentifier: "CardVC") as! CardVC
+            vc.totalBudget = self.checkoutVC.totalBudget
+            vc.params = self.getUpdateOrderParams()
+            vc.modalPresentationStyle = .overCurrentContext
+            self.checkoutVC.present(vc, animated: false, completion: nil)
         }
         else {
             self.selectAddress()
@@ -125,7 +117,9 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
     func jsonToString(json: [String : Any]) -> String! {
         do {
             let data1 =  try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted) // first of all convert json to the data
-            let convertedString = String(data: data1, encoding: String.Encoding.utf8) // the data will be converted to the string
+            var convertedString = String(data: data1, encoding: String.Encoding.utf8) // the data will be converted to the string
+            convertedString = convertedString!.replacingOccurrences(of: "\n", with: "")
+            
             return convertedString
         } catch _ {
             return ""
@@ -133,29 +127,23 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
 
     }
     
-    func loadPaymark(orderId : String, totalBudget: Double) {
-        let returnUrl = "http://107.150.52.222:8088/payment/completepaymark?orderId=\(orderId)&applicationConfigurationId=\(AppUtil.config["configurationId"]!)"
-        let url = URL(string: "https://demo.paymarkclick.co.nz/api/webpayments/paymentservice/rest/WPRequest")!
+    func getUpdateOrderParams() -> [String : Any] {
+        var orderedItems = [] as! [[String : Any]]
         
-        let headers = [
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        let params = ["username": 103969, "password": "OBh3C03ijPzBCm2a", "account_id": 625352, "cmd": "_xclick", "amount": totalBudget, "return_url": returnUrl.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!] as [String : Any]
-                
-        
-        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).validate().responseString { response in
-            
-            HUD.hide()
-            guard response.result.isSuccess else {
-
-                return
-            }
-
-            let urlStr = SWXMLHash.parse(response.result.value!)
-            let vc = self.checkoutVC.storyboard?.instantiateViewController(withIdentifier: "PayMarkVC") as! PayMarkVC
-            vc.urlStr = urlStr["string"].element!.text
-            self.checkoutVC.present(vc, animated: false, completion: nil)
+        for item in AppUtil.cartsList {
+            let orderedItem = ["menuitemId" : item.menuitemId!, "quantity": item.cartsNumber!]
+            orderedItems.append(orderedItem)
         }
+        
+        var comments = ""
+        if (self.commentsTxt.text.count > 0) {
+            comments = self.commentsTxt.text!
+        }
+        
+        let tax = self.jsonToString(json: ["amount":AppUtil.tax.taxAmount!, "name": AppUtil.tax.taxName!])
+        
+        let params = ["comments": comments, "deliveryAddressId":self.selectedAddress.addressId!, "entryId":0, "orderId": AppUtil.orderId!, "orderTotal": self.checkoutVC.totalBudget!, "orderedItems": orderedItems, "taxBreakdown": "[\(tax!)]"] as [String : Any]
+        return params
     }
     
     func selectAddress() {
@@ -184,6 +172,7 @@ class CheckoutCell: UITableViewCell, UITextViewDelegate {
         
         self.checkoutVC.present(addressDialog, animated: true, completion: nil)
     }
+    
     
     func showPaymentDialog() {
         let addressDialog = UIAlertController(title: "Select Payment Transfer", message: nil, preferredStyle: .alert)

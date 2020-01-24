@@ -78,9 +78,10 @@ class PayMarkVC: UIViewController, UIPopoverPresentationControllerDelegate, UIWe
                 
                 Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
                     timer.invalidate()
+
+                    AppUtil.cartsList = []
                     
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
-                    vc.fromWhere = 1
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrdersVC") as! OrdersVC
                     self.present(vc, animated: false, completion: nil)
                 }
             }

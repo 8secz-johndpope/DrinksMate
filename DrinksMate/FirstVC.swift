@@ -67,6 +67,13 @@ class FirstVC: UIViewController {
                     }
 
                     AppUtil.config = response.result.value as? [String: Any]
+                    
+                    let configurationSalesTaxes = AppUtil.config["configurationSalesTaxes"] as? [[String : Any]]
+                    AppUtil.tax = TaxConfig(tax: configurationSalesTaxes![0])
+                    
+                    let paymarkConfigurations = AppUtil.config["paymarkConfigurations"] as? [[String : Any]]
+                    AppUtil.pay = PayConfig(payConfig: paymarkConfigurations![0])
+                    
                     self.showMessage(msg: "Configuration Up To Date!")
 
                     self.homeImg.isHidden = true

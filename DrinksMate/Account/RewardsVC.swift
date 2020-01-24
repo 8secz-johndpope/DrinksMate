@@ -8,10 +8,23 @@
 
 import UIKit
 import XLPagerTabStrip
+import Alamofire
 
 class RewardsVC: UIViewController, IndicatorInfoProvider, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var menuBtn: UIButton!
+    
+    @IBOutlet weak var rewardsImg1: UIImageView!
+    @IBOutlet weak var rewardsImg2: UIImageView!
+    @IBOutlet weak var rewardsImg3: UIImageView!
+    @IBOutlet weak var rewardsImg4: UIImageView!
+    @IBOutlet weak var rewardsImg5: UIImageView!
+    @IBOutlet weak var rewardsImg6: UIImageView!
+    @IBOutlet weak var rewardsImg7: UIImageView!
+    @IBOutlet weak var rewardsImg8: UIImageView!
+    @IBOutlet weak var rewardsImg9: UIImageView!
+    
+    public var rewardsImages = ["beer_empty", "beer_empty", "beer_empty", "beer_empty", "beer_empty", "beer_empty", "beer_empty", "beer_empty", "beer_empty"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +35,38 @@ class RewardsVC: UIViewController, IndicatorInfoProvider, UIPopoverPresentationC
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        
+        let url = URL(string: AppUtil.serverURL + "order/rewards")
+        let headers = AppUtil.user.getAuthentification()
+        Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).validate().responseString { response in
+            
+            guard response.result.isSuccess else {
+
+                return
+            }
+
+            let value = response.result.value!
+            let count = Int(value)!
+
+            for i in 0...8 {
+                if (i < count) {
+                    self.rewardsImages[i] = "beer_full"
+                }
+            }
+
+            self.displayRewards(imgs: self.rewardsImages)
+        }
+    }
+    
+    func displayRewards(imgs : [String]) {
+        self.rewardsImg1.image = UIImage(named: imgs[0])
+        self.rewardsImg2.image = UIImage(named: imgs[1])
+        self.rewardsImg3.image = UIImage(named: imgs[2])
+        self.rewardsImg4.image = UIImage(named: imgs[3])
+        self.rewardsImg5.image = UIImage(named: imgs[4])
+        self.rewardsImg6.image = UIImage(named: imgs[5])
+        self.rewardsImg7.image = UIImage(named: imgs[6])
+        self.rewardsImg8.image = UIImage(named: imgs[7])
+        self.rewardsImg9.image = UIImage(named: imgs[8])
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {

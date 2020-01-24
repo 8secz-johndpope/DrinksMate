@@ -49,12 +49,15 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPo
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+
+        let tabItem = self.tabBarController?.tabBar.items
+        let cartTab = tabItem![3]
+        cartTab.badgeValue = "\(AppUtil.cartsList.count)"
         
-        if (AppUtil.cartsList.count > 0) {
-            let tabItem = self.tabBarController?.tabBar.items
-            let cartTab = tabItem![3]
-            cartTab.badgeValue = "\(AppUtil.cartsList.count)"
+        if (AppUtil.cartsList.count == 0) {
+            cartTab.badgeValue = nil
         }
+        
     }
     
     func loadMenuCategory() {

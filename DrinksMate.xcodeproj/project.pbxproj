@@ -49,6 +49,11 @@
 		67739DAB236782CF00B43C34 /* SigninVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739DAA236782CF00B43C34 /* SigninVC.swift */; };
 		67739DAD236782E100B43C34 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739DAC236782E100B43C34 /* RegisterVC.swift */; };
 		67739DAF2367833600B43C34 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67739DAE2367833600B43C34 /* ForgotPasswordVC.swift */; };
+		6775FA8723D8B4E3003F1C8B /* TaxConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FA8623D8B4E3003F1C8B /* TaxConfig.swift */; };
+		6775FA8923D8D81A003F1C8B /* PayCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FA8823D8D81A003F1C8B /* PayCard.swift */; };
+		6775FA8B23D8E99C003F1C8B /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FA8A23D8E99C003F1C8B /* CardVC.swift */; };
+		6775FA8D23D8ED77003F1C8B /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FA8C23D8ED77003F1C8B /* CardCell.swift */; };
+		677DF40A23D9F87F00C5BBCA /* PayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677DF40923D9F87F00C5BBCA /* PayConfig.swift */; };
 		6788060D23A9810200F5C533 /* splash_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6788060C23A9810200F5C533 /* splash_video.mp4 */; };
 		678C873223743DD000B4E133 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678C873123743DD000B4E133 /* ResetPasswordVC.swift */; };
 		678C873423752F0400B4E133 /* BarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678C873323752F0400B4E133 /* BarVC.swift */; };
@@ -135,6 +140,11 @@
 		67739DAA236782CF00B43C34 /* SigninVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninVC.swift; sourceTree = "<group>"; };
 		67739DAC236782E100B43C34 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		67739DAE2367833600B43C34 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		6775FA8623D8B4E3003F1C8B /* TaxConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxConfig.swift; sourceTree = "<group>"; };
+		6775FA8823D8D81A003F1C8B /* PayCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayCard.swift; sourceTree = "<group>"; };
+		6775FA8A23D8E99C003F1C8B /* CardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
+		6775FA8C23D8ED77003F1C8B /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		677DF40923D9F87F00C5BBCA /* PayConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayConfig.swift; sourceTree = "<group>"; };
 		6788060C23A9810200F5C533 /* splash_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = splash_video.mp4; path = DrinksMate/splash_video.mp4; sourceTree = "<group>"; };
 		678C873123743DD000B4E133 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		678C873323752F0400B4E133 /* BarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarVC.swift; sourceTree = "<group>"; };
@@ -216,6 +226,7 @@
 				6792ABAB23960F61009F57B7 /* AddressCell.swift */,
 				6792ABAF23974E76009F57B7 /* CheckoutCell.swift */,
 				671BD680239DBC18008A29EF /* OrderHistoryCell.swift */,
+				6775FA8C23D8ED77003F1C8B /* CardCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -282,6 +293,7 @@
 				673201F5239E79BC0075EABD /* NotificationVC.swift */,
 				673201F7239E994B0075EABD /* PayMarkVC.swift */,
 				673201F9239E996D0075EABD /* CodVC.swift */,
+				6775FA8A23D8E99C003F1C8B /* CardVC.swift */,
 			);
 			path = DrinksMate;
 			sourceTree = "<group>";
@@ -325,6 +337,9 @@
 				671BD67C239DA18F008A29EF /* Order.swift */,
 				671BD67E239DA228008A29EF /* Payment.swift */,
 				673201F3239E70040075EABD /* Notification.swift */,
+				6775FA8623D8B4E3003F1C8B /* TaxConfig.swift */,
+				6775FA8823D8D81A003F1C8B /* PayCard.swift */,
+				677DF40923D9F87F00C5BBCA /* PayConfig.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -549,6 +564,7 @@
 				6738F32A23917C8100D35E13 /* CartCell.swift in Sources */,
 				679A5164237A82B30050A41E /* AccountMenuVC.swift in Sources */,
 				679A5170237B57510050A41E /* OrderCell.swift in Sources */,
+				6775FA8923D8D81A003F1C8B /* PayCard.swift in Sources */,
 				6738F322238EB85500D35E13 /* WishListVC.swift in Sources */,
 				673201F4239E70040075EABD /* Notification.swift in Sources */,
 				67F8F0252369C51D00CB667C /* DrinkUser.swift in Sources */,
@@ -568,9 +584,11 @@
 				6738F3282390A96A00D35E13 /* WishlistCell.swift in Sources */,
 				670A0E8023687E090000EE68 /* PolicyVC.swift in Sources */,
 				679A5172237BCF460050A41E /* CategoryVC.swift in Sources */,
+				6775FA8B23D8E99C003F1C8B /* CardVC.swift in Sources */,
 				6738F324238FDEB600D35E13 /* MenuItemCell.swift in Sources */,
 				67309E3D2375865D004E5D55 /* IntroCell.swift in Sources */,
 				6722CFA62370139B002824F7 /* MainVC.swift in Sources */,
+				677DF40A23D9F87F00C5BBCA /* PayConfig.swift in Sources */,
 				67739DA92367810B00B43C34 /* FirstVC.swift in Sources */,
 				6792ABAE239621C1009F57B7 /* UserAddress.swift in Sources */,
 				671BD67D239DA18F008A29EF /* Order.swift in Sources */,
@@ -578,6 +596,7 @@
 				67739DAB236782CF00B43C34 /* SigninVC.swift in Sources */,
 				673201F8239E994B0075EABD /* PayMarkVC.swift in Sources */,
 				673201F6239E79BC0075EABD /* NotificationVC.swift in Sources */,
+				6775FA8D23D8ED77003F1C8B /* CardCell.swift in Sources */,
 				673201FA239E996D0075EABD /* CodVC.swift in Sources */,
 				6792ABAC23960F61009F57B7 /* AddressCell.swift in Sources */,
 				6722CFAA237013E8002824F7 /* AccountVC.swift in Sources */,
@@ -594,6 +613,7 @@
 				6722CFA8237013CF002824F7 /* HomeVC.swift in Sources */,
 				6735A5A523935AA50005B10D /* CheckOutVC.swift in Sources */,
 				67739D792367034300B43C34 /* AppDelegate.swift in Sources */,
+				6775FA8723D8B4E3003F1C8B /* TaxConfig.swift in Sources */,
 				679A5174237BF5A50050A41E /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -771,7 +791,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DrinksMate/DrinksMate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = H77AGDMGJC;
 				INFOPLIST_FILE = DrinksMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -796,7 +816,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DrinksMate/DrinksMate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = H77AGDMGJC;
 				INFOPLIST_FILE = DrinksMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

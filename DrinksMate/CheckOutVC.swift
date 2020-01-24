@@ -60,7 +60,7 @@ class CheckOutVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             case AppUtil.cartsList.count:
                 return 90
             case AppUtil.cartsList.count + 2:
-                return 740
+                return 800
             default:
                 return 45
         }
@@ -82,6 +82,7 @@ class CheckOutVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 cell_id = "fee_cell"
                 let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath)
                 let totalLbl = table_cell.viewWithTag(10) as! UILabel
+                let gstLbl = table_cell.viewWithTag(11) as! UILabel
                 
                 self.totalBudget = 0.0
                 
@@ -91,9 +92,18 @@ class CheckOutVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     self.totalBudget = self.totalBudget + menuitemPrice
                 }
                 
-                totalLbl.text = "$\(self.totalBudget!)"
+                if (AppUtil.tax.isPercent == 1) {
+                    AppUtil.tax.taxAmount = self.totalBudget * AppUtil.tax.taxAmount / 100
+                    self.totalBudget = self.totalBudget - AppUtil.tax.taxAmount
+                }
+                
+                let gst = self.totalBudget * 0.15
+                
+                gstLbl.text = String.init(format: "Sub Total (Includes $%.2f GST)", gst)
+                totalLbl.text = String.init(format: "$%.2f", self.totalBudget!)
                 
                 return table_cell
+            
             case AppUtil.cartsList.count + 1:
                 cell_id = "total_cell"
                 let table_cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath)

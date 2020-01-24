@@ -11,6 +11,7 @@ import GoogleMaps
 import GooglePlaces
 import Firebase
 import Alamofire
+import IQKeyboardManager
 
 @UIApplicationMain
 
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        IQKeyboardManager.shared().isEnabled = true
         GMSServices.provideAPIKey("AIzaSyD-RoswN-_JNKGCk8lLaAa_0DD9jAzNysU")
         GMSPlacesClient.provideAPIKey("AIzaSyD-RoswN-_JNKGCk8lLaAa_0DD9jAzNysU")
 

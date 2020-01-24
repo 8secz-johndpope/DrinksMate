@@ -17,6 +17,9 @@ class AppUtil: NSObject {
     public static var otp : String!
     
     public static var config : [String : Any]!
+    public static var tax : TaxConfig!
+    public static var pay : PayConfig!
+    
     public static var categories : [MenuCategory]!
     public static var selectedCategory : Int!
     public static var isAddressSelected : Bool!
@@ -27,4 +30,7 @@ class AppUtil: NSObject {
     
     public static var fcmToken : String!
     public static var orderId : String!
+    
+    public static var openTime : String!
+    public static var closeTime : String!
 }

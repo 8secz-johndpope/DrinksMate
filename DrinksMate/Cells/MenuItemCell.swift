@@ -48,6 +48,10 @@ class MenuItemCell: UICollectionViewCell {
         let tabItem = self.homeVC.tabBarController?.tabBar.items
         let cartTab = tabItem![3]
         cartTab.badgeValue = "\(AppUtil.cartsList.count)"
+        
+        if (AppUtil.cartsList.count == 0) {
+            cartTab.badgeValue = nil
+        }
     }
     
     @IBAction func removeAction(_ sender: Any) {
@@ -59,6 +63,10 @@ class MenuItemCell: UICollectionViewCell {
             let tabItem = self.homeVC.tabBarController?.tabBar.items
             let cartTab = tabItem![3]
             cartTab.badgeValue = "\(AppUtil.cartsList.count)"
+            
+            if (AppUtil.cartsList.count == 0) {
+                cartTab.badgeValue = nil
+            }
             return
         }
         
